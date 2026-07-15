@@ -40,10 +40,11 @@ export default defineManifest((env) => {
       ...(isFirefox ? [] : ['sidePanel']),
     ],
 
-    // The Kartographe backend host is user-configurable, so we request host
-    // access at runtime (chrome.permissions.request) rather than embedding a
-    // fixed origin here. `<all_urls>` stays optional for the same reason.
-    optional_host_permissions: ['*://*/*'],
+    // Requested at runtime (chrome.permissions.request), never up front:
+    // - the user-configured Kartographe server origin (for API + OAuth), and
+    // - <all_urls>, required by captureVisibleTab to screenshot arbitrary pages
+    //   from the side panel (there is no activeTab grant there).
+    optional_host_permissions: ['<all_urls>'],
 
     // No default_popup: clicking the toolbar icon opens the side panel
     // (Chrome, via setPanelBehavior) or toggles the sidebar (Firefox).

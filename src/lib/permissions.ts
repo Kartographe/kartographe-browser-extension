@@ -11,11 +11,12 @@ export async function ensureHostPermission(serverUrl: string): Promise<boolean> 
 
 /**
  * Host access needed to screenshot arbitrary pages with captureVisibleTab.
- * From the side panel there is no activeTab grant on the browsed tab, so we
- * request broad host access once (on the capture gesture) instead.
+ * From the side panel there is no activeTab grant on the browsed tab, and the
+ * API specifically requires <all_urls> (a narrower pattern is not accepted), so
+ * we request it once on the capture gesture.
  */
 export async function ensureCapturePermission(): Promise<boolean> {
-  const origins = ['*://*/*']
+  const origins = ['<all_urls>']
   if (await chrome.permissions.contains({ origins })) return true
   return chrome.permissions.request({ origins })
 }

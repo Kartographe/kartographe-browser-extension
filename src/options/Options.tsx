@@ -12,7 +12,11 @@ import {
   Tag,
   Typography,
 } from 'antd'
-import { normaliseServerUrl } from '@/lib/storage/config'
+import {
+  CUSTOM_SERVER,
+  normaliseServerUrl,
+  SERVER_PRESETS,
+} from '@/lib/storage/config'
 import { useConfig, useSaveConfig } from '@/lib/storage/hooks'
 import { useLogin, useLogout, useSession } from '@/features/auth/hooks'
 import { useAccounts, useMe } from '@/features/account/hooks'
@@ -21,38 +25,80 @@ const { Text } = Typography
 
 const logoUrl = chrome.runtime.getURL('icons/logo-horizontal.svg')
 
+const SERVER_OPTIONS = [
+  ...SERVER_PRESETS.map((p) => ({
+    value: p.url,
+    disabled: p.disabled,
+    label: `${p.url} · ${p.region}${p.disabled ? ' — coming soon' : ''}`,
+  })),
+  { value: CUSTOM_SERVER, label: 'Custom…' },
+]
+
+interface ServerFormValues {
+  server: string
+  customUrl?: string
+}
+
+function initialServerValue(storedUrl: string): string {
+  if (SERVER_PRESETS.some((p) => p.url === storedUrl)) return storedUrl
+  if (storedUrl) return CUSTOM_SERVER
+  return SERVER_PRESETS[0].url // default to the EU endpoint
+}
+
 function ServerCard() {
   const { message } = App.useApp()
   const config = useConfig()
   const save = useSaveConfig()
+  const [form] = Form.useForm<ServerFormValues>()
+
+  const stored = config.data?.serverUrl ?? ''
+  const initialServer = initialServerValue(stored)
+  const initialCustom = initialServer === CUSTOM_SERVER ? stored : ''
+
+  const selected = Form.useWatch('server', form) ?? initialServer
+  const isCustom = selected === CUSTOM_SERVER
 
   return (
     <Card title="Kartographe server" loading={config.isLoading}>
       <Form
+        form={form}
         layout="vertical"
-        key={config.data?.serverUrl}
-        initialValues={{ serverUrl: config.data?.serverUrl }}
-        onFinish={({ serverUrl }: { serverUrl: string }) =>
+        key={stored}
+        initialValues={{ server: initialServer, customUrl: initialCustom }}
+        onFinish={({ server, customUrl }: ServerFormValues) => {
+          const url =
+            server === CUSTOM_SERVER ? normaliseServerUrl(customUrl ?? '') : server
           save.mutate(
-            { serverUrl: normaliseServerUrl(serverUrl) },
+            { serverUrl: url },
             {
-              onSuccess: () => message.success('Server URL saved'),
-              onError: () => message.error('Could not save server URL'),
+              onSuccess: () => message.success('Server saved'),
+              onError: () => message.error('Could not save server'),
             },
           )
-        }
+        }}
       >
         <Form.Item
-          name="serverUrl"
-          label="Server URL"
-          tooltip="Base URL of your Kartographe backend"
-          rules={[
-            { required: true, message: 'Please enter the server URL' },
-            { type: 'url', message: 'Enter a valid URL' },
-          ]}
+          name="server"
+          label="Server"
+          tooltip="Choose a Kartographe Cloud region or enter your own server"
+          rules={[{ required: true, message: 'Please choose a server' }]}
         >
-          <Input placeholder="https://kartographe.example.com" />
+          <Select options={SERVER_OPTIONS} />
         </Form.Item>
+
+        {isCustom ? (
+          <Form.Item
+            name="customUrl"
+            label="Custom server URL"
+            rules={[
+              { required: true, message: 'Please enter the server URL' },
+              { type: 'url', message: 'Enter a valid URL' },
+            ]}
+          >
+            <Input placeholder="https://kartographe.example.com" />
+          </Form.Item>
+        ) : null}
+
         <Button type="primary" htmlType="submit" loading={save.isPending}>
           Save
         </Button>

@@ -12,9 +12,24 @@ export interface ExtensionConfig {
 }
 
 const DEFAULT_CONFIG: ExtensionConfig = {
-  serverUrl: import.meta.env.VITE_API_URL ?? '',
+  serverUrl: '',
   accountId: null,
 }
+
+/** Sentinel value for the "custom server" option in the settings dropdown. */
+export const CUSTOM_SERVER = 'custom'
+
+export interface ServerPreset {
+  region: string
+  url: string
+  disabled?: boolean
+}
+
+/** Preset Kartographe Cloud endpoints offered in the settings dropdown. */
+export const SERVER_PRESETS: ServerPreset[] = [
+  { region: 'EU', url: 'https://api.kartographe.eu' },
+  { region: 'USA', url: 'https://api.kartographe.com', disabled: true },
+]
 
 export async function getConfig(): Promise<ExtensionConfig> {
   const stored = await chrome.storage.local.get(CONFIG_KEY)

@@ -19,7 +19,9 @@ import type { CaptureLinks } from '@/features/capture/push'
 import { AttachSection } from '@/features/entities/AttachSection'
 import { JourneyView } from '@/features/journey/JourneyView'
 
-const { Title, Text, Link } = Typography
+const { Text, Link } = Typography
+
+const logoUrl = chrome.runtime.getURL('icons/logo-horizontal.svg')
 
 function openOptions() {
   chrome.runtime.openOptionsPage()
@@ -141,14 +143,17 @@ export function App() {
 
   return (
     <Flex vertical gap={16} style={{ padding: 16 }}>
-      <Space direction="vertical" size={0}>
-        <Title level={4} style={{ margin: 0 }}>
-          Kartographe Trail
-        </Title>
+      <Flex align="center" justify="space-between">
+        <Flex align="center" gap={8}>
+          <img src={logoUrl} alt="Kartographe" height={22} />
+          <Text strong style={{ fontSize: 13 }}>
+            Trail
+          </Text>
+        </Flex>
         <Link onClick={openOptions} style={{ fontSize: 12 }}>
           Settings
         </Link>
-      </Space>
+      </Flex>
 
       {loading ? (
         <Flex justify="center" style={{ padding: 24 }}>

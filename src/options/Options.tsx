@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   Card,
+  Flex,
   Form,
   Input,
   Select,
@@ -16,7 +17,9 @@ import { useConfig, useSaveConfig } from '@/lib/storage/hooks'
 import { useLogin, useLogout, useSession } from '@/features/auth/hooks'
 import { useAccounts, useMe } from '@/features/account/hooks'
 
-const { Title, Text } = Typography
+const { Text } = Typography
+
+const logoUrl = chrome.runtime.getURL('icons/logo-horizontal.svg')
 
 function ServerCard() {
   const { message } = App.useApp()
@@ -169,12 +172,11 @@ export function Options() {
   return (
     <div style={{ maxWidth: 640, margin: '48px auto', padding: '0 16px' }}>
       <Space direction="vertical" size="large" style={{ width: '100%' }}>
-        <Space direction="vertical" size={0}>
-          <Title level={3} style={{ margin: 0 }}>
-            Kartographe Trail
-          </Title>
-          <Text type="secondary">Extension settings</Text>
-        </Space>
+        <Flex align="center" gap={12}>
+          <img src={logoUrl} alt="Kartographe" height={32} />
+          <Text style={{ fontSize: 18, fontWeight: 600 }}>Trail</Text>
+          <Text type="secondary">— settings</Text>
+        </Flex>
         <ServerCard />
         <AccountCard />
       </Space>

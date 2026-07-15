@@ -25,9 +25,40 @@ export interface StepOptions {
   order?: number
 }
 
-export function unwrap<T>(res: { data?: T; error?: unknown }, what: string): T {
+/** Human-readable detail from a Kartographe API error body. */
+function formatDetail(error: unknown): string | undefined {
+  if (!error || typeof error !== 'object' || !('detail' in error)) return undefined
+  const detail = (error as { detail: unknown }).detail
+  if (typeof detail === 'string') return detail
+  // FastAPI validation errors: [{ loc: [...], msg, type }, ...]
+  if (Array.isArray(detail)) {
+    return detail
+      .map((d) => {
+        if (d && typeof d === 'object' && 'msg' in d) {
+          const loc = Array.isArray((d as { loc?: unknown[] }).loc)
+            ? (d as { loc: unknown[] }).loc.slice(1).join('.')
+            : ''
+          return loc ? `${loc}: ${(d as { msg: string }).msg}` : (d as { msg: string }).msg
+        }
+        return JSON.stringify(d)
+      })
+      .join('; ')
+  }
+  return JSON.stringify(detail)
+}
+
+export function unwrap<T>(
+  res: { data?: T; error?: unknown; response?: Response },
+  what: string,
+): T {
   if (res.error || res.data === undefined) {
-    throw new Error(`Failed to ${what}.`)
+    const status = res.response?.status
+    const detail = formatDetail(res.error)
+    const message =
+      `Failed to ${what}` +
+      (status ? ` (${status})` : '') +
+      (detail ? `: ${detail}` : '')
+    throw new Error(message)
   }
   return res.data
 }

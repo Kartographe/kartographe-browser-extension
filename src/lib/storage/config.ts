@@ -7,10 +7,13 @@ const CONFIG_KEY = 'kartographe.config'
 export interface ExtensionConfig {
   /** Base URL of the Kartographe backend, e.g. https://kartographe.example.com */
   serverUrl: string
+  /** Active account id captures are pushed to (chosen after sign-in). */
+  accountId: string | null
 }
 
 const DEFAULT_CONFIG: ExtensionConfig = {
   serverUrl: import.meta.env.VITE_API_URL ?? '',
+  accountId: null,
 }
 
 export async function getConfig(): Promise<ExtensionConfig> {

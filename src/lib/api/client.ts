@@ -1,20 +1,18 @@
 import createClient, { type Client } from 'openapi-fetch'
 import type { paths } from './schema'
 import { getConfig } from '@/lib/storage/config'
+import { createAuthMiddleware } from './auth-middleware'
 
 export type ApiClient = Client<paths>
 
 /**
- * Build an openapi-fetch client bound to a specific Kartographe server URL.
- *
- * Auth (Bearer + refresh middleware) is attached in the auth milestone; this
- * module only owns the transport and the multipart serializer.
+ * Build an openapi-fetch client bound to a specific Kartographe server URL,
+ * with the Bearer + refresh auth middleware attached.
  */
 export function createApiClient(baseUrl: string): ApiClient {
-  return createClient<paths>({
-    baseUrl,
-    // Kartographe error envelope is JSON; default parsing is fine.
-  })
+  const client = createClient<paths>({ baseUrl })
+  client.use(createAuthMiddleware(baseUrl))
+  return client
 }
 
 /**

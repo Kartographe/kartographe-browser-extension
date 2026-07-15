@@ -1,0 +1,42 @@
+{
+  "name": "kartographe-extension",
+  "displayName": "Kartographe Trail",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Kartographe Trail — web clipper browser extension (MV3) to capture pages, screenshots and journeys into your Kartographe map.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:firefox": "tsc --noEmit && vite build --mode firefox",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "api:sync": "tsx scripts/api-sync.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.101.2",
+    "antd": "^6.5.1",
+    "openapi-fetch": "^0.17.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.7.1",
+    "@types/chrome": "^0.2.2",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "openapi-typescript": "^7.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}

@@ -1,0 +1,121 @@
+# Kartographe Trail
+
+**Kartographe Trail** is the official browser extension (web clipper) for
+[Kartographe](https://kartographe.app), the open-source, self-hostable
+information-system / product mapping platform.
+
+While you browse an application, capture what you see — a screenshot of the
+current tab, its URL, title and metadata, or a whole **journey** (an ordered
+sequence of steps) — and push it straight into your Kartographe map. Captures can
+be attached to an existing application, service or journey, or create a new one.
+
+- **Manifest V3** — Chrome & Firefox from a single, parameterable build.
+- **Vite + React 19 + TypeScript (strict)**, pnpm.
+- **Typed API client generated from the backend OpenAPI** (`openapi-typescript` +
+  `openapi-fetch`) — API types are never written by hand.
+- **OAuth (authorization code + PKCE)** public client via
+  `chrome.identity.launchWebAuthFlow`, with automatic token refresh and revoke on
+  logout. No client secret is embedded.
+
+> Status: milestone 1 (scaffold). Auth, capture and journeys land in the next
+> milestones — see the roadmap at the bottom.
+
+## Requirements
+
+- Node.js ≥ 20
+- pnpm ≥ 9
+- A reachable Kartographe backend (for type generation and at runtime)
+
+## Getting started
+
+```bash
+pnpm install
+
+# 1. Point the type generator at your backend (build-time only).
+cp .env.example .env
+# edit VITE_API_URL if your backend is not on http://localhost:8000
+
+# 2. Generate the typed API client from the live OpenAPI (committed output).
+pnpm api:sync
+
+# 3. Run the dev build (HMR).
+pnpm dev
+```
+
+### Load the unpacked extension
+
+**Chrome / Edge**
+
+1. `pnpm build` (or `pnpm dev` for HMR) → output in `dist/`.
+2. Open `chrome://extensions`, enable **Developer mode**.
+3. **Load unpacked** → select the `dist/` folder.
+
+**Firefox**
+
+1. `pnpm build:firefox` → output in `dist/`.
+2. Open `about:debugging#/runtime/this-firefox`.
+3. **Load Temporary Add-on…** → select `dist/manifest.json`.
+
+> Firefox MV3 support is validated in a later milestone; Chrome is the primary
+> target for now.
+
+## Configuration
+
+The **runtime** Kartographe server URL is entered by the user in the extension's
+**Options** page (Chrome: right-click the toolbar icon → *Options*), and stored in
+`chrome.storage.local`. `VITE_API_URL` in `.env` is only the build-time default
+used to generate types with `pnpm api:sync`.
+
+## Environment variables
+
+| Variable       | Used at     | Purpose                                                         |
+| -------------- | ----------- | -------------------------------------------------------------- |
+| `VITE_API_URL` | build / sync | Backend base URL fetched by `pnpm api:sync` (`/openapi.json`). |
+
+## Scripts
+
+| Script              | Description                                            |
+| ------------------- | ----------------------------------------------------- |
+| `pnpm dev`          | Vite dev server with HMR (Chrome MV3).                |
+| `pnpm build`        | Type-check + production build (Chrome) → `dist/`.     |
+| `pnpm build:firefox`| Type-check + production build (Firefox) → `dist/`.    |
+| `pnpm typecheck`    | `tsc --noEmit`.                                        |
+| `pnpm api:sync`     | Regenerate `src/lib/api/schema.d.ts` from OpenAPI.    |
+
+## Project layout
+
+```
+src/
+  app/          Shared React providers (TanStack Query, Ant Design)
+  background/   MV3 service worker (OAuth, refresh, tab capture)
+  content/      Content script (page metadata, journey overlay)
+  popup/        Toolbar popup UI (capture, attach, push)
+  options/      Settings page (server URL, account, sign-in/out)
+  lib/
+    api/        openapi-fetch client + generated schema.d.ts (committed)
+    oauth/      PKCE, discovery, dynamic registration, token store
+    storage/    Typed chrome.storage.local wrappers
+  shared/       Cross-context types & messaging
+public/icons/   Extension icons
+```
+
+## Security
+
+- Public OAuth client (**PKCE**) — no client secret in the code.
+- Tokens live only in `chrome.storage.local`; logout revokes them via
+  `/oauth/revoke`.
+- Minimal MV3 permissions (`activeTab`, `scripting`, `storage`, `identity`,
+  `tabs`); host access to the Kartographe server is requested at runtime.
+
+## Roadmap
+
+1. ✅ Scaffold (MV3 + Vite + React + TS).
+2. Typed API client from OpenAPI (`api:sync`).
+3. OAuth PKCE end-to-end (login / refresh / logout).
+4. Single-page capture (screenshot + URL → API).
+5. Attach / create application, service, journey.
+6. Multi-step journey recording.
+
+## License
+
+[Apache-2.0](./LICENSE) — aligned with the main Kartographe repository.

@@ -1,0 +1,48 @@
+name: Release
+
+# Build and package the extension on version tags (e.g. v0.1.0), attach the
+# Chrome and Firefox zips to a GitHub Release, and keep them as workflow
+# artifacts. Store publishing (Chrome Web Store / AMO) is intentionally left out
+# here — it requires developer credentials.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build and package (Chrome + Firefox)
+        run: pnpm package
+
+      - name: Upload zips as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-zips
+          path: releases/*.zip
+          if-no-files-found: error
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: releases/*.zip
+          generate_release_notes: true

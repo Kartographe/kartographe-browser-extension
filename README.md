@@ -81,7 +81,31 @@ used to generate types with `pnpm api:sync`.
 | `pnpm build`        | Type-check + production build (Chrome) → `dist/`.     |
 | `pnpm build:firefox`| Type-check + production build (Firefox) → `dist/`.    |
 | `pnpm typecheck`    | `tsc --noEmit`.                                        |
+| `pnpm package`      | Build + zip Chrome & Firefox into `releases/`.        |
 | `pnpm api:sync`     | Regenerate `src/lib/api/schema.d.ts` from OpenAPI.    |
+
+## Packaging & release
+
+`pnpm package` type-checks, builds both targets and writes store-ready zips
+(`manifest.json` at the zip root) to `releases/`:
+
+```
+releases/kartographe-trail-chrome-v<version>.zip    # Chrome Web Store / Edge
+releases/kartographe-trail-firefox-v<version>.zip   # Firefox AMO
+```
+
+Pushing a version tag runs the **Release** GitHub Actions workflow
+(`.github/workflows/release.yml`): it packages both zips, attaches them to a
+GitHub Release and keeps them as workflow artifacts.
+
+```bash
+# bump "version" in package.json first, then:
+git tag v0.1.0 && git push github v0.1.0   # (or your release remote)
+```
+
+Store submission itself is manual (upload the zip to the Chrome Web Store /
+AMO); automated store publishing would need developer API credentials as repo
+secrets and is not wired up.
 
 ## Project layout
 

@@ -31,6 +31,9 @@ void i18n
     react: { useSuspense: false },
   })
 
+/** Language detected from the browser at init — used for the "automatic" option. */
+export const BROWSER_LNG = i18n.language
+
 const ANTD_LOCALES: Record<string, AntdLocale> = { en: enUS, fr: frFR }
 
 /** Ant Design locale matching the active i18next language. */

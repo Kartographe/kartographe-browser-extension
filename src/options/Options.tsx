@@ -13,6 +13,7 @@ import {
   Typography,
 } from 'antd'
 import { useTranslation } from 'react-i18next'
+import i18n, { BROWSER_LNG } from '@/i18n'
 import {
   CUSTOM_SERVER,
   normaliseServerUrl,
@@ -35,6 +36,33 @@ function initialServerValue(storedUrl: string): string {
   if (SERVER_PRESETS.some((p) => p.url === storedUrl)) return storedUrl
   if (storedUrl) return CUSTOM_SERVER
   return SERVER_PRESETS[0].url // default to the EU endpoint
+}
+
+function LanguageCard() {
+  const { t } = useTranslation()
+  const config = useConfig()
+  const save = useSaveConfig()
+
+  const options = [
+    { value: 'auto', label: t('language.auto') },
+    { value: 'en', label: 'English' },
+    { value: 'fr', label: 'Français' },
+  ]
+
+  return (
+    <Card title={t('language.cardTitle')} loading={config.isLoading}>
+      <Select
+        style={{ width: '100%' }}
+        value={config.data?.language ?? 'auto'}
+        options={options}
+        onChange={(value: string) => {
+          const language = value === 'auto' ? null : value
+          save.mutate({ language })
+          void i18n.changeLanguage(language ?? BROWSER_LNG)
+        }}
+      />
+    </Card>
+  )
 }
 
 function ServerCard() {
@@ -227,6 +255,7 @@ export function Options() {
           <Text style={{ fontSize: 18, fontWeight: 600 }}>Trail</Text>
           <Text type="secondary">{t('account.settingsSubtitle')}</Text>
         </Flex>
+        <LanguageCard />
         <ServerCard />
         <AccountCard />
       </Space>

@@ -35,6 +35,10 @@ export const fr: Resources = {
     saved: 'Serveur enregistré',
     saveError: 'Impossible d’enregistrer le serveur',
   },
+  language: {
+    cardTitle: 'Langue',
+    auto: 'Automatique (navigateur)',
+  },
   account: {
     settingsSubtitle: '— réglages',
     cardTitle: 'Compte',

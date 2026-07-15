@@ -9,11 +9,14 @@ export interface ExtensionConfig {
   serverUrl: string
   /** Active account id captures are pushed to (chosen after sign-in). */
   accountId: string | null
+  /** UI language override ('en' | 'fr'); null follows the browser language. */
+  language: string | null
 }
 
 const DEFAULT_CONFIG: ExtensionConfig = {
   serverUrl: '',
   accountId: null,
+  language: null,
 }
 
 /** Sentinel value for the "custom server" option in the settings dropdown. */

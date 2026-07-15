@@ -33,6 +33,10 @@ export const en = {
     saved: 'Server saved',
     saveError: 'Could not save server',
   },
+  language: {
+    cardTitle: 'Language',
+    auto: 'Automatic (browser)',
+  },
   account: {
     settingsSubtitle: '— settings',
     cardTitle: 'Account',

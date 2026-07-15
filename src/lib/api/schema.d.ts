@@ -1,0 +1,23534 @@
+/**
+ * GENERATED FILE — do not edit by hand.
+ * Run `pnpm api:sync` to regenerate from the backend OpenAPI schema.
+ * Source: http://localhost:8000/openapi.json
+ */
+export interface paths {
+    "/.well-known/oauth-authorization-server": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * OAuth authorization server metadata
+         * @description RFC 8414 discovery document describing the OAuth endpoints and capabilities.
+         */
+        get: operations["api.oauth.metadata.authorizationServer"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/.well-known/oauth-protected-resource": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** OAuth protected resource metadata */
+        get: operations["api.oauth.metadata.protectedResource"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Confirm an account from its activation link
+         * @description Activate a newly registered account using the token from the activation email.
+         */
+        post: operations["api.auth.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Sign in with email and password
+         * @description Authenticate with email and password. On success returns an access + refresh token pair. When the account has a second factor, returns a short-lived intermediate token and the list of factors to complete (`twoFactorEnabled: true`).
+         */
+        post: operations["api.auth.login"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/password/forgot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Request a password-reset email
+         * @description Send a password-reset link to the given email. Always succeeds so registered emails aren't revealed.
+         */
+        post: operations["api.auth.password.forgot"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/password/reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set a new password from a reset link
+         * @description Set a new password using the token from the reset email. Invalidates all existing sessions.
+         */
+        post: operations["api.auth.password.reset"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/refresh": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Exchange a refresh token for a new token pair
+         * @description Trade a valid refresh token for a fresh access + refresh pair. Call it when the access token has expired.
+         */
+        post: operations["api.auth.refresh"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Create a new account
+         * @description Register a new email/password account. Always succeeds (a taken email is not revealed) and sends an activation email the user must confirm before signing in.
+         */
+        post: operations["api.auth.register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/resendActivation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Re-send the activation email
+         * @description Ask for a fresh activation email. Always succeeds, whether or not the email has a pending account.
+         */
+        post: operations["api.auth.resendActivation"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/sso/google": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Sign in with Google
+         * @description Authenticate with a Google ID token obtained in the browser. Creates the account on first sign-in. Returns the same shape as email login (may require a second factor).
+         */
+        post: operations["api.auth.sso.google"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/twoFactor/otp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Complete login with an authenticator code
+         * @description Second-factor step: exchange the intermediate token and a 6-digit authenticator code for a full session.
+         */
+        post: operations["api.auth.twoFactor.otp"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/twoFactor/recoveryCode": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Complete login with a recovery code
+         * @description Second-factor fallback: exchange the intermediate token and a one-time recovery code for a full session.
+         */
+        post: operations["api.auth.twoFactor.recoveryCode"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/twoFactor/u2f": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Complete login with a security key
+         * @description Second-factor step: verify the browser's WebAuthn assertion and return a full session.
+         */
+        post: operations["api.auth.twoFactor.u2f"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/auth/twoFactor/u2f/options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Get security-key assertion options
+         * @description Start a security-key login: returns the WebAuthn options for `navigator.credentials.get` plus a token binding them to this login.
+         */
+        post: operations["api.auth.twoFactor.u2f.options"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Liveness probe
+         * @description Lightweight liveness probe for monitoring tooling (load balancers, uptime checks, deploy pipelines). Always returns `200 OK` when the process is alive.
+         */
+        get: operations["api.health.check"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get the signed-in user's profile
+         * @description Return the profile of the currently authenticated user.
+         */
+        get: operations["api.me.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update the signed-in user's profile
+         * @description Partially update the current user's profile — only the fields sent are changed.
+         */
+        patch: operations["api.me.update"];
+        trace?: never;
+    };
+    "/me/integrations/authorize/{request_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a pending authorization request
+         * @description Fetch the details shown on the consent screen for an authorization-code request.
+         */
+        get: operations["api.me.integrations.authorize.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/integrations/authorize/{request_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Approve an authorization request
+         * @description Grant the client the chosen scope. Returns a redirect URL for the auth-code flow, or null for device.
+         */
+        post: operations["api.me.integrations.authorize.approve"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/integrations/authorize/{request_id}/deny": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Deny an authorization request
+         * @description Refuse the client. Returns a redirect URL (with `error=access_denied`) for the auth-code flow, else null.
+         */
+        post: operations["api.me.integrations.authorize.deny"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/integrations/authorize/by-user-code/{user_code}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Look up a pending device-flow request by its user code
+         * @description Resolve the pending authorization behind a device-flow user code, for the consent screen.
+         */
+        get: operations["api.me.integrations.authorize.byUserCode"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/integrations/grants": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List connected integrations
+         * @description List the integrations with an active grant on the account.
+         */
+        get: operations["api.me.integrations.grants.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/integrations/grants/{grant_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Revoke a connected integration
+         * @description Revoke the grant, immediately invalidating the integration's tokens.
+         */
+        delete: operations["api.me.integrations.grants.revoke"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/invitations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my invitations
+         * @description List invitations addressed to the signed-in user's email, optionally filtered by status.
+         */
+        get: operations["api.me.invitations.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/invitations/{invitation_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get one of my invitations
+         * @description Return a single invitation addressed to the signed-in user.
+         */
+        get: operations["api.me.invitations.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/invitations/{invitation_id}/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Accept an invitation
+         * @description Accept a pending invitation and join the account as a guest member.
+         */
+        post: operations["api.me.invitations.accept"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/invitations/{invitation_id}/refuse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Refuse an invitation
+         * @description Decline a pending invitation.
+         */
+        post: operations["api.me.invitations.refuse"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/picture": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload the signed-in user's profile picture
+         * @description Upload a profile picture (multipart, field `file`). The image is center-cropped to a square and resized server-side; the previous picture is replaced.
+         */
+        post: operations["api.me.setPicture"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get the account's security overview
+         * @description Return whether a password, Google link, authenticator, recovery codes and security keys are set.
+         */
+        get: operations["api.me.security.overview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/logs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List recent authentication activity
+         * @description Return the most recent authentication-log entries for the account (newest first).
+         */
+        get: operations["api.me.security.logs.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/otp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List active authenticators
+         * @description List the authenticators (TOTP) currently active on the account.
+         */
+        get: operations["api.me.security.otp.list"];
+        put?: never;
+        /**
+         * Start authenticator (TOTP) setup
+         * @description Generate a new authenticator secret and its provisioning URI (render as a QR code). Confirm it with a code to activate.
+         */
+        post: operations["api.me.security.otp.generate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/otp/{otp_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Remove an authenticator
+         * @description Disable a registered authenticator.
+         */
+        delete: operations["api.me.security.otp.disable"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/otp/{otp_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Confirm and activate an authenticator
+         * @description Confirm the pending authenticator with a live 6-digit code. Returns a fresh set of one-time recovery codes.
+         */
+        post: operations["api.me.security.otp.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/password": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Set a password on the account
+         * @description Set a password on an account that doesn't have one yet (e.g. created via Google).
+         */
+        post: operations["api.me.security.password.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Change the account password
+         * @description Change the password. Requires the current password and signs out other sessions.
+         */
+        patch: operations["api.me.security.password.update"];
+        trace?: never;
+    };
+    "/me/security/recovery-codes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Regenerate recovery codes
+         * @description Replace all recovery codes with a fresh set. The old codes stop working immediately.
+         */
+        post: operations["api.me.security.recoveryCodes.regenerate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/u2f": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List registered security keys
+         * @description List the WebAuthn security keys registered on the account.
+         */
+        get: operations["api.me.security.u2f.list"];
+        put?: never;
+        /**
+         * Register a security key
+         * @description Finish registering a security key with the browser's attestation and an optional label.
+         */
+        post: operations["api.me.security.u2f.register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/security/u2f/{u2f_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Remove a security key
+         * @description Unregister a security key.
+         */
+        delete: operations["api.me.security.u2f.disable"];
+        options?: never;
+        head?: never;
+        /**
+         * Rename a security key
+         * @description Change the label of a registered security key.
+         */
+        patch: operations["api.me.security.u2f.rename"];
+        trace?: never;
+    };
+    "/me/security/u2f/options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Get security-key registration options
+         * @description Start registering a security key: returns WebAuthn options for `navigator.credentials.create` plus a binding token.
+         */
+        post: operations["api.me.security.u2f.options"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth/authorize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Authorization endpoint (redirects to the consent screen)
+         * @description Start the authorization-code + PKCE flow, then redirect the browser to the SPA consent page.
+         */
+        get: operations["api.oauth.authorize"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth/device/authorize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Device authorization endpoint
+         * @description Start the device flow (RFC 8628). Returns a device code and a user code to enter at the verification URI.
+         */
+        post: operations["api.oauth.device.authorize"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth/register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Register an OAuth client
+         * @description Dynamic client registration (RFC 7591). Returns the client id (and secret for confidential clients).
+         */
+        post: operations["api.oauth.register"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth/revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Revoke a token
+         * @description Revoke an access or refresh token (RFC 7009). Always returns 200, even for unknown tokens.
+         */
+        post: operations["api.oauth.revoke"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/oauth/token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Token endpoint
+         * @description Exchange an authorization code, device code or refresh token for an access + refresh token pair.
+         */
+        post: operations["api.oauth.token"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List my accounts
+         * @description List the workspaces the signed-in user is an active member of, with their role in each. Filter by account status and/or membership role (repeat the query param for multiple values), sort by name/createdDate/status/role, and page through results.
+         */
+        get: operations["api.accounts.list"];
+        put?: never;
+        /**
+         * Create an account
+         * @description Create a new workspace. The caller automatically becomes its owner.
+         */
+        post: operations["api.accounts.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an account
+         * @description Return a workspace the caller is a member of, including the caller's role.
+         */
+        get: operations["api.accounts.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an account
+         * @description Soft-delete a deactivated account. Owners only; the account must be deactivated first.
+         */
+        delete: operations["api.accounts.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an account
+         * @description Partially update a workspace (name, language, time zone). Owners and administrators only.
+         */
+        patch: operations["api.accounts.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate an account
+         * @description Set the account status back to active. Owners only.
+         */
+        post: operations["api.accounts.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List applications
+         * @description List the applications of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.applications.list"];
+        put?: never;
+        /**
+         * Create an application
+         * @description Create an application. It starts as a draft owned by the caller. Owners/administrators only.
+         */
+        post: operations["api.applications.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an application
+         * @description Return a single application of the account. Any member may read.
+         */
+        get: operations["api.applications.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an application
+         * @description Soft-delete an application. Its environments, versions, deployments and feature links are soft-deleted as well. Owners/administrators only.
+         */
+        delete: operations["api.applications.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an application
+         * @description Partially update an application (title, description, type). Owners/administrators only.
+         */
+        patch: operations["api.applications.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate an application
+         * @description Set the application status to active. Owners/administrators only.
+         */
+        post: operations["api.applications.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive an application
+         * @description Set the application status to archived. Owners/administrators only.
+         */
+        post: operations["api.applications.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List application comments
+         * @description List the root comments on an application, oldest first. Any member may read.
+         */
+        get: operations["api.applications.comments.list"];
+        put?: never;
+        /**
+         * Comment on an application
+         * @description Post a comment on an application. Any member may post.
+         */
+        post: operations["api.applications.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List environments
+         * @description List the environments of an application, most recent first. Any member may read.
+         */
+        get: operations["api.applications.environments.list"];
+        put?: never;
+        /**
+         * Create an environment
+         * @description Create a deployment environment. It starts as a draft owned by the caller. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an environment
+         * @description Return a single environment of the application. Any member may read.
+         */
+        get: operations["api.applications.environments.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an environment
+         * @description Soft-delete an environment; its deployment records are soft-deleted as well. Owners, administrators and lead developers only.
+         */
+        delete: operations["api.applications.environments.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an environment
+         * @description Partially update an environment (type, title, description, url). Owners, administrators and lead developers only.
+         */
+        patch: operations["api.applications.environments.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate an environment
+         * @description Set the environment status to active. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environments.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive an environment
+         * @description Set the environment status to archived. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environments.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List deployments
+         * @description List the deployment records of an environment, most recent first. Any member may read.
+         */
+        get: operations["api.applications.environmentVersions.list"];
+        put?: never;
+        /**
+         * Deploy a version
+         * @description Record a deployment of a version onto the environment. It starts in the standby state, owned by the caller. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environmentVersions.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/versions/{environment_version_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a deployment
+         * @description Return a single deployment record of the environment. Any member may read.
+         */
+        get: operations["api.applications.environmentVersions.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a deployment
+         * @description Soft-delete a single deployment record. Owners, administrators and lead developers only.
+         */
+        delete: operations["api.applications.environmentVersions.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a deployment
+         * @description Update a deployment's state and/or its details. Owners, administrators and lead developers only.
+         */
+        patch: operations["api.applications.environmentVersions.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/versions/{environment_version_id}/cancelled": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Cancel a deployment
+         * @description Mark the deployment as cancelled. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environmentVersions.cancelled"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/versions/{environment_version_id}/error": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark a deployment failed
+         * @description Mark the deployment as failed, with a required explanation. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environmentVersions.error"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/environments/{environment_id}/versions/{environment_version_id}/finished": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Mark a deployment finished
+         * @description Mark the deployment as finished. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.environmentVersions.finished"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/features": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List application features
+         * @description List the features attached to an application, most recent first. Any member may read.
+         */
+        get: operations["api.applications.features.list"];
+        put?: never;
+        /**
+         * Attach a feature
+         * @description Attach an existing account feature to the application. The feature must belong to the same account. Every contributing role may attach features.
+         */
+        post: operations["api.applications.features.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/features/{application_feature_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an application feature
+         * @description Return a single feature link of the application. Any member may read.
+         */
+        get: operations["api.applications.features.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Detach a feature
+         * @description Soft-delete a feature link. Every contributing role may detach features.
+         */
+        delete: operations["api.applications.features.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an application feature
+         * @description Update the feature's presence window (start/end dates and versions). Any referenced version must belong to the application. Every contributing role may edit.
+         */
+        patch: operations["api.applications.features.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/guards": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List guards
+         * @description List the authentication guards of an application, most recent first. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.applications.guards.list"];
+        put?: never;
+        /**
+         * Create a guard
+         * @description Create an authentication guard. It starts as a draft owned by the caller. Dev roles only.
+         */
+        post: operations["api.applications.guards.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/guards/{guard_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a guard
+         * @description Return a single guard of the application. Any member may read.
+         */
+        get: operations["api.applications.guards.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a guard
+         * @description Soft-delete a guard and detach it from every route that referenced it. Dev roles only.
+         */
+        delete: operations["api.applications.guards.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a guard
+         * @description Partially update a guard (type, title, field type/key/format). Dev roles only.
+         */
+        patch: operations["api.applications.guards.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/guards/{guard_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a guard
+         * @description Set the guard status to active. Dev roles only.
+         */
+        post: operations["api.applications.guards.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/guards/{guard_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a guard
+         * @description Set the guard status to archived. Dev roles only.
+         */
+        post: operations["api.applications.guards.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/roles": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List roles
+         * @description List the authorization roles of an application, most recent first. Any member may read.
+         */
+        get: operations["api.applications.roles.list"];
+        put?: never;
+        /**
+         * Create a role
+         * @description Create an authorization role. It starts as a draft owned by the caller. Contributors only.
+         */
+        post: operations["api.applications.roles.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/roles/{role_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a role
+         * @description Return a single role of the application. Any member may read.
+         */
+        get: operations["api.applications.roles.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a role
+         * @description Soft-delete a role and detach it from every route that referenced it. Contributors only.
+         */
+        delete: operations["api.applications.roles.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a role
+         * @description Partially update a role (title, description). Contributors only.
+         */
+        patch: operations["api.applications.roles.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/roles/{role_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a role
+         * @description Set the role status to active. Contributors only.
+         */
+        post: operations["api.applications.roles.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/roles/{role_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a role
+         * @description Set the role status to archived. Contributors only.
+         */
+        post: operations["api.applications.roles.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List routes
+         * @description List the routes of an application, most recent first. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.applications.routes.list"];
+        put?: never;
+        /**
+         * Create a route
+         * @description Create a route. It starts as a draft owned by the caller. Referenced guards, roles and versions must belong to the application. Dev roles only.
+         */
+        post: operations["api.applications.routes.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a route
+         * @description Return a single route of the application. Any member may read.
+         */
+        get: operations["api.applications.routes.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a route
+         * @description Soft-delete a route; its responses, examples and table links are soft-deleted as well. Dev roles only.
+         */
+        delete: operations["api.applications.routes.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a route
+         * @description Partially update a route. Referenced guards, roles and versions must belong to the application. Dev roles only.
+         */
+        patch: operations["api.applications.routes.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a route
+         * @description Set the route status to active. Dev roles only.
+         */
+        post: operations["api.applications.routes.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a route
+         * @description Set the route status to archived. Dev roles only.
+         */
+        post: operations["api.applications.routes.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List route comments
+         * @description List the root comments on an application route, oldest first. Any member may read.
+         */
+        get: operations["api.applications.routes.comments.list"];
+        put?: never;
+        /**
+         * Comment on a route
+         * @description Post a comment on an application route. Any member may post.
+         */
+        post: operations["api.applications.routes.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/examples": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List route examples
+         * @description List the examples of a route, in insertion order. Any member may read.
+         */
+        get: operations["api.applications.routes.examples.list"];
+        put?: never;
+        /**
+         * Create a route example
+         * @description Create a request/response example. The referenced response must belong to the route. Dev roles only.
+         */
+        post: operations["api.applications.routes.examples.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/examples/{example_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a route example
+         * @description Return a single example of the route. Any member may read.
+         */
+        get: operations["api.applications.routes.examples.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a route example
+         * @description Soft-delete an example. Dev roles only.
+         */
+        delete: operations["api.applications.routes.examples.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a route example
+         * @description Partially update an example. A changed response reference must belong to the route. Dev roles only.
+         */
+        patch: operations["api.applications.routes.examples.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/responses": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List route responses
+         * @description List the documented responses of a route, in insertion order. Any member may read.
+         */
+        get: operations["api.applications.routes.responses.list"];
+        put?: never;
+        /**
+         * Create a route response
+         * @description Document a response of the route (status code, format, body schema). Dev roles only.
+         */
+        post: operations["api.applications.routes.responses.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/responses/{response_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a route response
+         * @description Return a single response of the route. Any member may read.
+         */
+        get: operations["api.applications.routes.responses.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a route response
+         * @description Soft-delete a response and the examples that reference it. Dev roles only.
+         */
+        delete: operations["api.applications.routes.responses.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a route response
+         * @description Partially update a response (status code, format, body schema). Dev roles only.
+         */
+        patch: operations["api.applications.routes.responses.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/tables": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List route tables
+         * @description List the database-table links of a route, in insertion order. Any member may read.
+         */
+        get: operations["api.applications.routes.tables.list"];
+        put?: never;
+        /**
+         * Link a database table
+         * @description Link the route to a database table of the account, recording the exchange part and the action performed. Dev roles only.
+         */
+        post: operations["api.applications.routes.tables.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/routes/{route_id}/tables/{route_table_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a route table link
+         * @description Return a single database-table link of the route. Any member may read.
+         */
+        get: operations["api.applications.routes.tables.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a route table link
+         * @description Soft-delete a database-table link. Dev roles only.
+         */
+        delete: operations["api.applications.routes.tables.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a route table link
+         * @description Partially update a link (database table, type, action). A changed table must belong to the account. Dev roles only.
+         */
+        patch: operations["api.applications.routes.tables.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List versions
+         * @description List the versions of an application, most recent first. Any member may read.
+         */
+        get: operations["api.applications.versions.list"];
+        put?: never;
+        /**
+         * Create a version
+         * @description Create a version. It starts as a draft owned by the caller. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.versions.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/versions/{version_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a version
+         * @description Return a single version of the application. Any member may read.
+         */
+        get: operations["api.applications.versions.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a version
+         * @description Soft-delete a version; deployment records referencing it are soft-deleted as well. Owners, administrators and lead developers only.
+         */
+        delete: operations["api.applications.versions.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a version
+         * @description Partially update a version (type, title, version, description). Owners, administrators and lead developers only.
+         */
+        patch: operations["api.applications.versions.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/versions/{version_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a version
+         * @description Set the version status to active. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.versions.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/applications/{application_id}/versions/{version_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a version
+         * @description Set the version status to archived. Owners, administrators and lead developers only.
+         */
+        post: operations["api.applications.versions.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List comments
+         * @description List the comments of the account, most recent first. Filter by entity type, entity id, owner and/or status (repeat the query param for multiple values), restrict to a date range with `lbound` / `ubound` (inclusive bounds on the comment's date, ISO-8601), and sort by date/status/statusDate. Each comment carries its resolved `entity` — the commented entity's type, id and label, with its containing entities in `parent` (null when the entity has since been deleted). Any member may read.
+         */
+        get: operations["api.comments.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/comments/{comment_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a comment
+         * @description Return a single comment of the account. Any member may read.
+         */
+        get: operations["api.comments.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a comment
+         * @description Soft-delete a comment and its direct replies. The author or an owner/administrator only.
+         */
+        delete: operations["api.comments.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Edit a comment
+         * @description Edit a comment's content. The author or an owner/administrator only.
+         */
+        patch: operations["api.comments.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/comments/{comment_id}/remove": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Remove a comment
+         * @description Mark a comment as removed and drop its content, keeping the thread. The author or an owner/administrator only.
+         */
+        post: operations["api.comments.remove"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/comments/{comment_id}/replies": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List replies
+         * @description List the direct replies to a comment, oldest first. Any member may read.
+         */
+        get: operations["api.comments.replies.list"];
+        put?: never;
+        /**
+         * Reply to a comment
+         * @description Post a reply to a comment. Any member may reply.
+         */
+        post: operations["api.comments.replies.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List databases
+         * @description List the databases of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.databases.list"];
+        put?: never;
+        /**
+         * Create a database
+         * @description Create a database. It starts as a draft owned by the caller. Owners, administrators, lead developers and data analysts only.
+         */
+        post: operations["api.databases.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a database
+         * @description Return a single database of the account. Any member may read.
+         */
+        get: operations["api.databases.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a database
+         * @description Soft-delete a database; its versions, tables and columns are soft-deleted as well. Data roles only.
+         */
+        delete: operations["api.databases.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a database
+         * @description Partially update a database (type, title, description). Data roles only.
+         */
+        patch: operations["api.databases.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a database
+         * @description Set the database status to active. Data roles only.
+         */
+        post: operations["api.databases.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a database
+         * @description Set the database status to archived. Data roles only.
+         */
+        post: operations["api.databases.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List database comments
+         * @description List the root comments on a database, oldest first. Any member may read.
+         */
+        get: operations["api.databases.comments.list"];
+        put?: never;
+        /**
+         * Comment on a database
+         * @description Post a comment on a database. Any member may post.
+         */
+        post: operations["api.databases.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List database migrations
+         * @description List the migrations leaving this database, most recent first. Any member may read.
+         */
+        get: operations["api.databases.migrations.list"];
+        put?: never;
+        /**
+         * Create a database migration
+         * @description Plan a migration leaving a version of this database towards a version of any database of the account. It starts as a draft. Data roles only.
+         */
+        post: operations["api.databases.migrations.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a database migration
+         * @description Return a single migration of the database. Any member may read.
+         */
+        get: operations["api.databases.migrations.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a database migration
+         * @description Soft-delete a migration; its column steps are soft-deleted as well. Data roles only.
+         */
+        delete: operations["api.databases.migrations.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a database migration
+         * @description Partially update a migration (type, title, description, source version, destination database and version). Data roles only.
+         */
+        patch: operations["api.databases.migrations.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/cancelled": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Cancel a migration
+         * @description Set the migration status to cancelled. Data roles only.
+         */
+        post: operations["api.databases.migrations.cancelled"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List migration columns
+         * @description List the column steps of a migration, in insertion order. Any member may read.
+         */
+        get: operations["api.databases.migrations.columns.list"];
+        put?: never;
+        /**
+         * Create a migration column
+         * @description Add a column step to the migration. Source endpoints must belong to the migration's source version, destination endpoints to its destination version. It starts as a draft. Data roles and developers only.
+         */
+        post: operations["api.databases.migrations.columns.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns/{database_migration_column_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a migration column
+         * @description Return a single column step of the migration. Any member may read.
+         */
+        get: operations["api.databases.migrations.columns.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a migration column
+         * @description Soft-delete a column step of the migration. Data roles and developers only.
+         */
+        delete: operations["api.databases.migrations.columns.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a migration column
+         * @description Partially update a column step (type, source and destination endpoints, transformation method, description). Data roles and developers only.
+         */
+        patch: operations["api.databases.migrations.columns.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns/{database_migration_column_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List migration column comments
+         * @description List the root comments on a migration column step, oldest first. Any member may read.
+         */
+        get: operations["api.databases.migrations.columns.comments.list"];
+        put?: never;
+        /**
+         * Comment on a migration column
+         * @description Post a comment on a migration column step. Any member may post.
+         */
+        post: operations["api.databases.migrations.columns.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns/{database_migration_column_id}/confirmed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Confirm a migration column
+         * @description Set the column step status to confirmed. Data roles only.
+         */
+        post: operations["api.databases.migrations.columns.confirmed"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns/{database_migration_column_id}/draft": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move a migration column back to draft
+         * @description Set the column step status back to draft. Data roles only.
+         */
+        post: operations["api.databases.migrations.columns.draft"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/columns/{database_migration_column_id}/to_be_confirmed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Submit a migration column for confirmation
+         * @description Set the column step status to awaiting confirmation. Data roles only.
+         */
+        post: operations["api.databases.migrations.columns.toBeConfirmed"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List migration comments
+         * @description List the root comments on a database migration, oldest first. Any member may read.
+         */
+        get: operations["api.databases.migrations.comments.list"];
+        put?: never;
+        /**
+         * Comment on a migration
+         * @description Post a comment on a database migration. Any member may post.
+         */
+        post: operations["api.databases.migrations.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/completed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Complete a migration
+         * @description Set the migration status to completed. Data roles only.
+         */
+        post: operations["api.databases.migrations.completed"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/draft": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Move a migration back to draft
+         * @description Set the migration status back to draft. Data roles only.
+         */
+        post: operations["api.databases.migrations.draft"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/migrations/{database_migration_id}/validated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Validate a migration
+         * @description Set the migration status to validated. Data roles only.
+         */
+        post: operations["api.databases.migrations.validated"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List database versions
+         * @description List the versions of a database, most recent first. Any member may read.
+         */
+        get: operations["api.databases.versions.list"];
+        put?: never;
+        /**
+         * Create a database version
+         * @description Create a version. It starts as a draft. Data roles only.
+         */
+        post: operations["api.databases.versions.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a database version
+         * @description Return a single version of the database. Any member may read.
+         */
+        get: operations["api.databases.versions.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a database version
+         * @description Soft-delete a version; its tables and columns are soft-deleted as well. Data roles only.
+         */
+        delete: operations["api.databases.versions.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a database version
+         * @description Partially update a version (version tuple). Data roles only.
+         */
+        patch: operations["api.databases.versions.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a database version
+         * @description Make this the active version. The previously active version is archived and its `endDate` stamped; this version's `startDate` is stamped. Data roles only.
+         */
+        post: operations["api.databases.versions.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a database version
+         * @description Archive the version, stamping its `endDate`. Data roles only.
+         */
+        post: operations["api.databases.versions.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List tables
+         * @description List the tables of a database version, most recent first, each with its columns. Filter with `tagIds` (repeat the query param) to keep only the tables carrying at least one of those tags. Any member may read.
+         */
+        get: operations["api.databases.versions.tables.list"];
+        put?: never;
+        /**
+         * Create a table
+         * @description Create a table, optionally with its columns in one call. Each column references a catalogued column type and may model a foreign key. Data roles only.
+         */
+        post: operations["api.databases.versions.tables.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a table
+         * @description Return a single table of the version, including its columns. Any member may read.
+         */
+        get: operations["api.databases.versions.tables.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a table
+         * @description Soft-delete a table; its columns are soft-deleted as well. Data roles only.
+         */
+        delete: operations["api.databases.versions.tables.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a table
+         * @description Partially update a table (type, schema, name, description, color). If `columns` is sent, it fully replaces the table's columns. Data roles only.
+         */
+        patch: operations["api.databases.versions.tables.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a table
+         * @description Set the table status to active. Data roles only.
+         */
+        post: operations["api.databases.versions.tables.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a table
+         * @description Set the table status to archived. Data roles only.
+         */
+        post: operations["api.databases.versions.tables.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/columns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List columns
+         * @description List the columns of a table, in insertion order. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.databases.versions.tables.columns.list"];
+        put?: never;
+        /**
+         * Create a column
+         * @description Create a column on the table. It references a catalogued column type and may model a foreign key to another table of the account. Data roles only.
+         */
+        post: operations["api.databases.versions.tables.columns.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/columns/{database_table_column_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a column
+         * @description Return a single column of the table. Any member may read.
+         */
+        get: operations["api.databases.versions.tables.columns.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a column
+         * @description Soft-delete a column. Data roles only.
+         */
+        delete: operations["api.databases.versions.tables.columns.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a column
+         * @description Partially update a column (type, foreign key, nullable, unique, default, name, description, color, tags). Data roles only.
+         */
+        patch: operations["api.databases.versions.tables.columns.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/columns/{database_table_column_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List column comments
+         * @description List the root comments on a database column, oldest first. Any member may read.
+         */
+        get: operations["api.databases.versions.tables.columns.comments.list"];
+        put?: never;
+        /**
+         * Comment on a column
+         * @description Post a comment on a database column. Any member may post.
+         */
+        post: operations["api.databases.versions.tables.columns.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/columns/reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Reorder columns
+         * @description Reorder the columns of a table. Send `columnIds` — every column of the table in its new order — or `ranks`, mapping a column id to its new position, which may cover only the columns that move. Returns the table's columns in their new order. Data roles and developers only.
+         */
+        post: operations["api.databases.versions.tables.columns.reorder"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/databases/{database_id}/versions/{database_version_id}/tables/{database_table_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List table comments
+         * @description List the root comments on a database table, oldest first. Any member may read.
+         */
+        get: operations["api.databases.versions.tables.comments.list"];
+        put?: never;
+        /**
+         * Comment on a table
+         * @description Post a comment on a database table. Any member may post.
+         */
+        post: operations["api.databases.versions.tables.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/deactivate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Deactivate an account
+         * @description Disable the account (reversible). Owners only. Deletion requires deactivation first.
+         */
+        post: operations["api.accounts.deactivate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List features
+         * @description List the features of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.features.list"];
+        put?: never;
+        /**
+         * Create a feature
+         * @description Create a feature. It starts as a draft owned by the caller. Every contributing role may create features.
+         */
+        post: operations["api.features.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a feature
+         * @description Return a single feature of the account. Any member may read.
+         */
+        get: operations["api.features.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a feature
+         * @description Soft-delete a feature; its files and application links are soft-deleted as well. Every contributing role may delete features.
+         */
+        delete: operations["api.features.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a feature
+         * @description Partially update a feature (title, description, type). Every contributing role may edit features.
+         */
+        patch: operations["api.features.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a feature
+         * @description Set the feature status to active. Every contributing role may do this.
+         */
+        post: operations["api.features.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a feature
+         * @description Set the feature status to archived. Every contributing role may do this.
+         */
+        post: operations["api.features.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List feature comments
+         * @description List the root comments on a feature, oldest first. Any member may read.
+         */
+        get: operations["api.features.comments.list"];
+        put?: never;
+        /**
+         * Comment on a feature
+         * @description Post a comment on a feature. Any member may post.
+         */
+        post: operations["api.features.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List feature files
+         * @description List the files attached to a feature, most recent first. Any member may read.
+         */
+        get: operations["api.features.files.list"];
+        put?: never;
+        /**
+         * Upload a feature file
+         * @description Upload a file (multipart, field `file`) and attach it to the feature. Every contributing role may upload files.
+         */
+        post: operations["api.features.files.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/files/{feature_file_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a feature file
+         * @description Return a single file of the feature, including a time-limited `downloadUrl`. Any member may read.
+         */
+        get: operations["api.features.files.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a feature file
+         * @description Soft-delete a file. Every contributing role may delete files.
+         */
+        delete: operations["api.features.files.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a feature file
+         * @description Partially update a file's metadata (type, name, description). Every contributing role may edit files.
+         */
+        patch: operations["api.features.files.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/files/{feature_file_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Restore a feature file
+         * @description Restore an archived file to the uploaded state. Every contributing role may do this.
+         */
+        post: operations["api.features.files.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/files/{feature_file_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a feature file
+         * @description Set the file status to archived. Every contributing role may do this.
+         */
+        post: operations["api.features.files.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/journeys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List feature journeys
+         * @description List the journeys linked to a feature, most recent first. Any member may read.
+         */
+        get: operations["api.features.journeys.list"];
+        put?: never;
+        /**
+         * Link a journey
+         * @description Link an existing account journey to the feature. The journey must belong to the same account. Editing roles only.
+         */
+        post: operations["api.features.journeys.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/features/{feature_id}/journeys/{feature_journey_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a feature journey
+         * @description Return a single journey link of the feature. Any member may read.
+         */
+        get: operations["api.features.journeys.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Unlink a journey
+         * @description Soft-delete a journey link. Editing roles only.
+         */
+        delete: operations["api.features.journeys.delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/invitations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List account invitations
+         * @description List all invitations of the account (pending and resolved). Owners/administrators only.
+         */
+        get: operations["api.accounts.invitations.list"];
+        put?: never;
+        /**
+         * Invite members
+         * @description Invite one or more emails to the account with a single role. Emails already pending are skipped; each new invitation is emailed. Only an owner can invite an owner. Returns the newly-created invitations.
+         */
+        post: operations["api.accounts.invitations.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/invitations/{invitation_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an invitation
+         * @description Return a single invitation of the account.
+         */
+        get: operations["api.accounts.invitations.get"];
+        /**
+         * Change an invitation's role
+         * @description Change the role of a pending invitation. Only an owner can set the owner role.
+         */
+        put: operations["api.accounts.invitations.update"];
+        post?: never;
+        /**
+         * Cancel an invitation
+         * @description Cancel a pending invitation. Returns the cancelled invitation.
+         */
+        delete: operations["api.accounts.invitations.cancel"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/invitations/{invitation_id}/resend": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Resend an invitation
+         * @description Re-send a standby or expired invitation with a fresh 7-day expiry (same link). The recipient is emailed again.
+         */
+        post: operations["api.accounts.invitations.resend"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List journeys
+         * @description List the journeys of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.journeys.list"];
+        put?: never;
+        /**
+         * Create a journey
+         * @description Create a journey. It starts as a draft owned by the caller. Any referenced persona must belong to the account. Editing roles only.
+         */
+        post: operations["api.journeys.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a journey
+         * @description Return a single journey of the account. Any member may read.
+         */
+        get: operations["api.journeys.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a journey
+         * @description Soft-delete a journey; its scenarios, steps, files, assertions and feature links are soft-deleted as well. Editing roles only.
+         */
+        delete: operations["api.journeys.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a journey
+         * @description Partially update a journey (type, title, description, personas). Any referenced persona must belong to the account. Editing roles only.
+         */
+        patch: operations["api.journeys.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a journey
+         * @description Set the journey status to active. Editing roles only.
+         */
+        post: operations["api.journeys.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a journey
+         * @description Set the journey status to archived. Editing roles only.
+         */
+        post: operations["api.journeys.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List journey comments
+         * @description List the root comments on a journey, oldest first. Any member may read.
+         */
+        get: operations["api.journeys.comments.list"];
+        put?: never;
+        /**
+         * Comment on a journey
+         * @description Post a comment on a journey. Any member may post.
+         */
+        post: operations["api.journeys.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List scenarios
+         * @description List the scenarios of a journey, most recent first. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.journeys.scenarios.list"];
+        put?: never;
+        /**
+         * Create a scenario
+         * @description Create a scenario. It starts as a draft owned by the caller. Any referenced persona must belong to the account. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a scenario
+         * @description Return a single scenario of the journey. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a scenario
+         * @description Soft-delete a scenario; its steps, files and assertions are soft-deleted as well. Editing roles only.
+         */
+        delete: operations["api.journeys.scenarios.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a scenario
+         * @description Partially update a scenario (type, personas, title, criticity, description). Any referenced persona must belong to the account. Editing roles only.
+         */
+        patch: operations["api.journeys.scenarios.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a scenario
+         * @description Set the scenario status to active. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a scenario
+         * @description Set the scenario status to archived. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List scenario comments
+         * @description List the root comments on a journey scenario, oldest first. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.comments.list"];
+        put?: never;
+        /**
+         * Comment on a scenario
+         * @description Post a comment on a journey scenario. Any member may post.
+         */
+        post: operations["api.journeys.scenarios.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List steps
+         * @description List the steps of a scenario, in insertion order. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.journeys.scenarios.steps.list"];
+        put?: never;
+        /**
+         * Create a step
+         * @description Insert a step in the scenario. A parent step (if any) must belong to the same scenario, and `parameters` must match the action type's schema. The step is inserted rather than appended: whatever already hung under the same parent is re-parented onto the new step, so it lands right after its parent (or at the head of the scenario when no parent is given). Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a step
+         * @description Return a single step of the scenario. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a step
+         * @description Soft-delete a step and its whole subtree (descendant steps, files and assertions). Editing roles only.
+         */
+        delete: operations["api.journeys.scenarios.steps.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a step
+         * @description Partially update a step (parent, title, description, action, optional, parameters). `parameters` must match the action type's schema. Editing roles only.
+         */
+        patch: operations["api.journeys.scenarios.steps.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/assertions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List assertions
+         * @description List the assertions of a step, most recent first. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.assertions.list"];
+        put?: never;
+        /**
+         * Create an assertion
+         * @description Attach an assertion to the step. `parameters` must match the assertion type's schema. It starts as a draft owned by the caller. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.assertions.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/assertions/{assertion_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an assertion
+         * @description Return a single assertion of the step. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.assertions.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an assertion
+         * @description Soft-delete an assertion. Editing roles only.
+         */
+        delete: operations["api.journeys.scenarios.steps.assertions.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an assertion
+         * @description Partially update an assertion (assertion type, parameters). `parameters` must match the assertion type's schema. Editing roles only.
+         */
+        patch: operations["api.journeys.scenarios.steps.assertions.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/assertions/{assertion_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate an assertion
+         * @description Set the assertion status to active. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.assertions.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/assertions/{assertion_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive an assertion
+         * @description Set the assertion status to archived. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.assertions.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List step comments
+         * @description List the root comments on a scenario step, oldest first. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.comments.list"];
+        put?: never;
+        /**
+         * Comment on a step
+         * @description Post a comment on a scenario step. Any member may post.
+         */
+        post: operations["api.journeys.scenarios.steps.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List step files
+         * @description List the files attached to a step, most recent first. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.files.list"];
+        put?: never;
+        /**
+         * Upload a step file
+         * @description Upload a file (multipart, field `file`) and attach it to the step. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.files.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/files/{step_file_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a step file
+         * @description Return a single file of the step, including a time-limited `downloadUrl`. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.files.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a step file
+         * @description Soft-delete a file. Editing roles only.
+         */
+        delete: operations["api.journeys.scenarios.steps.files.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a step file
+         * @description Partially update a file's metadata (type, name, description). Editing roles only.
+         */
+        patch: operations["api.journeys.scenarios.steps.files.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/files/{step_file_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Restore a step file
+         * @description Restore an archived file to the uploaded state. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.files.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/files/{step_file_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a step file
+         * @description Set the file status to archived. Editing roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.files.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/routes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List step routes
+         * @description List the application routes linked to a step, most recent first. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.routes.list"];
+        put?: never;
+        /**
+         * Link an application route
+         * @description Link the step to an application route. The application must belong to the account and the route to that application. Dev roles only.
+         */
+        post: operations["api.journeys.scenarios.steps.routes.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/journeys/{journey_id}/scenarios/{scenario_id}/steps/{step_id}/routes/{step_route_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a step route
+         * @description Return a single route link of the step. Any member may read.
+         */
+        get: operations["api.journeys.scenarios.steps.routes.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Unlink an application route
+         * @description Soft-delete a route link. Dev roles only.
+         */
+        delete: operations["api.journeys.scenarios.steps.routes.delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/leave": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Leave an account
+         * @description Leave a workspace you are a member of. The last owner cannot leave.
+         */
+        post: operations["api.accounts.leave"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/personas": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List personas
+         * @description List the personas of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read. Filter with `tagIds` (repeat the query param) to keep only the entities carrying at least one of those tags.
+         */
+        get: operations["api.personas.list"];
+        put?: never;
+        /**
+         * Create a persona
+         * @description Create a persona. It starts as a draft. Editing roles only.
+         */
+        post: operations["api.personas.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/personas/{persona_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a persona
+         * @description Return a single persona of the account. Any member may read.
+         */
+        get: operations["api.personas.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a persona
+         * @description Soft-delete a persona. Editing roles only.
+         */
+        delete: operations["api.personas.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a persona
+         * @description Partially update a persona (type, title, description). Editing roles only.
+         */
+        patch: operations["api.personas.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/personas/{persona_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a persona
+         * @description Set the persona status to active. Editing roles only.
+         */
+        post: operations["api.personas.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/personas/{persona_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a persona
+         * @description Set the persona status to archived. Editing roles only.
+         */
+        post: operations["api.personas.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/personas/{persona_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List persona comments
+         * @description List the root comments on a persona, oldest first. Any member may read.
+         */
+        get: operations["api.personas.comments.list"];
+        put?: never;
+        /**
+         * Comment on a persona
+         * @description Post a comment on a persona. Any member may post.
+         */
+        post: operations["api.personas.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/picture": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Upload the account logo
+         * @description Upload the account logo (multipart, field `file`). The image is center-cropped to a square and resized server-side; the previous logo is replaced. Owners and administrators only.
+         */
+        post: operations["api.accounts.setPicture"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List services
+         * @description List the services of the account. Filter by status and/or type (repeat the query param for multiple values), sort by date/title/status/type, and page through results. Any member may read.
+         */
+        get: operations["api.services.list"];
+        put?: never;
+        /**
+         * Create a service
+         * @description Create a service. It starts as a draft owned by the caller. Dev roles only.
+         */
+        post: operations["api.services.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a service
+         * @description Return a single service of the account. Any member may read.
+         */
+        get: operations["api.services.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a service
+         * @description Soft-delete a service; its actions are soft-deleted as well. Dev roles only.
+         */
+        delete: operations["api.services.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a service
+         * @description Partially update a service (type, title, description, picture, url, OpenAPI url). Dev roles only.
+         */
+        patch: operations["api.services.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/actions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List service actions
+         * @description List the actions of a service, most recent first. Any member may read.
+         */
+        get: operations["api.services.actions.list"];
+        put?: never;
+        /**
+         * Create a service action
+         * @description Create an action. It starts as a draft owned by the caller. Dev roles only.
+         */
+        post: operations["api.services.actions.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/actions/{action_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a service action
+         * @description Return a single action of the service. Any member may read.
+         */
+        get: operations["api.services.actions.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a service action
+         * @description Soft-delete a single action. Dev roles only.
+         */
+        delete: operations["api.services.actions.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a service action
+         * @description Partially update an action (type, title, description, method, path). Dev roles only.
+         */
+        patch: operations["api.services.actions.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/actions/{action_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a service action
+         * @description Set the action status to active. Dev roles only.
+         */
+        post: operations["api.services.actions.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/actions/{action_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a service action
+         * @description Set the action status to archived. Dev roles only.
+         */
+        post: operations["api.services.actions.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/actions/{action_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List action comments
+         * @description List the root comments on a service action, oldest first. Any member may read.
+         */
+        get: operations["api.services.actions.comments.list"];
+        put?: never;
+        /**
+         * Comment on a service action
+         * @description Post a comment on a service action. Any member may post.
+         */
+        post: operations["api.services.actions.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Activate a service
+         * @description Set the service status to active. Dev roles only.
+         */
+        post: operations["api.services.activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Archive a service
+         * @description Set the service status to archived. Dev roles only.
+         */
+        post: operations["api.services.archive"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/services/{service_id}/comments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List service comments
+         * @description List the root comments on a service, oldest first. Any member may read.
+         */
+        get: operations["api.services.comments.list"];
+        put?: never;
+        /**
+         * Comment on a service
+         * @description Post a comment on a service. Any member may post.
+         */
+        post: operations["api.services.comments.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/tags": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List tags
+         * @description List the tags of the account, optionally filtered by entity type. Any member may read.
+         */
+        get: operations["api.tags.list"];
+        put?: never;
+        /**
+         * Create a tag
+         * @description Create a tag for a given entity type. Any member may create.
+         */
+        post: operations["api.tags.create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/tags/{tag_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a tag
+         * @description Return a single tag of the account. Any member may read.
+         */
+        get: operations["api.tags.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a tag
+         * @description Soft-delete a tag and detach it from every entity that carried it. Owners and administrators only.
+         */
+        delete: operations["api.tags.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a tag
+         * @description Partially update a tag (label, colors). Owners and administrators only.
+         */
+        patch: operations["api.tags.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List account members
+         * @description List every member of the account with their role, type and status. Any member may read.
+         */
+        get: operations["api.accounts.users.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/users/{account_user_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an account member
+         * @description Return a single member of the account.
+         */
+        get: operations["api.accounts.users.get"];
+        put?: never;
+        post?: never;
+        /**
+         * Remove a member
+         * @description Remove a member from the account. Owners/administrators only. You cannot remove yourself, and the last owner cannot be removed.
+         */
+        delete: operations["api.accounts.users.delete"];
+        options?: never;
+        head?: never;
+        /**
+         * Change a member's role
+         * @description Change a member's role. Owners/administrators only. You cannot change your own role, only an owner can grant the owner role, and the last owner cannot be demoted.
+         */
+        patch: operations["api.accounts.users.update"];
+        trace?: never;
+    };
+    "/v1/accounts/{account_id}/users/{account_user_id}/leave": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Force a member out
+         * @description Deactivate a member's seat, keeping the row for audit. Owners/administrators only; you cannot target yourself (use the account leave endpoint).
+         */
+        post: operations["api.accounts.users.leave"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/actionTypes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List action types
+         * @description List every available step action and the shape of its parameters.
+         */
+        get: operations["api.core.actionTypes.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/actionTypes/{action_type_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an action type
+         * @description Return a single action type and the shape of its parameters.
+         */
+        get: operations["api.core.actionTypes.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/assertionTypes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List assertion types
+         * @description List every available step assertion and the shape of its parameters.
+         */
+        get: operations["api.core.assertionTypes.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/assertionTypes/{assertion_type_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get an assertion type
+         * @description Return a single assertion type and the shape of its parameters.
+         */
+        get: operations["api.core.assertionTypes.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/databaseColumnTypes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List database column types
+         * @description List the available SQL column types, optionally filtered by database engine.
+         */
+        get: operations["api.core.databaseColumnTypes.list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v1/core/databaseColumnTypes/{database_column_type_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a database column type
+         * @description Return a single SQL column type.
+         */
+        get: operations["api.core.databaseColumnTypes.get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+}
+export type webhooks = Record<string, never>;
+export interface components {
+    schemas: {
+        /**
+         * AccountCreateForm
+         * @description Create a workspace. The caller becomes its owner.
+         */
+        AccountCreateForm: {
+            /** @default fr-FR */
+            language: components["schemas"]["Language"];
+            /** Name */
+            name: string;
+            /**
+             * Timezone
+             * @default Europe/Paris
+             */
+            timeZone: string;
+        };
+        /**
+         * AccountInvitationItem
+         * @description A pending / resolved invitation, as seen from the account side.
+         */
+        AccountInvitationItem: {
+            /** Date */
+            date?: string | null;
+            /** Email */
+            email: string;
+            /** Expiredate */
+            expireDate?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            owner?: components["schemas"]["AccountInvitationOwnerItem"] | null;
+            role: components["schemas"]["AccountUserRole"];
+            status: components["schemas"]["AccountUserInvitationStatus"];
+            /** Statusdate */
+            statusDate?: string | null;
+            type: components["schemas"]["AccountUserInvitationType"];
+        };
+        /**
+         * AccountInvitationOwnerItem
+         * @description The member who sent the invitation.
+         */
+        AccountInvitationOwnerItem: {
+            /** Firstname */
+            firstName?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Lastname */
+            lastName?: string | null;
+            /** Pictureprofile */
+            pictureProfile?: string | null;
+        };
+        /**
+         * AccountItem
+         * @description A workspace, with the caller's membership context when available.
+         */
+        AccountItem: {
+            /** Createddate */
+            createdDate?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            language: components["schemas"]["Language"];
+            membership?: components["schemas"]["AccountUserContextItem"] | null;
+            /** Name */
+            name: string;
+            /** Pictureprofile */
+            pictureProfile?: string | null;
+            status: components["schemas"]["AccountStatus"];
+            /** Statusdate */
+            statusDate?: string | null;
+            /** Timezone */
+            timeZone: string;
+        };
+        /**
+         * AccountPatchForm
+         * @description Partial update of a workspace — only the keys sent are applied.
+         */
+        AccountPatchForm: {
+            language?: components["schemas"]["Language"] | null;
+            /** Name */
+            name?: string | null;
+            /** Timezone */
+            timeZone?: string | null;
+        };
+        /**
+         * AccountSortField
+         * @description Sortable columns for the accounts listing.
+         * @enum {string}
+         */
+        AccountSortField: "name" | "created_date" | "status" | "role";
+        /**
+         * AccountStatus
+         * @description Lifecycle of an account (workspace).
+         * @enum {string}
+         */
+        AccountStatus: "active" | "disabled" | "blocked";
+        /**
+         * AccountUserContextItem
+         * @description The requesting user's own membership context inside an account.
+         */
+        AccountUserContextItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            role: components["schemas"]["AccountUserRole"];
+            /** Startdate */
+            startDate?: string | null;
+            status: components["schemas"]["AccountUserStatus"];
+            type: components["schemas"]["AccountUserType"];
+        };
+        /**
+         * AccountUserInvitationStatus
+         * @description Lifecycle of a pending seat invitation.
+         * @enum {string}
+         */
+        AccountUserInvitationStatus: "standby" | "accepted" | "refused" | "expired" | "cancelled";
+        /**
+         * AccountUserInvitationType
+         * @enum {string}
+         */
+        AccountUserInvitationType: "simple";
+        /**
+         * AccountUserItem
+         * @description A member of an account.
+         */
+        AccountUserItem: {
+            /** Enddate */
+            endDate?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            role: components["schemas"]["AccountUserRole"];
+            /** Startdate */
+            startDate?: string | null;
+            status: components["schemas"]["AccountUserStatus"];
+            type: components["schemas"]["AccountUserType"];
+            user: components["schemas"]["AccountUserUserRefItem"];
+        };
+        /**
+         * AccountUserPatchForm
+         * @description Change a member's role.
+         */
+        AccountUserPatchForm: {
+            role: components["schemas"]["AccountUserRole"];
+        };
+        /**
+         * AccountUserRole
+         * @description Role a member holds inside an account.
+         *
+         *     Drives authorization: `owner`/`administrator` are the privileged roles that
+         *     may manage members, invitations and account settings. The same set is used
+         *     for invitation roles (you invite someone *as* one of these roles). Only an
+         *     `owner` may grant the `owner` role, and an account must always keep at least
+         *     one active `owner`.
+         * @enum {string}
+         */
+        AccountUserRole: "owner" | "administrator" | "product_owner" | "qa_manager" | "lead_developer" | "developer" | "data_analyst" | "commentator";
+        /**
+         * AccountUserStatus
+         * @description Membership state — `disabled` seats stay for audit (soft-left).
+         * @enum {string}
+         */
+        AccountUserStatus: "active" | "disabled";
+        /**
+         * AccountUserType
+         * @description How a membership came to be: the account creator vs. an invited guest.
+         * @enum {string}
+         */
+        AccountUserType: "creator" | "guest";
+        /**
+         * AccountUserUserRefItem
+         * @description Minimal identity of the user behind a seat.
+         */
+        AccountUserUserRefItem: {
+            /** Email */
+            email: string;
+            /** Firstname */
+            firstName?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Lastname */
+            lastName?: string | null;
+            /** Pictureprofile */
+            pictureProfile?: string | null;
+        };
+        /**
+         * ActionTypeCategory
+         * @description Family of a step action.
+         * @enum {string}
+         */
+        ActionTypeCategory: "navigate" | "form" | "assert";
+        /**
+         * ActionTypeItem
+         * @description A catalogued step action and the shape of its parameters.
+         */
+        ActionTypeItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Parameterschema */
+            parameterSchema: {
+                [key: string]: unknown;
+            };
+            /** Slug */
+            slug: string;
+            type: components["schemas"]["ActionTypeCategory"];
+        };
+        /**
+         * ActivateOtpForm
+         * @description Confirm a freshly generated authenticator secret with a live code.
+         */
+        ActivateOtpForm: {
+            /**
+             * Code
+             * @description The current 6-digit authenticator code.
+             * @example 123456
+             */
+            code: string;
+        };
+        /**
+         * ActivationForm
+         * @description Confirm an account from the link sent by email.
+         */
+        ActivationForm: {
+            /**
+             * Token
+             * @description Activation token from the email link.
+             */
+            token: string;
+        };
+        /**
+         * ApplicationCreateForm
+         * @description Create an application. It starts as a draft owned by the caller.
+         */
+        ApplicationCreateForm: {
+            /** Description */
+            description?: string | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationType"];
+        };
+        /**
+         * ApplicationEnvironmentCreateForm
+         * @description Create a deployment environment. It starts as a draft owned by the caller.
+         */
+        ApplicationEnvironmentCreateForm: {
+            /**
+             * Description
+             * @description Rich-text content as a document object.
+             */
+            description: {
+                [key: string]: unknown;
+            };
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationEnvironmentType"];
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ApplicationEnvironmentItem
+         * @description A deployment environment of an application.
+         */
+        ApplicationEnvironmentItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationEnvironmentType"];
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ApplicationEnvironmentPatchForm
+         * @description Partial update of an environment — only the keys sent are applied.
+         */
+        ApplicationEnvironmentPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ApplicationEnvironmentType"] | null;
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ApplicationEnvironmentType
+         * @enum {string}
+         */
+        ApplicationEnvironmentType: "production" | "pre-production" | "test" | "features" | "hotfix" | "other";
+        /**
+         * ApplicationEnvironmentVersionCreateForm
+         * @description Deploy a version onto an environment. Starts in the standby state.
+         */
+        ApplicationEnvironmentVersionCreateForm: {
+            /**
+             * Applicationversionid
+             * Format: uuid
+             * @description The version to deploy onto this environment.
+             */
+            applicationVersionId: string;
+        };
+        /**
+         * ApplicationEnvironmentVersionErrorForm
+         * @description Mark a deployment as failed, with a required explanation.
+         */
+        ApplicationEnvironmentVersionErrorForm: {
+            /** Statusdetails */
+            statusDetails: string;
+        };
+        /**
+         * ApplicationEnvironmentVersionItem
+         * @description A version deployed onto an environment (a deployment record).
+         */
+        ApplicationEnvironmentVersionItem: {
+            /**
+             * Applicationversionid
+             * Format: uuid
+             */
+            applicationVersionId: string;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationEnvironmentVersionStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Statusdetails */
+            statusDetails?: string | null;
+        };
+        /**
+         * ApplicationEnvironmentVersionPatchForm
+         * @description Partial update of a deployment — its state and/or details.
+         */
+        ApplicationEnvironmentVersionPatchForm: {
+            status?: components["schemas"]["ApplicationEnvironmentVersionStatus"] | null;
+            /** Statusdetails */
+            statusDetails?: string | null;
+        };
+        /**
+         * ApplicationEnvironmentVersionStatus
+         * @description Deployment state of a version on an environment.
+         * @enum {string}
+         */
+        ApplicationEnvironmentVersionStatus: "standby" | "finished" | "error" | "cancelled";
+        /**
+         * ApplicationFeatureCreateForm
+         * @description Attach an existing account feature to this application.
+         */
+        ApplicationFeatureCreateForm: {
+            /**
+             * Featureid
+             * Format: uuid
+             * @description An existing feature of the same account.
+             */
+            featureId: string;
+        };
+        /**
+         * ApplicationFeatureItem
+         * @description A feature attached to an application, with its presence window.
+         */
+        ApplicationFeatureItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Endapplicationversionid */
+            endApplicationVersionId?: string | null;
+            /** Enddate */
+            endDate?: string | null;
+            /**
+             * Featureid
+             * Format: uuid
+             */
+            featureId: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Startapplicationversionid */
+            startApplicationVersionId?: string | null;
+            /** Startdate */
+            startDate?: string | null;
+        };
+        /**
+         * ApplicationFeaturePatchForm
+         * @description Partial update of the feature's presence window on the application.
+         */
+        ApplicationFeaturePatchForm: {
+            /** Endapplicationversionid */
+            endApplicationVersionId?: string | null;
+            /** Enddate */
+            endDate?: string | null;
+            /** Startapplicationversionid */
+            startApplicationVersionId?: string | null;
+            /** Startdate */
+            startDate?: string | null;
+        };
+        /**
+         * ApplicationGuardCreateForm
+         * @description Create an authentication guard. It starts as a draft owned by the caller.
+         */
+        ApplicationGuardCreateForm: {
+            fieldFormat?: components["schemas"]["ApplicationGuardFieldFormat"] | null;
+            /** Fieldkey */
+            fieldKey: string;
+            fieldType: components["schemas"]["ApplicationGuardFieldType"];
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationGuardType"];
+        };
+        /**
+         * ApplicationGuardFieldFormat
+         * @enum {string}
+         */
+        ApplicationGuardFieldFormat: "JWT";
+        /**
+         * ApplicationGuardFieldType
+         * @enum {string}
+         */
+        ApplicationGuardFieldType: "header" | "query" | "post_data" | "raw_data";
+        /**
+         * ApplicationGuardItem
+         * @description An authentication guard of an application.
+         */
+        ApplicationGuardItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            fieldFormat?: components["schemas"]["ApplicationGuardFieldFormat"] | null;
+            /** Fieldkey */
+            fieldKey: string;
+            fieldType: components["schemas"]["ApplicationGuardFieldType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationGuardStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationGuardType"];
+        };
+        /**
+         * ApplicationGuardPatchForm
+         * @description Partial update of a guard — only the keys sent are applied.
+         */
+        ApplicationGuardPatchForm: {
+            fieldFormat?: components["schemas"]["ApplicationGuardFieldFormat"] | null;
+            /** Fieldkey */
+            fieldKey?: string | null;
+            fieldType?: components["schemas"]["ApplicationGuardFieldType"] | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ApplicationGuardType"] | null;
+        };
+        /**
+         * ApplicationGuardStatus
+         * @enum {string}
+         */
+        ApplicationGuardStatus: "draft" | "active" | "archived";
+        /**
+         * ApplicationGuardType
+         * @enum {string}
+         */
+        ApplicationGuardType: "header_bearer" | "header_basic" | "header_token" | "query_token";
+        /**
+         * ApplicationItem
+         * @description An application tracked inside an account.
+         */
+        ApplicationItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationType"];
+        };
+        /**
+         * ApplicationPatchForm
+         * @description Partial update of an application — only the keys sent are applied.
+         */
+        ApplicationPatchForm: {
+            /** Description */
+            description?: string | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ApplicationType"] | null;
+        };
+        /**
+         * ApplicationRoleCreateForm
+         * @description Create an authorization role. It starts as a draft owned by the caller.
+         */
+        ApplicationRoleCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Title */
+            title: string;
+        };
+        /**
+         * ApplicationRoleItem
+         * @description An authorization role of an application.
+         */
+        ApplicationRoleItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationRoleStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+        };
+        /**
+         * ApplicationRolePatchForm
+         * @description Partial update of a role — only the keys sent are applied.
+         */
+        ApplicationRolePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Title */
+            title?: string | null;
+        };
+        /**
+         * ApplicationRoleStatus
+         * @enum {string}
+         */
+        ApplicationRoleStatus: "draft" | "active" | "archived";
+        /**
+         * ApplicationRouteCreateForm
+         * @description Create a route. It starts as a draft owned by the caller. Guards and roles
+         *     must belong to the same application.
+         */
+        ApplicationRouteCreateForm: {
+            /** Acceptedformat */
+            acceptedFormat?: string[];
+            /** Applicationguardids */
+            applicationGuardIds?: string[];
+            /** Applicationroleids */
+            applicationRoleIds?: string[];
+            /** Bodyschema */
+            bodySchema?: {
+                [key: string]: unknown;
+            };
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Endapplicationversionid */
+            endApplicationVersionId?: string | null;
+            /** Enddate */
+            endDate?: string | null;
+            /** Headerschema */
+            headerSchema?: {
+                [key: string]: unknown;
+            };
+            method: components["schemas"]["ApplicationRouteMethod"];
+            /** Path */
+            path: string;
+            /** Queryparamsschema */
+            queryParamsSchema?: {
+                [key: string]: unknown;
+            };
+            /** Rawschema */
+            rawSchema?: {
+                [key: string]: unknown;
+            };
+            /** Startapplicationversionid */
+            startApplicationVersionId?: string | null;
+            /** Startdate */
+            startDate?: string | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title?: string | null;
+        };
+        /**
+         * ApplicationRouteExampleCreateForm
+         * @description Create a request/response example. The response must belong to the route.
+         */
+        ApplicationRouteExampleCreateForm: {
+            /**
+             * Applicationrouteresponseid
+             * Format: uuid
+             */
+            applicationRouteResponseId: string;
+            /** Body */
+            body?: {
+                [key: string]: unknown;
+            };
+            /** Headers */
+            headers?: {
+                [key: string]: unknown;
+            };
+            /** Queryparams */
+            queryParams?: {
+                [key: string]: unknown;
+            };
+            /** Raw */
+            raw?: {
+                [key: string]: unknown;
+            };
+            /** Response */
+            response?: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * ApplicationRouteExampleItem
+         * @description A request/response example of a route.
+         */
+        ApplicationRouteExampleItem: {
+            /**
+             * Applicationrouteresponseid
+             * Format: uuid
+             */
+            applicationRouteResponseId: string;
+            /** Body */
+            body: {
+                [key: string]: unknown;
+            };
+            /** Headers */
+            headers: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Queryparams */
+            queryParams: {
+                [key: string]: unknown;
+            };
+            /** Raw */
+            raw: {
+                [key: string]: unknown;
+            };
+            /** Response */
+            response: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * ApplicationRouteExamplePatchForm
+         * @description Partial update of an example — only the keys sent are applied.
+         */
+        ApplicationRouteExamplePatchForm: {
+            /** Applicationrouteresponseid */
+            applicationRouteResponseId?: string | null;
+            /** Body */
+            body?: {
+                [key: string]: unknown;
+            } | null;
+            /** Headers */
+            headers?: {
+                [key: string]: unknown;
+            } | null;
+            /** Queryparams */
+            queryParams?: {
+                [key: string]: unknown;
+            } | null;
+            /** Raw */
+            raw?: {
+                [key: string]: unknown;
+            } | null;
+            /** Response */
+            response?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /**
+         * ApplicationRouteItem
+         * @description An HTTP route exposed by an application.
+         */
+        ApplicationRouteItem: {
+            /** Acceptedformat */
+            acceptedFormat: string[];
+            /** Applicationguardids */
+            applicationGuardIds: string[];
+            /** Applicationroleids */
+            applicationRoleIds: string[];
+            /** Bodyschema */
+            bodySchema: {
+                [key: string]: unknown;
+            };
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Endapplicationversionid */
+            endApplicationVersionId?: string | null;
+            /** Enddate */
+            endDate?: string | null;
+            /** Headerschema */
+            headerSchema: {
+                [key: string]: unknown;
+            };
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            method: components["schemas"]["ApplicationRouteMethod"];
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Path */
+            path: string;
+            /** Queryparamsschema */
+            queryParamsSchema: {
+                [key: string]: unknown;
+            };
+            /** Rawschema */
+            rawSchema: {
+                [key: string]: unknown;
+            };
+            /** Startapplicationversionid */
+            startApplicationVersionId?: string | null;
+            /** Startdate */
+            startDate?: string | null;
+            status: components["schemas"]["ApplicationRouteStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title?: string | null;
+        };
+        /**
+         * ApplicationRouteMethod
+         * @enum {string}
+         */
+        ApplicationRouteMethod: "POST" | "GET" | "PATCH" | "PUT" | "DELETE" | "QUERY";
+        /**
+         * ApplicationRoutePatchForm
+         * @description Partial update of a route — only the keys sent are applied.
+         */
+        ApplicationRoutePatchForm: {
+            /** Acceptedformat */
+            acceptedFormat?: string[] | null;
+            /** Applicationguardids */
+            applicationGuardIds?: string[] | null;
+            /** Applicationroleids */
+            applicationRoleIds?: string[] | null;
+            /** Bodyschema */
+            bodySchema?: {
+                [key: string]: unknown;
+            } | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Endapplicationversionid */
+            endApplicationVersionId?: string | null;
+            /** Enddate */
+            endDate?: string | null;
+            /** Headerschema */
+            headerSchema?: {
+                [key: string]: unknown;
+            } | null;
+            method?: components["schemas"]["ApplicationRouteMethod"] | null;
+            /** Path */
+            path?: string | null;
+            /** Queryparamsschema */
+            queryParamsSchema?: {
+                [key: string]: unknown;
+            } | null;
+            /** Rawschema */
+            rawSchema?: {
+                [key: string]: unknown;
+            } | null;
+            /** Startapplicationversionid */
+            startApplicationVersionId?: string | null;
+            /** Startdate */
+            startDate?: string | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+        };
+        /**
+         * ApplicationRouteResponseCreateForm
+         * @description Create a documented response of a route.
+         */
+        ApplicationRouteResponseCreateForm: {
+            /** Bodyschema */
+            bodySchema?: {
+                [key: string]: unknown;
+            };
+            format: components["schemas"]["ApplicationRouteResponseFormat"];
+            /** Statuscode */
+            statusCode: number;
+        };
+        /**
+         * ApplicationRouteResponseFormat
+         * @enum {string}
+         */
+        ApplicationRouteResponseFormat: "JSON" | "XML" | "HTML" | "TXT";
+        /**
+         * ApplicationRouteResponseItem
+         * @description A documented response of a route.
+         */
+        ApplicationRouteResponseItem: {
+            /** Bodyschema */
+            bodySchema: {
+                [key: string]: unknown;
+            };
+            format: components["schemas"]["ApplicationRouteResponseFormat"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Statuscode */
+            statusCode: number;
+        };
+        /**
+         * ApplicationRouteResponsePatchForm
+         * @description Partial update of a response — only the keys sent are applied.
+         */
+        ApplicationRouteResponsePatchForm: {
+            /** Bodyschema */
+            bodySchema?: {
+                [key: string]: unknown;
+            } | null;
+            format?: components["schemas"]["ApplicationRouteResponseFormat"] | null;
+            /** Statuscode */
+            statusCode?: number | null;
+        };
+        /**
+         * ApplicationRouteStatus
+         * @enum {string}
+         */
+        ApplicationRouteStatus: "draft" | "active" | "archived";
+        /**
+         * ApplicationRouteTableAction
+         * @enum {string}
+         */
+        ApplicationRouteTableAction: "read" | "create" | "update" | "delete";
+        /**
+         * ApplicationRouteTableCreateForm
+         * @description Link a route to a database table. The table must belong to the account.
+         */
+        ApplicationRouteTableCreateForm: {
+            action: components["schemas"]["ApplicationRouteTableAction"];
+            /**
+             * Databasetableid
+             * Format: uuid
+             */
+            databaseTableId: string;
+            type: components["schemas"]["ApplicationRouteTableType"];
+        };
+        /**
+         * ApplicationRouteTableItem
+         * @description A link between a route and a database table.
+         */
+        ApplicationRouteTableItem: {
+            action: components["schemas"]["ApplicationRouteTableAction"];
+            /**
+             * Databasetableid
+             * Format: uuid
+             */
+            databaseTableId: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            type: components["schemas"]["ApplicationRouteTableType"];
+        };
+        /**
+         * ApplicationRouteTablePatchForm
+         * @description Partial update of a route/table link — only the keys sent are applied.
+         */
+        ApplicationRouteTablePatchForm: {
+            action?: components["schemas"]["ApplicationRouteTableAction"] | null;
+            /** Databasetableid */
+            databaseTableId?: string | null;
+            type?: components["schemas"]["ApplicationRouteTableType"] | null;
+        };
+        /**
+         * ApplicationRouteTableType
+         * @enum {string}
+         */
+        ApplicationRouteTableType: "query_params" | "query_data" | "query_header" | "response_data" | "response_header";
+        /**
+         * ApplicationSortField
+         * @description Sortable columns for the applications listing.
+         * @enum {string}
+         */
+        ApplicationSortField: "date" | "title" | "status" | "type";
+        /**
+         * ApplicationStatus
+         * @description Shared draft→active→archived lifecycle for applications, their
+         *     environments and their versions.
+         * @enum {string}
+         */
+        ApplicationStatus: "draft" | "active" | "archived";
+        /**
+         * ApplicationType
+         * @enum {string}
+         */
+        ApplicationType: "backoffice" | "customer" | "public" | "mixed" | "other";
+        /**
+         * ApplicationVersionCreateForm
+         * @description Create a version. It starts as a draft owned by the caller.
+         */
+        ApplicationVersionCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationVersionType"];
+            /**
+             * Version
+             * @description Version tuple, e.g. [1, 2, 3].
+             */
+            version: number[];
+        };
+        /**
+         * ApplicationVersionItem
+         * @description A released version of an application (semantic version as an int tuple).
+         */
+        ApplicationVersionItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["ApplicationStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ApplicationVersionType"];
+            /** Version */
+            version: number[];
+        };
+        /**
+         * ApplicationVersionPatchForm
+         * @description Partial update of a version — only the keys sent are applied.
+         */
+        ApplicationVersionPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ApplicationVersionType"] | null;
+            /** Version */
+            version?: number[] | null;
+        };
+        /**
+         * ApplicationVersionType
+         * @enum {string}
+         */
+        ApplicationVersionType: "alpha" | "beta" | "stable" | "dev";
+        /**
+         * AssertionTypeCategory
+         * @description Family of a step assertion.
+         * @enum {string}
+         */
+        AssertionTypeCategory: "browser" | "database";
+        /**
+         * AssertionTypeItem
+         * @description A catalogued step assertion and the shape of its parameters.
+         */
+        AssertionTypeItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Parameterschema */
+            parameterSchema: {
+                [key: string]: unknown;
+            };
+            /** Slug */
+            slug: string;
+            type: components["schemas"]["AssertionTypeCategory"];
+        };
+        /** Body_api.oauth.device.authorize */
+        authorize: {
+            /** Client Id */
+            client_id: string;
+            /** Scope */
+            scope?: string | null;
+        };
+        /**
+         * AuthResponse
+         * @description Login / SSO result.
+         *
+         *     When `twoFactorEnabled` is false, `item` carries the full access + refresh
+         *     pair and the login is complete. When true, `item` carries a short-lived
+         *     intermediate token to replay against one of `twoFactorAvailableTypes`.
+         */
+        AuthResponse: {
+            item: components["schemas"]["TokenItem"];
+            /**
+             * Twofactoravailabletypes
+             * @description Second factors to choose from when 2FA is required.
+             */
+            twoFactorAvailableTypes?: components["schemas"]["UserAuthenticationTwoFactorType"][];
+            /**
+             * Twofactorenabled
+             * @description Whether a second factor is still required.
+             * @default false
+             */
+            twoFactorEnabled: boolean;
+        };
+        /**
+         * CommentCreateForm
+         * @description Post a comment (or a reply). `value` is rich-text content.
+         */
+        CommentCreateForm: {
+            /**
+             * Value
+             * @description Rich-text content as a document object.
+             */
+            value: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * CommentEntityNode
+         * @description One entity in a comment's breadcrumb: what it is, and how to name it.
+         */
+        CommentEntityNode: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            type: components["schemas"]["CommentEntityType"];
+        };
+        /**
+         * CommentEntityRef
+         * @description A display-ready pointer to the entity a comment is attached to.
+         *
+         *     `label` is derived per type (a title, a name, or `METHOD /path`). `parents`
+         *     lists the containing entities, outermost first, so a column named `email`
+         *     can be told apart from another one: `[database, table]` for the column.
+         *
+         *     Deliberately flat rather than a self-referencing `parent`: `fastapi-mcp`
+         *     inlines every `$ref` when it converts the OpenAPI spec into MCP tools, so a
+         *     recursive schema blows the stack at app boot.
+         */
+        CommentEntityRef: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /**
+             * Parents
+             * @default []
+             */
+            parents: components["schemas"]["CommentEntityNode"][];
+            type: components["schemas"]["CommentEntityType"];
+        };
+        /**
+         * CommentEntityType
+         * @description The kind of entity a comment can be attached to.
+         * @enum {string}
+         */
+        CommentEntityType: "feature" | "application" | "application_route" | "journey" | "persona" | "database" | "database_table" | "database_table_column" | "database_migration" | "database_migration_column" | "service" | "service_action" | "journey_scenario" | "journey_scenario_step";
+        /**
+         * CommentItem
+         * @description A threaded comment on an account entity.
+         */
+        CommentItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /**
+             * Entityid
+             * Format: uuid
+             */
+            entityId: string;
+            entityType: components["schemas"]["CommentEntityType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Parentcommentid */
+            parentCommentId?: string | null;
+            status: components["schemas"]["CommentStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Value */
+            value?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /**
+         * CommentListItem
+         * @description A comment enriched with its resolved entity.
+         *
+         *     `entity` is null when the target has been soft-deleted — the comment still
+         *     exists, its entity no longer does.
+         */
+        CommentListItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            entity?: components["schemas"]["CommentEntityRef"] | null;
+            /**
+             * Entityid
+             * Format: uuid
+             */
+            entityId: string;
+            entityType: components["schemas"]["CommentEntityType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Parentcommentid */
+            parentCommentId?: string | null;
+            status: components["schemas"]["CommentStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Value */
+            value?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /**
+         * CommentPatchForm
+         * @description Edit a comment's content.
+         */
+        CommentPatchForm: {
+            /**
+             * Value
+             * @description Rich-text content as a document object.
+             */
+            value: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * CommentSortField
+         * @description Sortable columns for the comments listing.
+         * @enum {string}
+         */
+        CommentSortField: "date" | "status" | "status_date";
+        /**
+         * CommentStatus
+         * @enum {string}
+         */
+        CommentStatus: "published" | "removed";
+        /**
+         * CreateAccountInvitationsForm
+         * @description Invite one or more emails to the account with a single role.
+         *
+         *     Emails already pending on the account are silently skipped.
+         */
+        CreateAccountInvitationsForm: {
+            /** Emails */
+            emails: string[];
+            role: components["schemas"]["AccountUserRole"];
+        };
+        /**
+         * CreatePasswordForm
+         * @description Set a password on an account that has none yet (e.g. Google-only).
+         */
+        CreatePasswordForm: {
+            /** Password */
+            password: string;
+        };
+        /**
+         * DatabaseColumnTypeItem
+         * @description A catalogued SQL column type for a given engine.
+         */
+        DatabaseColumnTypeItem: {
+            databaseType: components["schemas"]["DatabaseType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Slug */
+            slug: string;
+        };
+        /**
+         * DatabaseCreateForm
+         * @description Create a database. It starts as a draft owned by the caller.
+         */
+        DatabaseCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["DatabaseType"];
+        };
+        /**
+         * DatabaseItem
+         * @description A database tracked inside an account.
+         */
+        DatabaseItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["DatabaseStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["DatabaseType"];
+        };
+        /**
+         * DatabaseMigrationColumnCreateForm
+         * @description Create a column step on a migration. It starts as a draft.
+         *
+         *     A creation step only needs its destination endpoints, a deletion step only
+         *     its source ones, and a migration step both. A column endpoint always requires
+         *     the table endpoint on the same side.
+         */
+        DatabaseMigrationColumnCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Destinationdatabasetablecolumnid */
+            destinationDatabaseTableColumnId?: string | null;
+            /** Destinationdatabasetableid */
+            destinationDatabaseTableId?: string | null;
+            /** Sourcedatabasetablecolumnid */
+            sourceDatabaseTableColumnId?: string | null;
+            /** Sourcedatabasetableid */
+            sourceDatabaseTableId?: string | null;
+            /**
+             * Transformationmethod
+             * @description How the value is reshaped on its way across.
+             */
+            transformationMethod?: string | null;
+            type: components["schemas"]["DatabaseMigrationColumnType"];
+        };
+        /**
+         * DatabaseMigrationColumnItem
+         * @description One column-level step of a migration.
+         *
+         *     A creation only carries destination endpoints, a deletion only source ones,
+         *     and a migration carries both.
+         */
+        DatabaseMigrationColumnItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Destinationdatabasetablecolumnid */
+            destinationDatabaseTableColumnId?: string | null;
+            /** Destinationdatabasetableid */
+            destinationDatabaseTableId?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Sourcedatabasetablecolumnid */
+            sourceDatabaseTableColumnId?: string | null;
+            /** Sourcedatabasetableid */
+            sourceDatabaseTableId?: string | null;
+            status: components["schemas"]["DatabaseMigrationColumnStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Transformationmethod */
+            transformationMethod?: string | null;
+            type: components["schemas"]["DatabaseMigrationColumnType"];
+        };
+        /**
+         * DatabaseMigrationColumnPatchForm
+         * @description Partial update of a column step — only the keys sent are applied.
+         */
+        DatabaseMigrationColumnPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Destinationdatabasetablecolumnid */
+            destinationDatabaseTableColumnId?: string | null;
+            /** Destinationdatabasetableid */
+            destinationDatabaseTableId?: string | null;
+            /** Sourcedatabasetablecolumnid */
+            sourceDatabaseTableColumnId?: string | null;
+            /** Sourcedatabasetableid */
+            sourceDatabaseTableId?: string | null;
+            /** Transformationmethod */
+            transformationMethod?: string | null;
+            type?: components["schemas"]["DatabaseMigrationColumnType"] | null;
+        };
+        /**
+         * DatabaseMigrationColumnStatus
+         * @enum {string}
+         */
+        DatabaseMigrationColumnStatus: "draft" | "to_be_confirmed" | "confirmed";
+        /**
+         * DatabaseMigrationColumnType
+         * @description What happens to the column across the migration.
+         * @enum {string}
+         */
+        DatabaseMigrationColumnType: "migration" | "deletion" | "creation";
+        /**
+         * DatabaseMigrationCreateForm
+         * @description Create a migration leaving the database in the path. It starts as a draft.
+         */
+        DatabaseMigrationCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Destinationdatabaseid
+             * Format: uuid
+             * @description Database the migration lands on. May be the database in the path.
+             */
+            destinationDatabaseId: string;
+            /**
+             * Destinationdatabaseversionid
+             * Format: uuid
+             * @description Version of the destination database the migration lands on.
+             */
+            destinationDatabaseVersionId: string;
+            /**
+             * Sourcedatabaseversionid
+             * Format: uuid
+             * @description Version of the database in the path the migration leaves from.
+             */
+            sourceDatabaseVersionId: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["DatabaseMigrationType"];
+        };
+        /**
+         * DatabaseMigrationItem
+         * @description A planned move from a version of one database to a version of another.
+         */
+        DatabaseMigrationItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Destinationdatabaseid
+             * Format: uuid
+             */
+            destinationDatabaseId: string;
+            /**
+             * Destinationdatabaseversionid
+             * Format: uuid
+             */
+            destinationDatabaseVersionId: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Sourcedatabaseid
+             * Format: uuid
+             */
+            sourceDatabaseId: string;
+            /**
+             * Sourcedatabaseversionid
+             * Format: uuid
+             */
+            sourceDatabaseVersionId: string;
+            status: components["schemas"]["DatabaseMigrationStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["DatabaseMigrationType"];
+        };
+        /**
+         * DatabaseMigrationPatchForm
+         * @description Partial update of a migration — only the keys sent are applied.
+         */
+        DatabaseMigrationPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Destinationdatabaseid */
+            destinationDatabaseId?: string | null;
+            /** Destinationdatabaseversionid */
+            destinationDatabaseVersionId?: string | null;
+            /** Sourcedatabaseversionid */
+            sourceDatabaseVersionId?: string | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["DatabaseMigrationType"] | null;
+        };
+        /**
+         * DatabaseMigrationStatus
+         * @enum {string}
+         */
+        DatabaseMigrationStatus: "draft" | "validated" | "completed" | "cancelled";
+        /**
+         * DatabaseMigrationType
+         * @description Scale of a migration between two database versions.
+         * @enum {string}
+         */
+        DatabaseMigrationType: "minor" | "major";
+        /**
+         * DatabasePatchForm
+         * @description Partial update of a database — only the keys sent are applied.
+         */
+        DatabasePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["DatabaseType"] | null;
+        };
+        /**
+         * DatabaseSortField
+         * @description Sortable columns for the databases listing.
+         * @enum {string}
+         */
+        DatabaseSortField: "date" | "title" | "status" | "type";
+        /**
+         * DatabaseStatus
+         * @enum {string}
+         */
+        DatabaseStatus: "draft" | "active" | "archived";
+        /**
+         * DatabaseTableColumnCreateForm
+         * @description Create a column (standalone, or nested in a table create/update).
+         */
+        DatabaseTableColumnCreateForm: {
+            /** Color */
+            color?: string | null;
+            /**
+             * Databasecolumntypeid
+             * Format: uuid
+             */
+            databaseColumnTypeId: string;
+            /**
+             * Defaultvalue
+             * @default
+             */
+            defaultValue: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Foreignkeydatabasetablecolumnid */
+            foreignKeyDatabaseTableColumnId?: string | null;
+            /** Foreignkeydatabasetableid */
+            foreignKeyDatabaseTableId?: string | null;
+            /** Name */
+            name: string;
+            /**
+             * Nullable
+             * @default false
+             */
+            nullable: boolean;
+            /**
+             * Rank
+             * @default 0
+             */
+            rank: number;
+            /**
+             * Systemfield
+             * @default false
+             */
+            systemField: boolean;
+            /** Tagids */
+            tagIds?: string[];
+            /**
+             * Unique
+             * @default false
+             */
+            unique: boolean;
+        };
+        /**
+         * DatabaseTableColumnItem
+         * @description A column of a database table.
+         */
+        DatabaseTableColumnItem: {
+            /** Color */
+            color?: string | null;
+            /**
+             * Databasecolumntypeid
+             * Format: uuid
+             */
+            databaseColumnTypeId: string;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Defaultvalue */
+            defaultValue: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Foreignkeydatabasetablecolumnid */
+            foreignKeyDatabaseTableColumnId?: string | null;
+            /** Foreignkeydatabasetableid */
+            foreignKeyDatabaseTableId?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /** Nullable */
+            nullable: boolean;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Rank */
+            rank: number;
+            /** Systemfield */
+            systemField: boolean;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Unique */
+            unique: boolean;
+        };
+        /**
+         * DatabaseTableColumnPatchForm
+         * @description Partial update of a column — only the keys sent are applied.
+         */
+        DatabaseTableColumnPatchForm: {
+            /** Color */
+            color?: string | null;
+            /** Databasecolumntypeid */
+            databaseColumnTypeId?: string | null;
+            /** Defaultvalue */
+            defaultValue?: string | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Foreignkeydatabasetablecolumnid */
+            foreignKeyDatabaseTableColumnId?: string | null;
+            /** Foreignkeydatabasetableid */
+            foreignKeyDatabaseTableId?: string | null;
+            /** Name */
+            name?: string | null;
+            /** Nullable */
+            nullable?: boolean | null;
+            /** Rank */
+            rank?: number | null;
+            /** Systemfield */
+            systemField?: boolean | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Unique */
+            unique?: boolean | null;
+        };
+        /**
+         * DatabaseTableColumnReorderForm
+         * @description Reorder the columns of a table. Send exactly one of the two shapes.
+         *
+         *     `columnIds` is the table's columns in their new order, and must list every
+         *     column of the table exactly once. `ranks` maps a column to its new position
+         *     and may cover only the columns that move.
+         */
+        DatabaseTableColumnReorderForm: {
+            /**
+             * Columnids
+             * @description Every column of the table, in their new order.
+             */
+            columnIds?: string[] | null;
+            /**
+             * Ranks
+             * @description New position of each column, keyed by column id.
+             */
+            ranks?: {
+                [key: string]: number;
+            } | null;
+        };
+        /**
+         * DatabaseTableCreateForm
+         * @description Create a table, optionally with its columns in one call.
+         */
+        DatabaseTableCreateForm: {
+            /** Color */
+            color?: string | null;
+            /** Columns */
+            columns?: components["schemas"]["DatabaseTableColumnCreateForm"][];
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Name */
+            name: string;
+            /** Schema */
+            schema: string;
+            /** Tagids */
+            tagIds?: string[];
+            type: components["schemas"]["DatabaseTableType"];
+        };
+        /**
+         * DatabaseTableItem
+         * @description A table within a database version.
+         *
+         *     `columns` is resolved by the manager on every table read (listing included)
+         *     and on create/update.
+         */
+        DatabaseTableItem: {
+            /** Color */
+            color?: string | null;
+            /** Columns */
+            columns?: components["schemas"]["DatabaseTableColumnItem"][] | null;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Schema */
+            schema: string;
+            status: components["schemas"]["DatabaseTableStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            type: components["schemas"]["DatabaseTableType"];
+        };
+        /**
+         * DatabaseTablePatchForm
+         * @description Partial update of a table. If `columns` is sent, it fully replaces the
+         *     table's current columns.
+         */
+        DatabaseTablePatchForm: {
+            /** Color */
+            color?: string | null;
+            /** Columns */
+            columns?: components["schemas"]["DatabaseTableColumnCreateForm"][] | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Name */
+            name?: string | null;
+            /** Schema */
+            schema?: string | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            type?: components["schemas"]["DatabaseTableType"] | null;
+        };
+        /**
+         * DatabaseTableStatus
+         * @enum {string}
+         */
+        DatabaseTableStatus: "draft" | "active" | "archived";
+        /**
+         * DatabaseTableType
+         * @enum {string}
+         */
+        DatabaseTableType: "physical" | "logical";
+        /**
+         * DatabaseType
+         * @description Database engine — shared by the column-type catalogue and databases.
+         * @enum {string}
+         */
+        DatabaseType: "mysql" | "postgresql";
+        /**
+         * DatabaseVersionCreateForm
+         * @description Create a database version. It starts as a draft.
+         */
+        DatabaseVersionCreateForm: {
+            /**
+             * Version
+             * @description Version tuple, e.g. [1, 2, 3].
+             */
+            version: number[];
+        };
+        /**
+         * DatabaseVersionItem
+         * @description A version of a database's schema (semantic version as an int tuple).
+         */
+        DatabaseVersionItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Enddate */
+            endDate?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Startdate */
+            startDate?: string | null;
+            status: components["schemas"]["DatabaseVersionStatus"];
+            /** Version */
+            version: number[];
+        };
+        /**
+         * DatabaseVersionPatchForm
+         * @description Partial update of a version — only the keys sent are applied.
+         */
+        DatabaseVersionPatchForm: {
+            /** Version */
+            version?: number[] | null;
+        };
+        /**
+         * DatabaseVersionStatus
+         * @enum {string}
+         */
+        DatabaseVersionStatus: "draft" | "active" | "archived";
+        /**
+         * ErrorResponse
+         * @description A business error: a single human-readable message.
+         */
+        ErrorResponse: {
+            /** Detail */
+            detail: string;
+        };
+        /** Body_api.accounts.setPicture */
+        fastapi___compat__v2__Body_api__accounts__setPicture: {
+            /** File */
+            file: string;
+        };
+        /** Body_api.features.files.create */
+        fastapi___compat__v2__Body_api__features__files__create: {
+            /** File */
+            file: string;
+        };
+        /** Body_api.journeys.scenarios.steps.files.create */
+        fastapi___compat__v2__Body_api__journeys__scenarios__steps__files__create: {
+            /** File */
+            file: string;
+        };
+        /** Body_api.me.setPicture */
+        fastapi___compat__v2__Body_api__me__setPicture: {
+            /** File */
+            file: string;
+        };
+        /**
+         * FeatureCreateForm
+         * @description Create a feature. It starts as a draft owned by the caller.
+         */
+        FeatureCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["FeatureType"];
+        };
+        /**
+         * FeatureFileItem
+         * @description A file attached to a feature (screenshot, video, document, …).
+         *
+         *     `download_url` is a time-limited link on object storage, or the direct path
+         *     on local storage — resolved by the manager, only on the single-file read.
+         */
+        FeatureFileItem: {
+            /** Applicationid */
+            applicationId?: string | null;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Downloadurl */
+            downloadUrl?: string | null;
+            /** Fileextension */
+            fileExtension: string;
+            /** Filename */
+            fileName: string;
+            /** Filesize */
+            fileSize: number;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["FeatureFileStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            type: components["schemas"]["FeatureFileType"];
+        };
+        /**
+         * FeatureFilePatchForm
+         * @description Partial update of a file's metadata — its type, name and/or description.
+         *
+         *     The binary content itself is immutable once uploaded.
+         */
+        FeatureFilePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Name */
+            name?: string | null;
+            type?: components["schemas"]["FeatureFileType"] | null;
+        };
+        /**
+         * FeatureFileStatus
+         * @enum {string}
+         */
+        FeatureFileStatus: "uploaded" | "archived";
+        /**
+         * FeatureFileType
+         * @enum {string}
+         */
+        FeatureFileType: "screenshot" | "video" | "document" | "other";
+        /**
+         * FeatureItem
+         * @description A feature tracked at the account level.
+         */
+        FeatureItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["FeatureStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["FeatureType"];
+        };
+        /**
+         * FeatureJourneyCreateForm
+         * @description Link an existing account journey to a feature.
+         */
+        FeatureJourneyCreateForm: {
+            /**
+             * Journeyid
+             * Format: uuid
+             * @description An existing journey of the same account.
+             */
+            journeyId: string;
+        };
+        /**
+         * FeatureJourneyItem
+         * @description A journey linked to a feature.
+         */
+        FeatureJourneyItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Journeyid
+             * Format: uuid
+             */
+            journeyId: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+        };
+        /**
+         * FeaturePatchForm
+         * @description Partial update of a feature — only the keys sent are applied.
+         */
+        FeaturePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["FeatureType"] | null;
+        };
+        /**
+         * FeatureSortField
+         * @description Sortable columns for the features listing.
+         * @enum {string}
+         */
+        FeatureSortField: "date" | "title" | "status" | "type";
+        /**
+         * FeatureStatus
+         * @enum {string}
+         */
+        FeatureStatus: "draft" | "active" | "archived";
+        /**
+         * FeatureType
+         * @enum {string}
+         */
+        FeatureType: "technical" | "product" | "qa" | "data" | "ops" | "it" | "other";
+        /**
+         * FieldError
+         * @description One invalid field in a validation error.
+         */
+        FieldError: {
+            /** Code */
+            code: string;
+            /** Field */
+            field: string;
+            /** Message */
+            message: string;
+        };
+        /**
+         * ForgotPasswordForm
+         * @description Request a password-reset email.
+         */
+        ForgotPasswordForm: {
+            /**
+             * Email
+             * Format: email
+             * @description Email to send the reset link to.
+             */
+            email: string;
+        };
+        /**
+         * GoogleSsoForm
+         * @description Sign in / link via Google.
+         */
+        GoogleSsoForm: {
+            /**
+             * Googletoken
+             * @description The Google ID token obtained in the browser.
+             */
+            googleToken: string;
+        };
+        /**
+         * HealthResponse
+         * @description Body of `GET /health` — liveness probe payload.
+         *
+         *     Intended for monitoring tooling (uptime checks, load balancer health
+         *     probes, deploy pipelines). Not part of the integrator surface.
+         * @example {
+         *       "environment": "production",
+         *       "status": "ok",
+         *       "version": "0.1.0"
+         *     }
+         */
+        HealthResponse: {
+            /**
+             * Environment
+             * @description Deployment environment — `local`, `staging` or `production`.
+             * @example production
+             */
+            environment: string;
+            /**
+             * Status
+             * @description Liveness status — always `ok` when the process is responding.
+             * @example ok
+             */
+            status: string;
+            /**
+             * Version
+             * @description Currently deployed service semver.
+             * @example 0.1.0
+             */
+            version: string;
+        };
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /** ItemResponse[AccountInvitationItem] */
+        ItemResponse_AccountInvitationItem_: {
+            item: components["schemas"]["AccountInvitationItem"];
+        };
+        /** ItemResponse[AccountItem] */
+        ItemResponse_AccountItem_: {
+            item: components["schemas"]["AccountItem"];
+        };
+        /** ItemResponse[AccountUserItem] */
+        ItemResponse_AccountUserItem_: {
+            item: components["schemas"]["AccountUserItem"];
+        };
+        /** ItemResponse[ActionTypeItem] */
+        ItemResponse_ActionTypeItem_: {
+            item: components["schemas"]["ActionTypeItem"];
+        };
+        /** ItemResponse[ApplicationEnvironmentItem] */
+        ItemResponse_ApplicationEnvironmentItem_: {
+            item: components["schemas"]["ApplicationEnvironmentItem"];
+        };
+        /** ItemResponse[ApplicationEnvironmentVersionItem] */
+        ItemResponse_ApplicationEnvironmentVersionItem_: {
+            item: components["schemas"]["ApplicationEnvironmentVersionItem"];
+        };
+        /** ItemResponse[ApplicationFeatureItem] */
+        ItemResponse_ApplicationFeatureItem_: {
+            item: components["schemas"]["ApplicationFeatureItem"];
+        };
+        /** ItemResponse[ApplicationGuardItem] */
+        ItemResponse_ApplicationGuardItem_: {
+            item: components["schemas"]["ApplicationGuardItem"];
+        };
+        /** ItemResponse[ApplicationItem] */
+        ItemResponse_ApplicationItem_: {
+            item: components["schemas"]["ApplicationItem"];
+        };
+        /** ItemResponse[ApplicationRoleItem] */
+        ItemResponse_ApplicationRoleItem_: {
+            item: components["schemas"]["ApplicationRoleItem"];
+        };
+        /** ItemResponse[ApplicationRouteExampleItem] */
+        ItemResponse_ApplicationRouteExampleItem_: {
+            item: components["schemas"]["ApplicationRouteExampleItem"];
+        };
+        /** ItemResponse[ApplicationRouteItem] */
+        ItemResponse_ApplicationRouteItem_: {
+            item: components["schemas"]["ApplicationRouteItem"];
+        };
+        /** ItemResponse[ApplicationRouteResponseItem] */
+        ItemResponse_ApplicationRouteResponseItem_: {
+            item: components["schemas"]["ApplicationRouteResponseItem"];
+        };
+        /** ItemResponse[ApplicationRouteTableItem] */
+        ItemResponse_ApplicationRouteTableItem_: {
+            item: components["schemas"]["ApplicationRouteTableItem"];
+        };
+        /** ItemResponse[ApplicationVersionItem] */
+        ItemResponse_ApplicationVersionItem_: {
+            item: components["schemas"]["ApplicationVersionItem"];
+        };
+        /** ItemResponse[AssertionTypeItem] */
+        ItemResponse_AssertionTypeItem_: {
+            item: components["schemas"]["AssertionTypeItem"];
+        };
+        /** ItemResponse[CommentItem] */
+        ItemResponse_CommentItem_: {
+            item: components["schemas"]["CommentItem"];
+        };
+        /** ItemResponse[DatabaseColumnTypeItem] */
+        ItemResponse_DatabaseColumnTypeItem_: {
+            item: components["schemas"]["DatabaseColumnTypeItem"];
+        };
+        /** ItemResponse[DatabaseItem] */
+        ItemResponse_DatabaseItem_: {
+            item: components["schemas"]["DatabaseItem"];
+        };
+        /** ItemResponse[DatabaseMigrationColumnItem] */
+        ItemResponse_DatabaseMigrationColumnItem_: {
+            item: components["schemas"]["DatabaseMigrationColumnItem"];
+        };
+        /** ItemResponse[DatabaseMigrationItem] */
+        ItemResponse_DatabaseMigrationItem_: {
+            item: components["schemas"]["DatabaseMigrationItem"];
+        };
+        /** ItemResponse[DatabaseTableColumnItem] */
+        ItemResponse_DatabaseTableColumnItem_: {
+            item: components["schemas"]["DatabaseTableColumnItem"];
+        };
+        /** ItemResponse[DatabaseTableItem] */
+        ItemResponse_DatabaseTableItem_: {
+            item: components["schemas"]["DatabaseTableItem"];
+        };
+        /** ItemResponse[DatabaseVersionItem] */
+        ItemResponse_DatabaseVersionItem_: {
+            item: components["schemas"]["DatabaseVersionItem"];
+        };
+        /** ItemResponse[FeatureFileItem] */
+        ItemResponse_FeatureFileItem_: {
+            item: components["schemas"]["FeatureFileItem"];
+        };
+        /** ItemResponse[FeatureItem] */
+        ItemResponse_FeatureItem_: {
+            item: components["schemas"]["FeatureItem"];
+        };
+        /** ItemResponse[FeatureJourneyItem] */
+        ItemResponse_FeatureJourneyItem_: {
+            item: components["schemas"]["FeatureJourneyItem"];
+        };
+        /** ItemResponse[JourneyItem] */
+        ItemResponse_JourneyItem_: {
+            item: components["schemas"]["JourneyItem"];
+        };
+        /** ItemResponse[JourneyScenarioItem] */
+        ItemResponse_JourneyScenarioItem_: {
+            item: components["schemas"]["JourneyScenarioItem"];
+        };
+        /** ItemResponse[JourneyScenarioStepAssertionItem] */
+        ItemResponse_JourneyScenarioStepAssertionItem_: {
+            item: components["schemas"]["JourneyScenarioStepAssertionItem"];
+        };
+        /** ItemResponse[JourneyScenarioStepFileItem] */
+        ItemResponse_JourneyScenarioStepFileItem_: {
+            item: components["schemas"]["JourneyScenarioStepFileItem"];
+        };
+        /** ItemResponse[JourneyScenarioStepItem] */
+        ItemResponse_JourneyScenarioStepItem_: {
+            item: components["schemas"]["JourneyScenarioStepItem"];
+        };
+        /** ItemResponse[JourneyScenarioStepRouteItem] */
+        ItemResponse_JourneyScenarioStepRouteItem_: {
+            item: components["schemas"]["JourneyScenarioStepRouteItem"];
+        };
+        /** ItemResponse[MeIntegrationAuthorizationRequestItem] */
+        ItemResponse_MeIntegrationAuthorizationRequestItem_: {
+            item: components["schemas"]["MeIntegrationAuthorizationRequestItem"];
+        };
+        /** ItemResponse[MeIntegrationAuthorizeResponse] */
+        ItemResponse_MeIntegrationAuthorizeResponse_: {
+            item: components["schemas"]["MeIntegrationAuthorizeResponse"];
+        };
+        /** ItemResponse[MeInvitationItem] */
+        ItemResponse_MeInvitationItem_: {
+            item: components["schemas"]["MeInvitationItem"];
+        };
+        /** ItemResponse[MeItem] */
+        ItemResponse_MeItem_: {
+            item: components["schemas"]["MeItem"];
+        };
+        /** ItemResponse[OtpProvisioningItem] */
+        ItemResponse_OtpProvisioningItem_: {
+            item: components["schemas"]["OtpProvisioningItem"];
+        };
+        /** ItemResponse[PersonaItem] */
+        ItemResponse_PersonaItem_: {
+            item: components["schemas"]["PersonaItem"];
+        };
+        /** ItemResponse[RecoveryCodesItem] */
+        ItemResponse_RecoveryCodesItem_: {
+            item: components["schemas"]["RecoveryCodesItem"];
+        };
+        /** ItemResponse[SecurityKeyItem] */
+        ItemResponse_SecurityKeyItem_: {
+            item: components["schemas"]["SecurityKeyItem"];
+        };
+        /** ItemResponse[SecurityOverviewItem] */
+        ItemResponse_SecurityOverviewItem_: {
+            item: components["schemas"]["SecurityOverviewItem"];
+        };
+        /** ItemResponse[ServiceActionItem] */
+        ItemResponse_ServiceActionItem_: {
+            item: components["schemas"]["ServiceActionItem"];
+        };
+        /** ItemResponse[ServiceItem] */
+        ItemResponse_ServiceItem_: {
+            item: components["schemas"]["ServiceItem"];
+        };
+        /** ItemResponse[TagItem] */
+        ItemResponse_TagItem_: {
+            item: components["schemas"]["TagItem"];
+        };
+        /** ItemResponse[TokenItem] */
+        ItemResponse_TokenItem_: {
+            item: components["schemas"]["TokenItem"];
+        };
+        /** ItemResponse[U2FAssertionOptionsItem] */
+        ItemResponse_U2FAssertionOptionsItem_: {
+            item: components["schemas"]["U2FAssertionOptionsItem"];
+        };
+        /** ItemResponse[U2FRegistrationOptionsItem] */
+        ItemResponse_U2FRegistrationOptionsItem_: {
+            item: components["schemas"]["U2FRegistrationOptionsItem"];
+        };
+        /**
+         * JourneyCreateForm
+         * @description Create a journey. It starts as a draft owned by the caller.
+         */
+        JourneyCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Personasids */
+            personasIds?: string[];
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["JourneyType"];
+        };
+        /**
+         * JourneyItem
+         * @description A user journey tracked inside an account.
+         */
+        JourneyItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Personasids */
+            personasIds: string[];
+            status: components["schemas"]["JourneyStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["JourneyType"];
+        };
+        /**
+         * JourneyPatchForm
+         * @description Partial update of a journey — only the keys sent are applied.
+         */
+        JourneyPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Personasids */
+            personasIds?: string[] | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["JourneyType"] | null;
+        };
+        /**
+         * JourneyScenarioCreateForm
+         * @description Create a scenario. It starts as a draft owned by the caller.
+         */
+        JourneyScenarioCreateForm: {
+            criticity: components["schemas"]["JourneyScenarioCriticity"];
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Personasids */
+            personasIds?: string[];
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["JourneyScenarioType"];
+        };
+        /**
+         * JourneyScenarioCriticity
+         * @enum {string}
+         */
+        JourneyScenarioCriticity: "low" | "medium" | "high" | "critical";
+        /**
+         * JourneyScenarioItem
+         * @description A scenario inside a journey.
+         */
+        JourneyScenarioItem: {
+            criticity: components["schemas"]["JourneyScenarioCriticity"];
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Personasids */
+            personasIds: string[];
+            status: components["schemas"]["JourneyScenarioStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["JourneyScenarioType"];
+        };
+        /**
+         * JourneyScenarioPatchForm
+         * @description Partial update of a scenario — only the keys sent are applied.
+         */
+        JourneyScenarioPatchForm: {
+            criticity?: components["schemas"]["JourneyScenarioCriticity"] | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Personasids */
+            personasIds?: string[] | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["JourneyScenarioType"] | null;
+        };
+        /**
+         * JourneyScenarioStatus
+         * @enum {string}
+         */
+        JourneyScenarioStatus: "draft" | "active" | "archived";
+        /**
+         * JourneyScenarioStepAssertionCreateForm
+         * @description Attach an assertion to a step. Starts as a draft owned by the caller.
+         */
+        JourneyScenarioStepAssertionCreateForm: {
+            /**
+             * Assertiontypeid
+             * Format: uuid
+             */
+            assertionTypeId: string;
+            /** Parameters */
+            parameters?: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * JourneyScenarioStepAssertionItem
+         * @description An assertion carried by a step.
+         */
+        JourneyScenarioStepAssertionItem: {
+            /**
+             * Assertiontypeid
+             * Format: uuid
+             */
+            assertionTypeId: string;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Parameters */
+            parameters: {
+                [key: string]: unknown;
+            };
+            status: components["schemas"]["JourneyScenarioStepAssertionStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+        };
+        /**
+         * JourneyScenarioStepAssertionPatchForm
+         * @description Partial update of an assertion — only the keys sent are applied.
+         */
+        JourneyScenarioStepAssertionPatchForm: {
+            /** Assertiontypeid */
+            assertionTypeId?: string | null;
+            /** Parameters */
+            parameters?: {
+                [key: string]: unknown;
+            } | null;
+        };
+        /**
+         * JourneyScenarioStepAssertionStatus
+         * @enum {string}
+         */
+        JourneyScenarioStepAssertionStatus: "draft" | "active" | "archived";
+        /**
+         * JourneyScenarioStepCreateForm
+         * @description Create a step inside a scenario.
+         */
+        JourneyScenarioStepCreateForm: {
+            /** Actiontypeid */
+            actionTypeId?: string | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Optional
+             * @default false
+             */
+            optional: boolean;
+            /** Parameters */
+            parameters?: {
+                [key: string]: unknown;
+            };
+            /** Parentjourneyscenariostepid */
+            parentJourneyScenarioStepId?: string | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+        };
+        /**
+         * JourneyScenarioStepFileItem
+         * @description A file attached to a step.
+         *
+         *     `download_url` is a time-limited link, resolved by the manager only on the
+         *     single-file read.
+         */
+        JourneyScenarioStepFileItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Downloadurl */
+            downloadUrl?: string | null;
+            /** Fileextension */
+            fileExtension: string;
+            /** Filename */
+            fileName: string;
+            /** Filesize */
+            fileSize: number;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            status: components["schemas"]["JourneyScenarioStepFileStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            type: components["schemas"]["JourneyScenarioStepFileType"];
+        };
+        /**
+         * JourneyScenarioStepFilePatchForm
+         * @description Partial update of a step file's metadata.
+         */
+        JourneyScenarioStepFilePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Name */
+            name?: string | null;
+            type?: components["schemas"]["JourneyScenarioStepFileType"] | null;
+        };
+        /**
+         * JourneyScenarioStepFileStatus
+         * @enum {string}
+         */
+        JourneyScenarioStepFileStatus: "uploaded" | "archived";
+        /**
+         * JourneyScenarioStepFileType
+         * @enum {string}
+         */
+        JourneyScenarioStepFileType: "screenshot" | "video" | "document" | "input" | "other";
+        /**
+         * JourneyScenarioStepItem
+         * @description A step inside a scenario (nodes form a tree via `parentId`).
+         */
+        JourneyScenarioStepItem: {
+            /** Actiontypeid */
+            actionTypeId?: string | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Optional */
+            optional: boolean;
+            /** Parameters */
+            parameters: {
+                [key: string]: unknown;
+            };
+            /** Parentjourneyscenariostepid */
+            parentJourneyScenarioStepId?: string | null;
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+        };
+        /**
+         * JourneyScenarioStepPatchForm
+         * @description Partial update of a step — only the keys sent are applied.
+         */
+        JourneyScenarioStepPatchForm: {
+            /** Actiontypeid */
+            actionTypeId?: string | null;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Optional */
+            optional?: boolean | null;
+            /** Parameters */
+            parameters?: {
+                [key: string]: unknown;
+            } | null;
+            /** Parentjourneyscenariostepid */
+            parentJourneyScenarioStepId?: string | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+        };
+        /**
+         * JourneyScenarioStepRouteCreateForm
+         * @description Link a scenario step to an application route of the same account.
+         */
+        JourneyScenarioStepRouteCreateForm: {
+            /**
+             * Applicationid
+             * Format: uuid
+             */
+            applicationId: string;
+            /**
+             * Applicationrouteid
+             * Format: uuid
+             */
+            applicationRouteId: string;
+        };
+        /**
+         * JourneyScenarioStepRouteItem
+         * @description An application route linked to a scenario step.
+         */
+        JourneyScenarioStepRouteItem: {
+            /**
+             * Applicationid
+             * Format: uuid
+             */
+            applicationId: string;
+            /**
+             * Applicationrouteid
+             * Format: uuid
+             */
+            applicationRouteId: string;
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+        };
+        /**
+         * JourneyScenarioType
+         * @enum {string}
+         */
+        JourneyScenarioType: "nominal" | "alternative" | "error" | "edge_case";
+        /**
+         * JourneySortField
+         * @description Sortable columns for the journeys listing.
+         * @enum {string}
+         */
+        JourneySortField: "date" | "title" | "status" | "type";
+        /**
+         * JourneyStatus
+         * @enum {string}
+         */
+        JourneyStatus: "draft" | "active" | "archived";
+        /**
+         * JourneyType
+         * @enum {string}
+         */
+        JourneyType: "business" | "customer" | "internal" | "other";
+        /**
+         * Language
+         * @description User interface / communication language (BCP 47 tags).
+         * @enum {string}
+         */
+        Language: "fr-FR" | "en-GB" | "es-ES" | "de-DE" | "it-IT";
+        /** ListingResponse[AccountInvitationItem] */
+        ListingResponse_AccountInvitationItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["AccountInvitationItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[AccountItem] */
+        ListingResponse_AccountItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["AccountItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[AccountUserItem] */
+        ListingResponse_AccountUserItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["AccountUserItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ActionTypeItem] */
+        ListingResponse_ActionTypeItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ActionTypeItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationEnvironmentItem] */
+        ListingResponse_ApplicationEnvironmentItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationEnvironmentItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationEnvironmentVersionItem] */
+        ListingResponse_ApplicationEnvironmentVersionItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationEnvironmentVersionItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationFeatureItem] */
+        ListingResponse_ApplicationFeatureItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationFeatureItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationGuardItem] */
+        ListingResponse_ApplicationGuardItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationGuardItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationItem] */
+        ListingResponse_ApplicationItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationRoleItem] */
+        ListingResponse_ApplicationRoleItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationRoleItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationRouteExampleItem] */
+        ListingResponse_ApplicationRouteExampleItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationRouteExampleItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationRouteItem] */
+        ListingResponse_ApplicationRouteItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationRouteItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationRouteResponseItem] */
+        ListingResponse_ApplicationRouteResponseItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationRouteResponseItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationRouteTableItem] */
+        ListingResponse_ApplicationRouteTableItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationRouteTableItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ApplicationVersionItem] */
+        ListingResponse_ApplicationVersionItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ApplicationVersionItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[AssertionTypeItem] */
+        ListingResponse_AssertionTypeItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["AssertionTypeItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[CommentItem] */
+        ListingResponse_CommentItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["CommentItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[CommentListItem] */
+        ListingResponse_CommentListItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["CommentListItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseColumnTypeItem] */
+        ListingResponse_DatabaseColumnTypeItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseColumnTypeItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseItem] */
+        ListingResponse_DatabaseItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseMigrationColumnItem] */
+        ListingResponse_DatabaseMigrationColumnItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseMigrationColumnItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseMigrationItem] */
+        ListingResponse_DatabaseMigrationItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseMigrationItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseTableColumnItem] */
+        ListingResponse_DatabaseTableColumnItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseTableColumnItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseTableItem] */
+        ListingResponse_DatabaseTableItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseTableItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[DatabaseVersionItem] */
+        ListingResponse_DatabaseVersionItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["DatabaseVersionItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[FeatureFileItem] */
+        ListingResponse_FeatureFileItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["FeatureFileItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[FeatureItem] */
+        ListingResponse_FeatureItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["FeatureItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[FeatureJourneyItem] */
+        ListingResponse_FeatureJourneyItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["FeatureJourneyItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyItem] */
+        ListingResponse_JourneyItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyScenarioItem] */
+        ListingResponse_JourneyScenarioItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyScenarioItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyScenarioStepAssertionItem] */
+        ListingResponse_JourneyScenarioStepAssertionItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyScenarioStepAssertionItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyScenarioStepFileItem] */
+        ListingResponse_JourneyScenarioStepFileItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyScenarioStepFileItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyScenarioStepItem] */
+        ListingResponse_JourneyScenarioStepItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyScenarioStepItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[JourneyScenarioStepRouteItem] */
+        ListingResponse_JourneyScenarioStepRouteItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["JourneyScenarioStepRouteItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[MeIntegrationGrantItem] */
+        ListingResponse_MeIntegrationGrantItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["MeIntegrationGrantItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[MeInvitationItem] */
+        ListingResponse_MeInvitationItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["MeInvitationItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[OtpMethodItem] */
+        ListingResponse_OtpMethodItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["OtpMethodItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[PersonaItem] */
+        ListingResponse_PersonaItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["PersonaItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[SecurityKeyItem] */
+        ListingResponse_SecurityKeyItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["SecurityKeyItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[SecurityLogItem] */
+        ListingResponse_SecurityLogItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["SecurityLogItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ServiceActionItem] */
+        ListingResponse_ServiceActionItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ServiceActionItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[ServiceItem] */
+        ListingResponse_ServiceItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["ServiceItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /** ListingResponse[TagItem] */
+        ListingResponse_TagItem_: {
+            /** Count */
+            count: number;
+            /** Items */
+            items: components["schemas"]["TagItem"][];
+            /** Limit */
+            limit: number;
+            page: components["schemas"]["Pagination"];
+        };
+        /**
+         * LoginForm
+         * @description Email/password login.
+         */
+        LoginForm: {
+            /**
+             * Email
+             * Format: email
+             * @description Account email.
+             * @example ada@example.com
+             */
+            email: string;
+            /**
+             * Password
+             * @description Account password.
+             */
+            password: string;
+            /**
+             * Rememberme
+             * @description Keep the session alive longer on this device.
+             * @default false
+             */
+            rememberMe: boolean;
+        };
+        /**
+         * MeIntegrationAuthorizationRequestItem
+         * @description A pending authorization shown on the consent screen.
+         */
+        MeIntegrationAuthorizationRequestItem: {
+            /** Clientname */
+            clientName: string;
+            /**
+             * Expiresat
+             * Format: date-time
+             */
+            expiresAt: string;
+            flowType: components["schemas"]["OauthAuthorizationFlowType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Redirecturi */
+            redirectUri?: string | null;
+            requestedScope: components["schemas"]["OauthGrantScope"];
+            /** State */
+            state?: string | null;
+        };
+        /** MeIntegrationAuthorizeApproveForm */
+        MeIntegrationAuthorizeApproveForm: {
+            scope: components["schemas"]["OauthGrantScope"];
+        };
+        /**
+         * MeIntegrationAuthorizeResponse
+         * @description Result of approving/denying a request: a redirect URL for the auth-code
+         *     flow, or null for the device flow (which shows in-page success).
+         */
+        MeIntegrationAuthorizeResponse: {
+            /** Redirecturl */
+            redirectUrl?: string | null;
+        };
+        /**
+         * MeIntegrationGrantItem
+         * @description An active grant shown in the account's connected-integrations list.
+         */
+        MeIntegrationGrantItem: {
+            /**
+             * Clientid
+             * Format: uuid
+             */
+            clientId: string;
+            /** Clientname */
+            clientName: string;
+            /** Connectedat */
+            connectedAt?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Lastusedat */
+            lastUsedAt?: string | null;
+            scope: components["schemas"]["OauthGrantScope"];
+        };
+        /**
+         * MeInvitationAccountItem
+         * @description The account the invitation grants access to.
+         */
+        MeInvitationAccountItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name: string;
+        };
+        /**
+         * MeInvitationItem
+         * @description An invitation addressed to the signed-in user.
+         */
+        MeInvitationItem: {
+            account: components["schemas"]["MeInvitationAccountItem"];
+            /** Date */
+            date?: string | null;
+            /** Expiredate */
+            expireDate?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            owner?: components["schemas"]["MeInvitationOwnerItem"] | null;
+            role: components["schemas"]["AccountUserRole"];
+            status: components["schemas"]["AccountUserInvitationStatus"];
+            /** Statusdate */
+            statusDate?: string | null;
+            type: components["schemas"]["AccountUserInvitationType"];
+        };
+        /**
+         * MeInvitationOwnerItem
+         * @description Who sent the invitation (display name only).
+         */
+        MeInvitationOwnerItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Name */
+            name?: string | null;
+        };
+        /**
+         * MeItem
+         * @description The signed-in user's own profile.
+         */
+        MeItem: {
+            /** Email */
+            email: string;
+            /** Firstname */
+            firstName?: string | null;
+            gender: components["schemas"]["UserGender"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            language: components["schemas"]["Language"];
+            /** Lastname */
+            lastName?: string | null;
+            /** Phone */
+            phone?: string | null;
+            /** Pictureprofile */
+            pictureProfile?: string | null;
+            /**
+             * Registeredat
+             * @description When the account was created.
+             */
+            registeredAt?: string | null;
+            theme: components["schemas"]["UserTheme"];
+            /**
+             * Twofactorenabled
+             * @description Whether at least one second factor is active.
+             * @default false
+             */
+            twoFactorEnabled: boolean;
+        };
+        /**
+         * MePatchForm
+         * @description Partial update of the signed-in user's profile.
+         *
+         *     Every field is optional; only the keys actually sent are applied.
+         */
+        MePatchForm: {
+            /** Firstname */
+            firstName?: string | null;
+            gender?: components["schemas"]["UserGender"] | null;
+            language?: components["schemas"]["Language"] | null;
+            /** Lastname */
+            lastName?: string | null;
+            /** Phone */
+            phone?: string | null;
+            theme?: components["schemas"]["UserTheme"] | null;
+        };
+        /**
+         * OauthAuthorizationFlowType
+         * @enum {string}
+         */
+        OauthAuthorizationFlowType: "device" | "authorization_code";
+        /** OauthClientRegistrationForm */
+        OauthClientRegistrationForm: {
+            /**
+             * Client Name
+             * @example Claude
+             */
+            client_name: string;
+            /** Grant Types */
+            grant_types?: string[] | null;
+            /** Redirect Uris */
+            redirect_uris?: string[];
+            /** Response Types */
+            response_types?: string[] | null;
+            /** Software Id */
+            software_id?: string | null;
+            /** Software Version */
+            software_version?: string | null;
+            /**
+             * Token Endpoint Auth Method
+             * @default none
+             */
+            token_endpoint_auth_method: string;
+        };
+        /** OauthClientRegistrationResponse */
+        OauthClientRegistrationResponse: {
+            /** Client Id */
+            client_id: string;
+            /** Client Id Issued At */
+            client_id_issued_at: number;
+            /** Client Name */
+            client_name: string;
+            /** Client Secret */
+            client_secret?: string | null;
+            /** Client Secret Expires At */
+            client_secret_expires_at?: number | null;
+            /** Grant Types */
+            grant_types: string[];
+            /** Redirect Uris */
+            redirect_uris: string[];
+            /** Response Types */
+            response_types: string[];
+            /** Token Endpoint Auth Method */
+            token_endpoint_auth_method: string;
+        };
+        /** OauthDeviceAuthorizationResponse */
+        OauthDeviceAuthorizationResponse: {
+            /** Device Code */
+            device_code: string;
+            /** Expires In */
+            expires_in: number;
+            /** Interval */
+            interval: number;
+            /** User Code */
+            user_code: string;
+            /** Verification Uri */
+            verification_uri: string;
+            /** Verification Uri Complete */
+            verification_uri_complete: string;
+        };
+        /**
+         * OauthGrantScope
+         * @description OAuth scope requested by / granted to a connected integration.
+         * @enum {string}
+         */
+        OauthGrantScope: "read" | "write";
+        /** OauthTokenResponse */
+        OauthTokenResponse: {
+            /** Access Token */
+            access_token: string;
+            /** Expires In */
+            expires_in: number;
+            /** Refresh Token */
+            refresh_token: string;
+            /** Scope */
+            scope: string;
+            /**
+             * Token Type
+             * @default Bearer
+             */
+            token_type: string;
+        };
+        /**
+         * OtpMethodItem
+         * @description An active authenticator registered on the account.
+         */
+        OtpMethodItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Registeredat */
+            registeredAt?: string | null;
+        };
+        /**
+         * OtpProvisioningItem
+         * @description A pending authenticator secret — shown once, then confirmed with a code.
+         */
+        OtpProvisioningItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /**
+             * Provisioninguri
+             * @description `otpauth://` URI to render as a QR code.
+             */
+            provisioningUri: string;
+            /**
+             * Secret
+             * @description The base32 secret, for manual entry.
+             */
+            secret: string;
+        };
+        /**
+         * PageLimit
+         * @description Allowed page sizes — the front offers exactly these.
+         * @enum {integer}
+         */
+        PageLimit: 10 | 25 | 50 | 100;
+        /**
+         * Pagination
+         * @description Page cursor for a listing: 1-based, clamped to `[min, max]`.
+         */
+        Pagination: {
+            /** Current */
+            current: number;
+            /** Max */
+            max: number;
+            /**
+             * Min
+             * @default 1
+             */
+            min: number;
+        };
+        /**
+         * PersonaCreateForm
+         * @description Create a persona. It starts as a draft.
+         */
+        PersonaCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[];
+            /** Title */
+            title: string;
+            type: components["schemas"]["PersonaType"];
+        };
+        /**
+         * PersonaItem
+         * @description A persona tracked inside an account.
+         */
+        PersonaItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            status: components["schemas"]["PersonaStatus"];
+            /** Tagids */
+            tagIds: string[];
+            /**
+             * Tags
+             * @default []
+             */
+            tags: components["schemas"]["TagItem"][];
+            /** Title */
+            title: string;
+            type: components["schemas"]["PersonaType"];
+        };
+        /**
+         * PersonaPatchForm
+         * @description Partial update of a persona — only the keys sent are applied.
+         */
+        PersonaPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Tagids */
+            tagIds?: string[] | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["PersonaType"] | null;
+        };
+        /**
+         * PersonaSortField
+         * @description Sortable columns for the personas listing.
+         * @enum {string}
+         */
+        PersonaSortField: "date" | "title" | "status" | "type";
+        /**
+         * PersonaStatus
+         * @enum {string}
+         */
+        PersonaStatus: "draft" | "active" | "archived";
+        /**
+         * PersonaType
+         * @enum {string}
+         */
+        PersonaType: "customer" | "business" | "internal" | "other";
+        /**
+         * RecoveryCodesItem
+         * @description One-time recovery codes — displayed once, never retrievable again.
+         */
+        RecoveryCodesItem: {
+            /** Codes */
+            codes: string[];
+        };
+        /**
+         * RefreshTokenForm
+         * @description Trade a refresh token for a fresh access token.
+         */
+        RefreshTokenForm: {
+            /**
+             * Granttype
+             * @description Always `refresh_token`.
+             * @example refresh_token
+             */
+            grantType: string;
+            /**
+             * Refreshtoken
+             * @description A valid refresh token.
+             */
+            refreshToken: string;
+        };
+        /**
+         * RegisterForm
+         * @description Sign-up payload for a new email/password account.
+         */
+        RegisterForm: {
+            /**
+             * Email
+             * Format: email
+             * @description Email address the account is created with.
+             * @example ada@example.com
+             */
+            email: string;
+            /**
+             * Firstname
+             * @description Given name.
+             * @example Ada
+             */
+            firstName: string;
+            /**
+             * @description Salutation preference.
+             * @default unknown
+             */
+            gender: components["schemas"]["UserGender"];
+            /**
+             * @description Preferred interface / email language.
+             * @default fr-FR
+             */
+            language: components["schemas"]["Language"];
+            /**
+             * Lastname
+             * @description Family name.
+             * @example Lovelace
+             */
+            lastName: string;
+            /**
+             * Password
+             * @description At least 8 characters.
+             * @example correct-horse-battery-staple
+             */
+            password: string;
+        };
+        /**
+         * RenameSecurityKeyForm
+         * @description Rename a registered security key.
+         */
+        RenameSecurityKeyForm: {
+            /** Nickname */
+            nickname: string;
+        };
+        /**
+         * ResendActivationForm
+         * @description Ask for a fresh activation email.
+         */
+        ResendActivationForm: {
+            /**
+             * Email
+             * Format: email
+             * @description Email of the account to re-send activation to.
+             */
+            email: string;
+        };
+        /**
+         * ResetPasswordForm
+         * @description Set a new password from a reset link.
+         */
+        ResetPasswordForm: {
+            /**
+             * Password
+             * @description The new password, at least 8 characters.
+             */
+            password: string;
+            /**
+             * Token
+             * @description Reset token from the email link.
+             */
+            token: string;
+        };
+        /** Body_api.oauth.revoke */
+        revoke: {
+            /** Client Id */
+            client_id: string;
+            /** Client Secret */
+            client_secret?: string | null;
+            /** Token */
+            token: string;
+            /** Token Type Hint */
+            token_type_hint?: string | null;
+        };
+        /**
+         * SecurityKeyItem
+         * @description A registered WebAuthn security key.
+         */
+        SecurityKeyItem: {
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Lastusedat */
+            lastUsedAt?: string | null;
+            /** Nickname */
+            nickname?: string | null;
+            /** Registeredat */
+            registeredAt?: string | null;
+        };
+        /**
+         * SecurityLogItem
+         * @description One authentication-log entry.
+         */
+        SecurityLogItem: {
+            /** Date */
+            date?: string | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Ip */
+            ip?: string | null;
+            status: components["schemas"]["UserAuthenticationLogStatus"];
+            type: components["schemas"]["UserAuthenticationLogType"];
+        };
+        /**
+         * SecurityOverviewItem
+         * @description Snapshot of the account's credentials and second factors.
+         */
+        SecurityOverviewItem: {
+            /** Googlelinked */
+            googleLinked: boolean;
+            /** Haspassword */
+            hasPassword: boolean;
+            /** Otpenabled */
+            otpEnabled: boolean;
+            /** Recoverycodesremaining */
+            recoveryCodesRemaining: number;
+            /** Securitykeyscount */
+            securityKeysCount: number;
+            /** Twofactorenabled */
+            twoFactorEnabled: boolean;
+        };
+        /**
+         * ServiceActionCreateForm
+         * @description Create a service action. It starts as a draft owned by the caller.
+         */
+        ServiceActionCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            method?: components["schemas"]["ServiceActionMethod"] | null;
+            /** Path */
+            path?: string | null;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ServiceActionType"];
+        };
+        /**
+         * ServiceActionItem
+         * @description An action exposed by a service.
+         */
+        ServiceActionItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            method?: components["schemas"]["ServiceActionMethod"] | null;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Path */
+            path?: string | null;
+            status: components["schemas"]["ServiceActionStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ServiceActionType"];
+        };
+        /**
+         * ServiceActionMethod
+         * @description HTTP method of a service action (absent for non-HTTP actions).
+         * @enum {string}
+         */
+        ServiceActionMethod: "POST" | "GET" | "PATCH" | "PUT" | "DELETE" | "QUERY";
+        /**
+         * ServiceActionPatchForm
+         * @description Partial update of an action — only the keys sent are applied.
+         */
+        ServiceActionPatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            method?: components["schemas"]["ServiceActionMethod"] | null;
+            /** Path */
+            path?: string | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ServiceActionType"] | null;
+        };
+        /**
+         * ServiceActionStatus
+         * @enum {string}
+         */
+        ServiceActionStatus: "draft" | "active" | "archived";
+        /**
+         * ServiceActionType
+         * @description Nature of the call exposed by a service action.
+         * @enum {string}
+         */
+        ServiceActionType: "endpoint" | "webhook" | "event" | "job" | "other";
+        /**
+         * ServiceCreateForm
+         * @description Create a service. It starts as a draft owned by the caller.
+         */
+        ServiceCreateForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /** Picturepath */
+            picturePath?: string | null;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ServiceType"];
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ServiceItem
+         * @description A service tracked inside an account.
+         */
+        ServiceItem: {
+            /**
+             * Date
+             * Format: date-time
+             */
+            date: string;
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /**
+             * Ownerid
+             * Format: uuid
+             */
+            ownerId: string;
+            /** Picturepath */
+            picturePath?: string | null;
+            status: components["schemas"]["ServiceStatus"];
+            /**
+             * Statusdate
+             * Format: date-time
+             */
+            statusDate: string;
+            /** Title */
+            title: string;
+            type: components["schemas"]["ServiceType"];
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ServicePatchForm
+         * @description Partial update of a service — only the keys sent are applied.
+         */
+        ServicePatchForm: {
+            /** Description */
+            description?: {
+                [key: string]: unknown;
+            } | null;
+            /** Openapiurl */
+            openapiUrl?: string | null;
+            /** Picturepath */
+            picturePath?: string | null;
+            /** Title */
+            title?: string | null;
+            type?: components["schemas"]["ServiceType"] | null;
+            /** Url */
+            url?: string | null;
+        };
+        /**
+         * ServiceSortField
+         * @description Sortable columns for the services listing.
+         * @enum {string}
+         */
+        ServiceSortField: "date" | "title" | "status" | "type";
+        /**
+         * ServiceStatus
+         * @enum {string}
+         */
+        ServiceStatus: "draft" | "active" | "archived";
+        /**
+         * ServiceType
+         * @description Where the service comes from.
+         * @enum {string}
+         */
+        ServiceType: "internal" | "external" | "third_party" | "other";
+        /**
+         * SortOrder
+         * @enum {string}
+         */
+        SortOrder: "asc" | "desc";
+        /**
+         * SuccessResponse
+         * @description Body of an action endpoint that has nothing to return but success.
+         */
+        SuccessResponse: {
+            /**
+             * Status
+             * @default ok
+             */
+            status: string;
+        };
+        /**
+         * TagCreateForm
+         * @description Create a tag for a given entity type.
+         */
+        TagCreateForm: {
+            /** Backgroundcolor */
+            backgroundColor: string;
+            entityType: components["schemas"]["TagEntityType"];
+            /** Label */
+            label: string;
+            /** Textcolor */
+            textColor: string;
+        };
+        /**
+         * TagEntityType
+         * @description The kind of entity a tag can be attached to.
+         * @enum {string}
+         */
+        TagEntityType: "application" | "application_route" | "application_guard" | "feature" | "journey" | "journey_scenario" | "journey_scenario_step" | "persona" | "database" | "database_table" | "database_table_column";
+        /**
+         * TagItem
+         * @description A colored label attachable to an account's entities.
+         */
+        TagItem: {
+            /** Backgroundcolor */
+            backgroundColor: string;
+            entityType: components["schemas"]["TagEntityType"];
+            /**
+             * Id
+             * Format: uuid
+             */
+            id: string;
+            /** Label */
+            label: string;
+            /** Textcolor */
+            textColor: string;
+        };
+        /**
+         * TagPatchForm
+         * @description Partial update of a tag — its label and colors (not its entity type).
+         */
+        TagPatchForm: {
+            /** Backgroundcolor */
+            backgroundColor?: string | null;
+            /** Label */
+            label?: string | null;
+            /** Textcolor */
+            textColor?: string | null;
+        };
+        /** Body_api.oauth.token */
+        token: {
+            /** Client Id */
+            client_id: string;
+            /** Client Secret */
+            client_secret?: string | null;
+            /** Code */
+            code?: string | null;
+            /** Code Verifier */
+            code_verifier?: string | null;
+            /** Device Code */
+            device_code?: string | null;
+            /** Grant Type */
+            grant_type: string;
+            /** Redirect Uri */
+            redirect_uri?: string | null;
+            /** Refresh Token */
+            refresh_token?: string | null;
+        };
+        /**
+         * TokenItem
+         * @description A bearer token pair. `refreshToken` is absent for intermediate tokens.
+         */
+        TokenItem: {
+            /**
+             * Accesstoken
+             * @description Bearer token to send as `Authorization: Bearer <token>`.
+             */
+            accessToken: string;
+            /**
+             * Expiresin
+             * @description Access-token lifetime in seconds.
+             * @example 3600
+             */
+            expiresIn: number;
+            /**
+             * Refreshtoken
+             * @description Token used to obtain a new access token.
+             */
+            refreshToken?: string | null;
+            /**
+             * Refreshtokenexpiresin
+             * @description Refresh-token lifetime in seconds.
+             */
+            refreshTokenExpiresIn?: number | null;
+            /**
+             * Tokentype
+             * @description Always `Bearer`.
+             * @default Bearer
+             */
+            tokenType: string;
+        };
+        /**
+         * TwoFactorForm
+         * @description Second-factor step: exchange the intermediate token for a full session.
+         */
+        TwoFactorForm: {
+            /**
+             * Token
+             * @description Intermediate token returned by the login step.
+             */
+            token: string;
+            /**
+             * Value
+             * @description The 6-digit code (authenticator) or a recovery code.
+             * @example 123456
+             */
+            value: string;
+        };
+        /**
+         * U2FAssertionOptionsForm
+         * @description Start a security-key login: request the WebAuthn assertion options.
+         */
+        U2FAssertionOptionsForm: {
+            /**
+             * Token
+             * @description Intermediate token returned by the login step.
+             */
+            token: string;
+        };
+        /**
+         * U2FAssertionOptionsItem
+         * @description WebAuthn assertion options plus the token tying them to this login.
+         */
+        U2FAssertionOptionsItem: {
+            /**
+             * Assertiontoken
+             * @description Token to send back with the browser's assertion.
+             */
+            assertionToken: string;
+            /**
+             * Options
+             * @description `PublicKeyCredentialRequestOptions` for `navigator.credentials.get`.
+             */
+            options: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * U2FAssertionVerifyForm
+         * @description Finish a security-key login with the browser's assertion.
+         */
+        U2FAssertionVerifyForm: {
+            /**
+             * Assertiontoken
+             * @description Assertion token returned by the options step.
+             */
+            assertionToken: string;
+            /**
+             * Credential
+             * @description The raw WebAuthn `PublicKeyCredential` from the browser.
+             */
+            credential: {
+                [key: string]: unknown;
+            };
+        };
+        /**
+         * U2FRegistrationOptionsItem
+         * @description WebAuthn creation options plus the token binding them to this session.
+         */
+        U2FRegistrationOptionsItem: {
+            /**
+             * Options
+             * @description `PublicKeyCredentialCreationOptions` for `navigator.credentials.create`.
+             */
+            options: {
+                [key: string]: unknown;
+            };
+            /** Registrationtoken */
+            registrationToken: string;
+        };
+        /**
+         * U2FRegistrationVerifyForm
+         * @description Finish registering a security key with the browser's attestation.
+         */
+        U2FRegistrationVerifyForm: {
+            /**
+             * Credential
+             * @description The raw WebAuthn `PublicKeyCredential` from the browser.
+             */
+            credential: {
+                [key: string]: unknown;
+            };
+            /**
+             * Nickname
+             * @description A label for this key.
+             */
+            nickname?: string | null;
+            /**
+             * Registrationtoken
+             * @description Token returned by the registration-options step.
+             */
+            registrationToken: string;
+        };
+        /**
+         * UpdateAccountInvitationForm
+         * @description Change a pending invitation's role.
+         */
+        UpdateAccountInvitationForm: {
+            role: components["schemas"]["AccountUserRole"];
+        };
+        /**
+         * UpdatePasswordForm
+         * @description Change the existing password.
+         */
+        UpdatePasswordForm: {
+            /** Newpassword */
+            newPassword: string;
+            /** Oldpassword */
+            oldPassword: string;
+        };
+        /**
+         * UserAuthenticationLogStatus
+         * @enum {string}
+         */
+        UserAuthenticationLogStatus: "success" | "error" | "forbidden";
+        /**
+         * UserAuthenticationLogType
+         * @description The auth event a log row records.
+         * @enum {string}
+         */
+        UserAuthenticationLogType: "register" | "activate" | "activation_link" | "email_password" | "google_oauth" | "two_factor_otp" | "two_factor_u2f" | "two_factor_recovery_code" | "refresh_token" | "forgot_password" | "reset_password" | "access";
+        /**
+         * UserAuthenticationTwoFactorType
+         * @enum {string}
+         */
+        UserAuthenticationTwoFactorType: "otp" | "recovery_code" | "u2f";
+        /**
+         * UserGender
+         * @enum {string}
+         */
+        UserGender: "unknown" | "male" | "female";
+        /**
+         * UserTheme
+         * @enum {string}
+         */
+        UserTheme: "system" | "light" | "dark";
+        /** ValidationError */
+        ValidationError: {
+            /** Context */
+            ctx?: Record<string, never>;
+            /** Input */
+            input?: unknown;
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
+        };
+        /**
+         * ValidationErrorResponse
+         * @description A `422` payload: a top-level message plus a per-field breakdown.
+         */
+        ValidationErrorResponse: {
+            /** Detail */
+            detail: string;
+            /** Errors */
+            errors: components["schemas"]["FieldError"][];
+        };
+    };
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
+}
+export type $defs = Record<string, never>;
+export interface operations {
+    "api.oauth.metadata.authorizationServer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
+    "api.oauth.metadata.protectedResource": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        [key: string]: unknown;
+                    };
+                };
+            };
+        };
+    };
+    "api.auth.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ActivationForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Invalid or expired activation link */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.login": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["LoginForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthResponse"];
+                };
+            };
+            /** @description Invalid email or password */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not activated or unavailable */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.password.forgot": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ForgotPasswordForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.password.reset": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResetPasswordForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Invalid or expired reset link */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.refresh": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RefreshTokenForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TokenItem_"];
+                };
+            };
+            /** @description Invalid or expired refresh token */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RegisterForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.resendActivation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResendActivationForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.sso.google": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GoogleSsoForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AuthResponse"];
+                };
+            };
+            /** @description Google sign-in failed */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Google sign-in is not configured */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.twoFactor.otp": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TwoFactorForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TokenItem_"];
+                };
+            };
+            /** @description Invalid code */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Verification session expired */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.twoFactor.recoveryCode": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TwoFactorForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TokenItem_"];
+                };
+            };
+            /** @description Invalid code */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Verification session expired */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.twoFactor.u2f": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["U2FAssertionVerifyForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TokenItem_"];
+                };
+            };
+            /** @description Invalid code */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Verification session expired */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.auth.twoFactor.u2f.options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["U2FAssertionOptionsForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_U2FAssertionOptionsItem_"];
+                };
+            };
+            /** @description Verification session expired */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.health.check": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HealthResponse"];
+                };
+            };
+        };
+    };
+    "api.me.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.authorize.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeIntegrationAuthorizationRequestItem_"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.authorize.approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MeIntegrationAuthorizeApproveForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeIntegrationAuthorizeResponse_"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.authorize.deny": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                request_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeIntegrationAuthorizeResponse_"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.authorize.byUserCode": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                user_code: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeIntegrationAuthorizationRequestItem_"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.grants.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_MeIntegrationGrantItem_"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.integrations.grants.revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                grant_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.invitations.list": {
+        parameters: {
+            query?: {
+                invitation_status?: components["schemas"]["AccountUserInvitationStatus"] | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_MeInvitationItem_"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.invitations.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeInvitationItem_"];
+                };
+            };
+            /** @description Invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.invitations.accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Invitation is no longer pending */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.invitations.refuse": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Invitation is no longer pending */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.setPicture": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["fastapi___compat__v2__Body_api__me__setPicture"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_MeItem_"];
+                };
+            };
+            /** @description Unsupported image format */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Image too large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_SecurityOverviewItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.logs.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_SecurityLogItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.otp.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_OtpMethodItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.otp.generate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_OtpProvisioningItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.otp.disable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                otp_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.otp.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                otp_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ActivateOtpForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_RecoveryCodesItem_"];
+                };
+            };
+            /** @description Invalid input */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.password.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreatePasswordForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description A password is already set */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.password.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdatePasswordForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Invalid input */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.recoveryCodes.regenerate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_RecoveryCodesItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.u2f.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_SecurityKeyItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.u2f.register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["U2FRegistrationVerifyForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_SecurityKeyItem_"];
+                };
+            };
+            /** @description Invalid input */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.u2f.disable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                u2f_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.u2f.rename": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                u2f_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RenameSecurityKeyForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_SecurityKeyItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.me.security.u2f.options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_U2FRegistrationOptionsItem_"];
+                };
+            };
+            /** @description Authentication required */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Some fields contain invalid values */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.oauth.authorize": {
+        parameters: {
+            query: {
+                client_id: string;
+                code_challenge: string;
+                code_challenge_method?: string;
+                redirect_uri: string;
+                response_type?: string;
+                scope?: string | null;
+                state?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            302: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.oauth.device.authorize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/x-www-form-urlencoded": components["schemas"]["authorize"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OauthDeviceAuthorizationResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.oauth.register": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["OauthClientRegistrationForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OauthClientRegistrationResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.oauth.revoke": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/x-www-form-urlencoded": components["schemas"]["revoke"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.oauth.token": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/x-www-form-urlencoded": components["schemas"]["token"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OauthTokenResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                role?: components["schemas"]["AccountUserRole"][] | null;
+                sortBy?: components["schemas"]["AccountSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["AccountStatus"][] | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_AccountItem_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AccountCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description The account must be deactivated first */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AccountPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["ApplicationSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["ApplicationStatus"][] | null;
+                tagIds?: string[] | null;
+                type?: components["schemas"]["ApplicationType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Application not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationEnvironmentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationEnvironmentPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environments.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or environment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationEnvironmentVersionCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationEnvironmentVersionPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.cancelled": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.error": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationEnvironmentVersionErrorForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.environmentVersions.finished": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                environment_id: string;
+                environment_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationEnvironmentVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Environment, version or deployment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.features.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationFeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, feature or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.features.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationFeatureCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationFeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, feature or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.features.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_feature_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationFeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, feature or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.features.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_feature_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, feature or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.features.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_feature_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationFeaturePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationFeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, feature or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationGuardCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                guard_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                guard_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                guard_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationGuardPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                guard_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.guards.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                guard_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationGuardItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or guard not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRoleCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                role_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                role_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                role_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRolePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                role_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.roles.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                role_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRoleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or role not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRoutePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application, route, guard, role or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.examples.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationRouteExampleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, example or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.examples.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteExampleCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteExampleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, example or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.examples.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                example_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteExampleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, example or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.examples.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                example_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, example or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.examples.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                example_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteExamplePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteExampleItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, example or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.responses.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationRouteResponseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.responses.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteResponseCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteResponseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.responses.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                response_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteResponseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.responses.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                response_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.responses.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                response_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteResponsePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteResponseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route or response not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.tables.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationRouteTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, link or database table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.tables.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteTableCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, link or database table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.tables.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+                route_table_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, link or database table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.tables.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+                route_table_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, link or database table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.routes.tables.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                route_id: string;
+                route_table_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationRouteTablePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationRouteTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Route, link or database table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationVersionCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ApplicationVersionPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.applications.versions.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                application_id: string;
+                version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ApplicationVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Application or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.list": {
+        parameters: {
+            query?: {
+                entityId?: string[] | null;
+                entityType?: components["schemas"]["CommentEntityType"][] | null;
+                lbound?: string | null;
+                ownerId?: string[] | null;
+                sortBy?: components["schemas"]["CommentSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["CommentStatus"][] | null;
+                ubound?: string | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentListItem_"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this comment */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this comment */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.remove": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this comment */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.replies.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.comments.replies.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                comment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Account or comment not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["DatabaseSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["DatabaseStatus"][] | null;
+                tagIds?: string[] | null;
+                type?: components["schemas"]["DatabaseType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabasePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Database not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseMigrationCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseMigrationPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.cancelled": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseMigrationColumnCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseMigrationColumnPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Migration column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Migration column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.confirmed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.draft": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.columns.toBeConfirmed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_column_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Migration, step, table or column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.completed": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.draft": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.migrations.validated": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_migration_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseMigrationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database, version or migration not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseVersionCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseVersionPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseVersionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Database or version not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseTableCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseTablePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Version, table or column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseTableColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseTableColumnCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_column_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_column_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_column_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseTableColumnPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseTableColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_column_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_column_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Column not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.columns.reorder": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DatabaseTableColumnReorderForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseTableColumnItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Table, column, column type or reference not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.databases.versions.tables.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                database_id: string;
+                database_table_id: string;
+                database_version_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Table not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.deactivate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["FeatureSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["FeatureStatus"][] | null;
+                tagIds?: string[] | null;
+                type?: components["schemas"]["FeatureType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FeatureCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FeaturePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Feature not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["fastapi___compat__v2__Body_api__features__files__create"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description The uploaded file is empty */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description File too large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_file_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_file_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_file_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FeatureFilePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_file_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.files.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_file_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.journeys.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_FeatureJourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature, journey or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.journeys.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["FeatureJourneyCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureJourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature, journey or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.journeys.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+                feature_journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_FeatureJourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature, journey or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.features.journeys.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                feature_id: string;
+                feature_journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Feature, journey or link not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CreateAccountInvitationsForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateAccountInvitationForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Invitation is not in a state allowing this action */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Invitation is not in a state allowing this action */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.invitations.resend": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                invitation_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountInvitationItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or invitation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Invitation is not in a state allowing this action */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["JourneySortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["JourneyStatus"][] | null;
+                tagIds?: string[] | null;
+                type?: components["schemas"]["JourneyType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account, journey or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Journey, scenario or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey or scenario not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey or scenario not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.list": {
+        parameters: {
+            query?: {
+                tagIds?: string[] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyScenarioStepItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Scenario, step or action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Scenario, step or action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Parameters do not match the action schema */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Scenario, step or action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Scenario, step or action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Scenario, step or action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Parameters do not match the action schema */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepAssertionCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Parameters do not match the assertion schema */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                assertion_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                assertion_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                assertion_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepAssertionPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Parameters do not match the assertion schema */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                assertion_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.assertions.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                assertion_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepAssertionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, assertion or assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey, scenario or step not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Journey, scenario or step not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["fastapi___compat__v2__Body_api__journeys__scenarios__steps__files__create"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description The uploaded file is empty */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description File too large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_file_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_file_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_file_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepFilePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_file_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.files.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_file_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepFileItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step or file not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.routes.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_JourneyScenarioStepRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, link, application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.routes.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["JourneyScenarioStepRouteCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, link, application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.routes.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+                step_route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_JourneyScenarioStepRouteItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, link, application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.journeys.scenarios.steps.routes.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                journey_id: string;
+                scenario_id: string;
+                step_id: string;
+                step_route_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Step, link, application or route not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.leave": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description The account must keep at least one owner */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["PersonaSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["PersonaStatus"][] | null;
+                tagIds?: string[] | null;
+                type?: components["schemas"]["PersonaType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PersonaCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PersonaPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_PersonaItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.personas.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                persona_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Persona not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.setPicture": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["fastapi___compat__v2__Body_api__accounts__setPicture"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountItem_"];
+                };
+            };
+            /** @description Unsupported image format */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Image too large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.list": {
+        parameters: {
+            query?: {
+                limit?: components["schemas"]["PageLimit"];
+                page?: number;
+                sortBy?: components["schemas"]["ServiceSortField"];
+                sortOrder?: components["schemas"]["SortOrder"];
+                status?: components["schemas"]["ServiceStatus"][] | null;
+                type?: components["schemas"]["ServiceType"][] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ServiceCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ServicePatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ServiceActionCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ServiceActionPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceActionItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.actions.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                action_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Service or action not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.archive": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ServiceItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.comments.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_CommentItem_"];
+                };
+            };
+            /** @description Service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.services.comments.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                service_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CommentCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_CommentItem_"];
+                };
+            };
+            /** @description Service not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.tags.list": {
+        parameters: {
+            query?: {
+                type?: components["schemas"]["TagEntityType"] | null;
+            };
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_TagItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or tag not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.tags.create": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TagCreateForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TagItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or tag not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.tags.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                tag_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TagItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or tag not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.tags.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                tag_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or tag not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.tags.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                tag_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TagPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_TagItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or tag not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.users.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_AccountUserItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or member not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.users.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                account_user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountUserItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or member not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.users.delete": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                account_user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or member not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Would leave the account without an owner */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.users.update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                account_user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AccountUserPatchForm"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AccountUserItem_"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or member not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Would leave the account without an owner */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.accounts.users.leave": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                account_id: string;
+                account_user_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessResponse"];
+                };
+            };
+            /** @description Insufficient permissions on this account */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Account or member not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Would leave the account without an owner */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.core.actionTypes.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_ActionTypeItem_"];
+                };
+            };
+        };
+    };
+    "api.core.actionTypes.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                action_type_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_ActionTypeItem_"];
+                };
+            };
+            /** @description Action type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.core.assertionTypes.list": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_AssertionTypeItem_"];
+                };
+            };
+        };
+    };
+    "api.core.assertionTypes.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                assertion_type_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_AssertionTypeItem_"];
+                };
+            };
+            /** @description Assertion type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.core.databaseColumnTypes.list": {
+        parameters: {
+            query?: {
+                databaseType?: components["schemas"]["DatabaseType"] | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ListingResponse_DatabaseColumnTypeItem_"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    "api.core.databaseColumnTypes.get": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                database_column_type_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemResponse_DatabaseColumnTypeItem_"];
+                };
+            };
+            /** @description Column type not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+}

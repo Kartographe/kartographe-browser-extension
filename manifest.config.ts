@@ -1,6 +1,13 @@
 import { defineManifest } from '@crxjs/vite-plugin'
 import pkg from './package.json' with { type: 'json' }
 
+// Public key that pins the Chrome extension ID to a stable value, so the OAuth
+// redirect URI (https://<id>.chromiumapp.org/) never changes across reinstalls.
+// Extension id: gboflclmaeihplmhhbfmljhfnlbmagkg
+// This is a PUBLIC key — safe to commit; Chrome-only (Firefox uses gecko.id).
+const CHROME_KEY =
+  'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtfXd6gd1a0x4GYGTIYYUMOkxPg3fv3Oj1cmD837kGm0aqjmbp9UDFZw3KQ0ZsJck815S01hI+TaR19ZKFIsUnpgF+w0N9xOO3WBXgH4+FjiBR+RD15itq2BPgbjKyZtbzfILr6HYp6WgbckFxTwR6jonxhtYoij6YxcDBwTcYYrjDzNdhqkzFnOtPzLCD4TfyPEY44xPXX7T9GvFQ0KJ8FYiwTiQcCz6UX6VQpQJlL8Ow2AK2CtPr4NCCETfAyMaq8AcTorL6m7EsqgxIcGYJReaGFtAfCqdXWN50Agt0B49p7n17YjicP3I50ZRqDLaSsWHDmpLRVWdjIqPo4WHzwIDAQAB'
+
 // A single, parameterable manifest for Chrome and Firefox.
 // `mode` comes from Vite (`vite build --mode firefox`).
 export default defineManifest((env) => {
@@ -64,7 +71,8 @@ export default defineManifest((env) => {
       '128': 'icons/icon-128.png',
     },
 
-    // Firefox requires an explicit add-on id for MV3.
+    // Firefox requires an explicit add-on id for MV3; Chrome uses a fixed key
+    // to keep a stable extension id (and OAuth redirect URI).
     ...(isFirefox
       ? {
           browser_specific_settings: {
@@ -74,6 +82,6 @@ export default defineManifest((env) => {
             },
           },
         }
-      : {}),
+      : { key: CHROME_KEY }),
   }
 })

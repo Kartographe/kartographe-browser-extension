@@ -53,12 +53,27 @@ pnpm dev
 
 **Firefox**
 
-1. `pnpm build:firefox` → output in `dist/`.
-2. Open `about:debugging#/runtime/this-firefox`.
-3. **Load Temporary Add-on…** → select `dist/manifest.json`.
+- `pnpm dev:firefox` launches a dedicated Firefox with the add-on loaded and
+  auto-reloads on change (via `web-ext`), or
+- `pnpm build:firefox` then `about:debugging#/runtime/this-firefox` → **Load
+  Temporary Add-on…** → select `dist/manifest.json`.
 
-> Firefox MV3 support is validated in a later milestone; Chrome is the primary
-> target for now.
+### Live testing without reinstalling
+
+`pnpm dev` (Chrome) writes a dev build to `dist/` — load it **once** as an
+unpacked extension and keep the dev server running. crxjs then hot-reloads the
+popup/options (React HMR) and auto-reloads the extension when you edit the
+background or content scripts. You only touch the **↻ Reload** button (never
+"Remove") after changing `manifest.config.ts`. `chrome.storage.local` persists
+across reloads, so your sign-in and config survive.
+
+### Stable extension id (OAuth)
+
+The Chrome manifest pins a public `key`, so the extension id is always
+**`gboflclmaeihplmhhbfmljhfnlbmagkg`** and the OAuth redirect URI stays
+**`https://gboflclmaeihplmhhbfmljhfnlbmagkg.chromiumapp.org/`** across reinstalls
+— no need to re-register the OAuth client. (The matching private key is not
+needed and is not stored in the repo.)
 
 ## Configuration
 
@@ -77,7 +92,8 @@ used to generate types with `pnpm api:sync`.
 
 | Script              | Description                                            |
 | ------------------- | ----------------------------------------------------- |
-| `pnpm dev`          | Vite dev server with HMR (Chrome MV3).                |
+| `pnpm dev`          | Vite dev server with HMR + auto-reload (Chrome MV3).  |
+| `pnpm dev:firefox`  | Build (watch) + `web-ext run` with auto-reload (Firefox). |
 | `pnpm build`        | Type-check + production build (Chrome) → `dist/`.     |
 | `pnpm build:firefox`| Type-check + production build (Firefox) → `dist/`.    |
 | `pnpm typecheck`    | `tsc --noEmit`.                                        |

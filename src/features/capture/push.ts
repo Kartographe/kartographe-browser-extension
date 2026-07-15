@@ -3,11 +3,21 @@ import { formDataSerializer } from '@/lib/api/client'
 import { dataUrlToBlob } from './capture'
 import type { PageCapture } from './types'
 
+/** Optional links associating the capture with existing/created entities. */
+export interface CaptureLinks {
+  applicationId?: string
+  applicationTitle?: string
+  serviceId?: string
+  serviceTitle?: string
+}
+
 export interface PushCaptureOptions {
   /** Optional title override for the journey/step (defaults to the page title). */
   title?: string
   /** Optional free-text annotation stored on the step. */
   note?: string
+  /** Optional application/service association (stored on the step parameters). */
+  links?: CaptureLinks
 }
 
 export interface PushCaptureResult {
@@ -37,12 +47,19 @@ export async function pushSingleCapture(
   options: PushCaptureOptions = {},
 ): Promise<PushCaptureResult> {
   const title = options.title?.trim() || capture.title || capture.domain
+  const links = options.links ?? {}
   const stepParameters = {
     url: capture.url,
     domain: capture.domain,
     favIconUrl: capture.favIconUrl,
     capturedAt: capture.capturedAt,
     ...(options.note ? { note: options.note } : {}),
+    ...(links.applicationId
+      ? { applicationId: links.applicationId, applicationTitle: links.applicationTitle }
+      : {}),
+    ...(links.serviceId
+      ? { serviceId: links.serviceId, serviceTitle: links.serviceTitle }
+      : {}),
   }
 
   const journey = unwrap(

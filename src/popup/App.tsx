@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import {
   Alert,
   App as AntApp,
@@ -14,6 +14,8 @@ import { useConfig } from '@/lib/storage/hooks'
 import { useSession } from '@/features/auth/hooks'
 import { useCaptureTab, usePushCapture } from '@/features/capture/hooks'
 import type { PageCapture } from '@/features/capture/types'
+import type { CaptureLinks } from '@/features/capture/push'
+import { AttachSection } from '@/features/entities/AttachSection'
 
 const { Title, Text, Link } = Typography
 
@@ -38,6 +40,14 @@ function CaptureView() {
   const push = usePushCapture()
   const [shot, setShot] = useState<PageCapture | null>(null)
   const [note, setNote] = useState('')
+  const [links, setLinks] = useState<CaptureLinks>({})
+  const onLinksChange = useCallback((next: CaptureLinks) => setLinks(next), [])
+
+  const reset = () => {
+    setShot(null)
+    setNote('')
+    setLinks({})
+  }
 
   if (!shot) {
     return (
@@ -88,15 +98,10 @@ function CaptureView() {
         autoSize={{ minRows: 2, maxRows: 4 }}
       />
 
+      <AttachSection pageUrl={shot.url} onChange={onLinksChange} />
+
       <Space style={{ width: '100%' }} styles={{ item: { flex: 1 } }}>
-        <Button
-          block
-          onClick={() => {
-            setShot(null)
-            setNote('')
-          }}
-          disabled={push.isPending}
-        >
+        <Button block onClick={reset} disabled={push.isPending}>
           Retake
         </Button>
         <Button
@@ -105,12 +110,14 @@ function CaptureView() {
           loading={push.isPending}
           onClick={() =>
             push.mutate(
-              { capture: shot, options: { note: note || undefined } },
+              {
+                capture: shot,
+                options: { note: note || undefined, links },
+              },
               {
                 onSuccess: () => {
                   message.success('Sent to Kartographe')
-                  setShot(null)
-                  setNote('')
+                  reset()
                 },
                 onError: (e) => message.error((e as Error).message),
               },

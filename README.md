@@ -62,10 +62,19 @@ pnpm dev
 
 `pnpm dev` (Chrome) writes a dev build to `dist/` — load it **once** as an
 unpacked extension and keep the dev server running. crxjs then hot-reloads the
-popup/options (React HMR) and auto-reloads the extension when you edit the
+panel/options (React HMR) and auto-reloads the extension when you edit the
 background or content scripts. You only touch the **↻ Reload** button (never
 "Remove") after changing `manifest.config.ts`. `chrome.storage.local` persists
 across reloads, so your sign-in and config survive.
+
+### The panel
+
+Clicking the toolbar icon opens a **right-docked panel** (Chrome side panel /
+Firefox sidebar) instead of a popup. Unlike a popup it **stays open while you
+browse**, which is what lets you record a journey page by page: switch to
+*Journey*, click *Add current page* on each page, then *Send journey*. The first
+capture asks for permission to screenshot pages (`captureVisibleTab` needs host
+access, which the panel — unlike a toolbar click — does not get for free).
 
 ### Stable extension id (OAuth)
 
@@ -128,9 +137,9 @@ secrets and is not wired up.
 ```
 src/
   app/          Shared React providers (TanStack Query, Ant Design)
-  background/   MV3 service worker (OAuth, refresh, tab capture)
-  content/      Content script (page metadata, journey overlay)
-  popup/        Toolbar popup UI (capture, attach, push)
+  background/   MV3 service worker (opens the panel, messaging)
+  content/      Content script (reserved for future page collection)
+  sidepanel/    Right-docked panel UI (capture, attach, journeys)
   options/      Settings page (server URL, account, sign-in/out)
   lib/
     api/        openapi-fetch client + generated schema.d.ts (committed)

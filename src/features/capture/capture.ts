@@ -1,3 +1,4 @@
+import { ensureCapturePermission } from '@/lib/permissions'
 import type { PageCapture } from './types'
 
 function domainOf(url: string): string {
@@ -14,6 +15,13 @@ function domainOf(url: string): string {
  * activeTab grant from the toolbar click.
  */
 export async function captureActiveTab(): Promise<PageCapture> {
+  // Request host access first, during the user gesture (side panel has no
+  // activeTab grant on the browsed tab).
+  const granted = await ensureCapturePermission()
+  if (!granted) {
+    throw new Error('Permission to capture pages was denied.')
+  }
+
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
   if (!tab || !tab.url) {
     throw new Error('No active tab to capture.')

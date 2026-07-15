@@ -12,6 +12,14 @@ const CHROME_KEY =
 // `mode` comes from Vite (`vite build --mode firefox`).
 export default defineManifest((env) => {
   const isFirefox = env.mode === 'firefox'
+  const SIDEPANEL_PATH = 'src/sidepanel/index.html'
+
+  const iconSet = {
+    '16': 'icons/icon-16.png',
+    '32': 'icons/icon-32.png',
+    '48': 'icons/icon-48.png',
+    '128': 'icons/icon-128.png',
+  }
 
   return {
     manifest_version: 3,
@@ -28,6 +36,8 @@ export default defineManifest((env) => {
       'storage', // persist tokens + config in chrome.storage.local
       'identity', // OAuth via launchWebAuthFlow
       'tabs', // read tab title/url for the capture
+      // Right-docked panel (Chrome); Firefox uses sidebar_action below.
+      ...(isFirefox ? [] : ['sidePanel']),
     ],
 
     // The Kartographe backend host is user-configurable, so we request host
@@ -35,16 +45,24 @@ export default defineManifest((env) => {
     // fixed origin here. `<all_urls>` stays optional for the same reason.
     optional_host_permissions: ['*://*/*'],
 
+    // No default_popup: clicking the toolbar icon opens the side panel
+    // (Chrome, via setPanelBehavior) or toggles the sidebar (Firefox).
     action: {
       default_title: 'Kartographe Trail',
-      default_popup: 'src/popup/index.html',
-      default_icon: {
-        '16': 'icons/icon-16.png',
-        '32': 'icons/icon-32.png',
-        '48': 'icons/icon-48.png',
-        '128': 'icons/icon-128.png',
-      },
+      default_icon: iconSet,
     },
+
+    // Right-docked panel that stays open while browsing — ideal for recording a
+    // journey page by page. Chrome: side_panel; Firefox: sidebar_action.
+    ...(isFirefox
+      ? {
+          sidebar_action: {
+            default_title: 'Kartographe Trail',
+            default_panel: SIDEPANEL_PATH,
+            default_icon: iconSet,
+          },
+        }
+      : { side_panel: { default_path: SIDEPANEL_PATH } }),
 
     options_ui: {
       page: 'src/options/index.html',

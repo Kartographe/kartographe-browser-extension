@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { App, Space, Typography } from 'antd'
+import { useTranslation } from 'react-i18next'
 import { EntityPicker } from './EntityPicker'
 import {
   useApplications,
@@ -20,6 +21,7 @@ interface AttachSectionProps {
 
 /** Optional association of the capture with an application and/or service. */
 export function AttachSection({ pageUrl, onChange }: AttachSectionProps) {
+  const { t } = useTranslation()
   const { message } = App.useApp()
 
   const [appSearch, setAppSearch] = useState('')
@@ -44,11 +46,11 @@ export function AttachSection({ pageUrl, onChange }: AttachSectionProps) {
   return (
     <Space direction="vertical" size={8} style={{ width: '100%' }}>
       <Text type="secondary" style={{ fontSize: 12 }}>
-        Attach to (optional)
+        {t('attach.label')}
       </Text>
 
       <EntityPicker
-        placeholder="Application…"
+        placeholder={t('attach.application')}
         items={applications.data ?? []}
         loading={applications.isLoading}
         creating={createApp.isPending}
@@ -61,7 +63,7 @@ export function AttachSection({ pageUrl, onChange }: AttachSectionProps) {
             onSuccess: (ref) => {
               setApp(ref)
               setAppSearch('')
-              message.success(`Application “${ref.title}” created`)
+              message.success(t('attach.appCreated', { title: ref.title }))
             },
             onError: (e) => message.error((e as Error).message),
           })
@@ -69,7 +71,7 @@ export function AttachSection({ pageUrl, onChange }: AttachSectionProps) {
       />
 
       <EntityPicker
-        placeholder="Service…"
+        placeholder={t('attach.service')}
         items={services.data ?? []}
         loading={services.isLoading}
         creating={createSvc.isPending}
@@ -84,7 +86,7 @@ export function AttachSection({ pageUrl, onChange }: AttachSectionProps) {
               onSuccess: (ref) => {
                 setSvc(ref)
                 setSvcSearch('')
-                message.success(`Service “${ref.title}” created`)
+                message.success(t('attach.serviceCreated', { title: ref.title }))
               },
               onError: (e) => message.error((e as Error).message),
             },

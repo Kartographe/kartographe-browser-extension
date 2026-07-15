@@ -11,6 +11,7 @@ import {
   Spin,
   Typography,
 } from 'antd'
+import { useTranslation } from 'react-i18next'
 import { useConfig } from '@/lib/storage/hooks'
 import { useSession } from '@/features/auth/hooks'
 import { useCaptureTab, usePushCapture } from '@/features/capture/hooks'
@@ -28,17 +29,19 @@ function openOptions() {
 }
 
 function NotReady({ reason }: { reason: string }) {
+  const { t } = useTranslation()
   return (
     <Space direction="vertical" size="middle" style={{ width: '100%' }}>
       <Text>{reason}</Text>
       <Button type="primary" onClick={openOptions}>
-        Open settings
+        {t('common.openSettings')}
       </Button>
     </Space>
   )
 }
 
 function CaptureView() {
+  const { t } = useTranslation()
   const { message } = AntApp.useApp()
   const capture = useCaptureTab()
   const push = usePushCapture()
@@ -56,9 +59,7 @@ function CaptureView() {
   if (!shot) {
     return (
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-        <Text type="secondary">
-          Capture a screenshot, URL and metadata of the current page.
-        </Text>
+        <Text type="secondary">{t('capture.intro')}</Text>
         {capture.error ? (
           <Alert type="error" showIcon message={(capture.error as Error).message} />
         ) : null}
@@ -73,7 +74,7 @@ function CaptureView() {
             })
           }
         >
-          Capture this page
+          {t('capture.capturePage')}
         </Button>
       </Space>
     )
@@ -96,7 +97,7 @@ function CaptureView() {
       </Space>
 
       <Input.TextArea
-        placeholder="Optional annotation…"
+        placeholder={t('capture.annotationPlaceholder')}
         value={note}
         onChange={(e) => setNote(e.target.value)}
         autoSize={{ minRows: 2, maxRows: 4 }}
@@ -106,7 +107,7 @@ function CaptureView() {
 
       <Space style={{ width: '100%' }} styles={{ item: { flex: 1 } }}>
         <Button block onClick={reset} disabled={push.isPending}>
-          Retake
+          {t('capture.retake')}
         </Button>
         <Button
           type="primary"
@@ -120,7 +121,7 @@ function CaptureView() {
               },
               {
                 onSuccess: () => {
-                  message.success('Sent to Kartographe')
+                  message.success(t('capture.sent'))
                   reset()
                 },
                 onError: (e) => message.error((e as Error).message),
@@ -128,7 +129,7 @@ function CaptureView() {
             )
           }
         >
-          Send to Kartographe
+          {t('capture.send')}
         </Button>
       </Space>
     </Space>
@@ -136,6 +137,7 @@ function CaptureView() {
 }
 
 export function App() {
+  const { t } = useTranslation()
   const config = useConfig()
   const session = useSession()
 
@@ -151,7 +153,7 @@ export function App() {
           </Text>
         </Flex>
         <Link onClick={openOptions} style={{ fontSize: 12 }}>
-          Settings
+          {t('common.settings')}
         </Link>
       </Flex>
 
@@ -160,11 +162,11 @@ export function App() {
           <Spin />
         </Flex>
       ) : !config.data?.serverUrl ? (
-        <NotReady reason="Configure your Kartographe server to get started." />
+        <NotReady reason={t('ready.server')} />
       ) : session.data !== true ? (
-        <NotReady reason="Sign in to your Kartographe account to start capturing." />
+        <NotReady reason={t('ready.signIn')} />
       ) : !config.data.accountId ? (
-        <NotReady reason="Select the account captures should be pushed to." />
+        <NotReady reason={t('ready.account')} />
       ) : (
         <Ready />
       )}
@@ -173,6 +175,7 @@ export function App() {
 }
 
 function Ready() {
+  const { t } = useTranslation()
   const [mode, setMode] = useState<'single' | 'journey'>('single')
   return (
     <Space direction="vertical" size="middle" style={{ width: '100%' }}>
@@ -181,8 +184,8 @@ function Ready() {
         value={mode}
         onChange={(value) => setMode(value as 'single' | 'journey')}
         options={[
-          { label: 'Single page', value: 'single' },
-          { label: 'Journey', value: 'journey' },
+          { label: t('ready.modeSingle'), value: 'single' },
+          { label: t('ready.modeJourney'), value: 'journey' },
         ]}
       />
       {mode === 'single' ? <CaptureView /> : <JourneyView />}

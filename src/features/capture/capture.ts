@@ -1,3 +1,4 @@
+import i18n from '@/i18n'
 import { ensureCapturePermission } from '@/lib/permissions'
 import type { PageCapture } from './types'
 
@@ -19,15 +20,15 @@ export async function captureActiveTab(): Promise<PageCapture> {
   // activeTab grant on the browsed tab).
   const granted = await ensureCapturePermission()
   if (!granted) {
-    throw new Error('Permission to capture pages was denied.')
+    throw new Error(i18n.t('errors.captureDenied'))
   }
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
   if (!tab || !tab.url) {
-    throw new Error('No active tab to capture.')
+    throw new Error(i18n.t('errors.noActiveTab'))
   }
   if (/^(chrome|edge|about|moz-extension|chrome-extension):/i.test(tab.url)) {
-    throw new Error('This browser page cannot be captured.')
+    throw new Error(i18n.t('errors.browserPage'))
   }
 
   const screenshotDataUrl = await chrome.tabs.captureVisibleTab(

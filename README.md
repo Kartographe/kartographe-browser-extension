@@ -16,6 +16,8 @@ be attached to an existing application, service or journey, or create a new one.
 - **OAuth (authorization code + PKCE)** public client via
   `chrome.identity.launchWebAuthFlow`, with automatic token refresh and revoke on
   logout. No client secret is embedded.
+- **Localised UI** — English and French (react-i18next), following the browser
+  language by default.
 
 > Status: MVP complete — OAuth sign-in, single-page capture, attach/create
 > application·service, and multi-page journey recording all shipped. See the

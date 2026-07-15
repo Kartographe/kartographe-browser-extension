@@ -12,6 +12,7 @@ import {
   Typography,
 } from 'antd'
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 import { AttachSection } from '@/features/entities/AttachSection'
 import type { CaptureLinks } from '@/features/capture/push'
 import {
@@ -27,6 +28,7 @@ import {
 const { Text } = Typography
 
 export function JourneyView() {
+  const { t } = useTranslation()
   const { message } = App.useApp()
   const recording = useRecording()
   const start = useStartRecording()
@@ -52,11 +54,9 @@ export function JourneyView() {
   if (!rec?.active) {
     return (
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-        <Text type="secondary">
-          Record an ordered journey across several pages, then send it as one.
-        </Text>
+        <Text type="secondary">{t('journey.intro')}</Text>
         <Input
-          placeholder="Journey title (optional)"
+          placeholder={t('journey.titleOptional')}
           value={draftTitle}
           onChange={(e) => setDraftTitle(e.target.value)}
         />
@@ -66,7 +66,7 @@ export function JourneyView() {
           loading={start.isPending}
           onClick={() => start.mutate(draftTitle)}
         >
-          Start journey
+          {t('journey.start')}
         </Button>
       </Space>
     )
@@ -75,7 +75,7 @@ export function JourneyView() {
   return (
     <Space direction="vertical" size="middle" style={{ width: '100%' }}>
       <Input
-        placeholder="Journey title"
+        placeholder={t('journey.title')}
         defaultValue={rec.title}
         onBlur={(e) => setTitle.mutate(e.target.value)}
       />
@@ -86,18 +86,18 @@ export function JourneyView() {
         loading={addPage.isPending}
         onClick={() =>
           addPage.mutate(undefined, {
-            onSuccess: () => message.success('Page added'),
+            onSuccess: () => message.success(t('journey.pageAdded')),
             onError: (e) => message.error((e as Error).message),
           })
         }
       >
-        Add current page
+        {t('journey.addPage')}
       </Button>
 
       {rec.steps.length === 0 ? (
         <Empty
           image={Empty.PRESENTED_IMAGE_SIMPLE}
-          description="No pages yet"
+          description={t('journey.noPages')}
           style={{ margin: '8px 0' }}
         />
       ) : (
@@ -141,7 +141,7 @@ export function JourneyView() {
 
       <Space style={{ width: '100%' }} styles={{ item: { flex: 1 } }}>
         <Button block danger onClick={() => clear.mutate()} disabled={push.isPending}>
-          Discard
+          {t('journey.discard')}
         </Button>
         <Button
           type="primary"
@@ -153,7 +153,7 @@ export function JourneyView() {
               { recording: rec, links },
               {
                 onSuccess: (res) => {
-                  message.success(`Journey sent (${res.stepCount} steps)`)
+                  message.success(t('journey.sent', { count: res.stepCount }))
                   clear.mutate()
                 },
                 onError: (e) => message.error((e as Error).message),
@@ -161,7 +161,7 @@ export function JourneyView() {
             )
           }
         >
-          Send journey
+          {t('journey.send')}
         </Button>
       </Space>
     </Space>

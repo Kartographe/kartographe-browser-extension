@@ -1,5 +1,6 @@
 import { Button, Divider, Select, Space } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
 import type { EntityRef } from './hooks'
 
 interface EntityPickerProps {
@@ -30,6 +31,7 @@ export function EntityPicker({
   onSelect,
   onCreate,
 }: EntityPickerProps) {
+  const { t } = useTranslation()
   const trimmed = search.trim()
   const exactMatch = items.some(
     (i) => i.title.toLowerCase() === trimmed.toLowerCase(),
@@ -69,7 +71,7 @@ export function EntityPicker({
                   loading={creating}
                   onClick={() => onCreate(trimmed)}
                 >
-                  Create “{trimmed}”
+                  {t('attach.create', { query: trimmed })}
                 </Button>
               </Space>
             </>

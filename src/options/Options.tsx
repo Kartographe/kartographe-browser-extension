@@ -12,6 +12,7 @@ import {
   Tag,
   Typography,
 } from 'antd'
+import { useTranslation } from 'react-i18next'
 import {
   CUSTOM_SERVER,
   normaliseServerUrl,
@@ -25,15 +26,6 @@ const { Text } = Typography
 
 const logoUrl = chrome.runtime.getURL('icons/logo-horizontal.svg')
 
-const SERVER_OPTIONS = [
-  ...SERVER_PRESETS.map((p) => ({
-    value: p.url,
-    disabled: p.disabled,
-    label: `${p.url} · ${p.region}${p.disabled ? ' — coming soon' : ''}`,
-  })),
-  { value: CUSTOM_SERVER, label: 'Custom…' },
-]
-
 interface ServerFormValues {
   server: string
   customUrl?: string
@@ -46,10 +38,20 @@ function initialServerValue(storedUrl: string): string {
 }
 
 function ServerCard() {
+  const { t } = useTranslation()
   const { message } = App.useApp()
   const config = useConfig()
   const save = useSaveConfig()
   const [form] = Form.useForm<ServerFormValues>()
+
+  const serverOptions = [
+    ...SERVER_PRESETS.map((p) => ({
+      value: p.url,
+      disabled: p.disabled,
+      label: `${p.url} · ${p.region}${p.disabled ? ` — ${t('server.comingSoon')}` : ''}`,
+    })),
+    { value: CUSTOM_SERVER, label: t('server.custom') },
+  ]
 
   const stored = config.data?.serverUrl ?? ''
   const initialServer = initialServerValue(stored)
@@ -59,7 +61,7 @@ function ServerCard() {
   const isCustom = selected === CUSTOM_SERVER
 
   return (
-    <Card title="Kartographe server" loading={config.isLoading}>
+    <Card title={t('server.cardTitle')} loading={config.isLoading}>
       <Form
         form={form}
         layout="vertical"
@@ -71,36 +73,36 @@ function ServerCard() {
           save.mutate(
             { serverUrl: url },
             {
-              onSuccess: () => message.success('Server saved'),
-              onError: () => message.error('Could not save server'),
+              onSuccess: () => message.success(t('server.saved')),
+              onError: () => message.error(t('server.saveError')),
             },
           )
         }}
       >
         <Form.Item
           name="server"
-          label="Server"
-          tooltip="Choose a Kartographe Cloud region or enter your own server"
-          rules={[{ required: true, message: 'Please choose a server' }]}
+          label={t('server.label')}
+          tooltip={t('server.tooltip')}
+          rules={[{ required: true, message: t('server.chooseError') }]}
         >
-          <Select options={SERVER_OPTIONS} />
+          <Select options={serverOptions} />
         </Form.Item>
 
         {isCustom ? (
           <Form.Item
             name="customUrl"
-            label="Custom server URL"
+            label={t('server.customLabel')}
             rules={[
-              { required: true, message: 'Please enter the server URL' },
-              { type: 'url', message: 'Enter a valid URL' },
+              { required: true, message: t('server.customRequired') },
+              { type: 'url', message: t('server.invalidUrl') },
             ]}
           >
-            <Input placeholder="https://kartographe.example.com" />
+            <Input placeholder={t('server.customPlaceholder')} />
           </Form.Item>
         ) : null}
 
         <Button type="primary" htmlType="submit" loading={save.isPending}>
-          Save
+          {t('common.save')}
         </Button>
       </Form>
     </Card>
@@ -108,6 +110,7 @@ function ServerCard() {
 }
 
 function AccountCard() {
+  const { t } = useTranslation()
   const { message } = App.useApp()
   const config = useConfig()
   const session = useSession()
@@ -121,17 +124,17 @@ function AccountCard() {
 
   if (!hasServer) {
     return (
-      <Card title="Account">
-        <Text type="secondary">Save a server URL first to sign in.</Text>
+      <Card title={t('account.cardTitle')}>
+        <Text type="secondary">{t('account.needServer')}</Text>
       </Card>
     )
   }
 
   if (session.data !== true) {
     return (
-      <Card title="Account">
+      <Card title={t('account.cardTitle')}>
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-          <Text>Sign in to your Kartographe account to start capturing.</Text>
+          <Text>{t('account.signInPrompt')}</Text>
           {login.error ? (
             <Alert type="error" showIcon message={(login.error as Error).message} />
           ) : null}
@@ -144,7 +147,7 @@ function AccountCard() {
               })
             }
           >
-            Sign in with Kartographe
+            {t('account.signIn')}
           </Button>
         </Space>
       </Card>
@@ -153,7 +156,7 @@ function AccountCard() {
 
   return (
     <Card
-      title="Account"
+      title={t('account.cardTitle')}
       extra={
         <Button
           danger
@@ -161,7 +164,7 @@ function AccountCard() {
           loading={logout.isPending}
           onClick={() => logout.mutate()}
         >
-          Sign out
+          {t('account.signOut')}
         </Button>
       }
     >
@@ -170,7 +173,7 @@ function AccountCard() {
           <Spin />
         ) : me.data ? (
           <Text>
-            Signed in as{' '}
+            {t('account.signedInAs')}{' '}
             <strong>
               {[me.data.firstName, me.data.lastName].filter(Boolean).join(' ') ||
                 me.data.email}
@@ -180,12 +183,12 @@ function AccountCard() {
         ) : null}
 
         <div>
-          <Text strong>Active account</Text>
+          <Text strong>{t('account.activeAccount')}</Text>
           <div style={{ marginTop: 8 }}>
             <Select
               style={{ width: '100%' }}
               loading={accounts.isLoading}
-              placeholder="Select the account captures are pushed to"
+              placeholder={t('account.selectAccount')}
               value={config.data?.accountId ?? undefined}
               options={(accounts.data ?? []).map((a) => ({
                 value: a.id,
@@ -194,18 +197,18 @@ function AccountCard() {
               onChange={(accountId: string) =>
                 save.mutate(
                   { accountId },
-                  { onSuccess: () => message.success('Active account updated') },
+                  { onSuccess: () => message.success(t('account.accountUpdated')) },
                 )
               }
             />
           </div>
           {config.data?.accountId ? (
             <Tag color="green" style={{ marginTop: 8 }}>
-              Ready to capture
+              {t('account.ready')}
             </Tag>
           ) : (
             <Text type="warning" style={{ display: 'block', marginTop: 8 }}>
-              Pick an account to enable captures.
+              {t('account.pickAccount')}
             </Text>
           )}
         </div>
@@ -215,13 +218,14 @@ function AccountCard() {
 }
 
 export function Options() {
+  const { t } = useTranslation()
   return (
     <div style={{ maxWidth: 640, margin: '48px auto', padding: '0 16px' }}>
       <Space direction="vertical" size="large" style={{ width: '100%' }}>
         <Flex align="center" gap={12}>
           <img src={logoUrl} alt="Kartographe" height={32} />
           <Text style={{ fontSize: 18, fontWeight: 600 }}>Trail</Text>
-          <Text type="secondary">— settings</Text>
+          <Text type="secondary">{t('account.settingsSubtitle')}</Text>
         </Flex>
         <ServerCard />
         <AccountCard />

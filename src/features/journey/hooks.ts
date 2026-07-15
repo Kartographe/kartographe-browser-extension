@@ -1,4 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { useApiClient } from '@/lib/api/hooks'
 import { useConfig } from '@/lib/storage/hooks'
 import { captureActiveTab } from '@/features/capture/capture'
@@ -56,12 +57,13 @@ export function useAddCurrentPage() {
 }
 
 export function usePushJourney() {
+  const { t } = useTranslation()
   const client = useApiClient()
   const { data: config } = useConfig()
   return useMutation({
     mutationFn: (input: { recording: JourneyRecording; links?: CaptureLinks }) => {
-      if (!client) throw new Error('Set the server URL first.')
-      if (!config?.accountId) throw new Error('Select an account in settings first.')
+      if (!client) throw new Error(t('errors.setServerFirst'))
+      if (!config?.accountId) throw new Error(t('errors.selectAccountFirst'))
       return pushJourney(client, config.accountId, input.recording, input.links)
     },
   })

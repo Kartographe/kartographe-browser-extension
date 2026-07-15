@@ -1,3 +1,4 @@
+import i18n from '@/i18n'
 import { ensureHostPermission } from '@/lib/permissions'
 import { fetchMetadata } from './discovery'
 import { createPkce } from './pkce'
@@ -64,7 +65,7 @@ export async function login(serverUrl: string): Promise<void> {
   // Request host access to the (user-configured) server first, during the gesture.
   const granted = await ensureHostPermission(serverUrl)
   if (!granted) {
-    throw new Error('Permission to access the Kartographe server was denied.')
+    throw new Error(i18n.t('errors.hostPermissionDenied'))
   }
 
   const metadata = await fetchMetadata(serverUrl)
@@ -85,20 +86,20 @@ export async function login(serverUrl: string): Promise<void> {
     interactive: true,
   })
   if (!redirectResponse) {
-    throw new Error('Authorization was cancelled.')
+    throw new Error(i18n.t('errors.authCancelled'))
   }
 
   const returned = new URL(redirectResponse)
   const error = returned.searchParams.get('error')
   if (error) {
     const desc = returned.searchParams.get('error_description')
-    throw new Error(`Authorization denied: ${desc ?? error}`)
+    throw new Error(i18n.t('errors.authDenied', { reason: desc ?? error }))
   }
   if (returned.searchParams.get('state') !== state) {
-    throw new Error('State mismatch — aborting for security.')
+    throw new Error(i18n.t('errors.stateMismatch'))
   }
   const code = returned.searchParams.get('code')
-  if (!code) throw new Error('No authorization code returned.')
+  if (!code) throw new Error(i18n.t('errors.noCode'))
 
   const token = await postToken(metadata.token_endpoint, {
     grant_type: 'authorization_code',

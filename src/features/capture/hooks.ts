@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { useApiClient } from '@/lib/api/hooks'
 import { useConfig } from '@/lib/storage/hooks'
 import { captureActiveTab } from './capture'
@@ -10,13 +11,14 @@ export function useCaptureTab() {
 }
 
 export function usePushCapture() {
+  const { t } = useTranslation()
   const client = useApiClient()
   const { data: config } = useConfig()
 
   return useMutation({
     mutationFn: (input: { capture: PageCapture; options?: PushCaptureOptions }) => {
-      if (!client) throw new Error('Set the server URL first.')
-      if (!config?.accountId) throw new Error('Select an account in settings first.')
+      if (!client) throw new Error(t('errors.setServerFirst'))
+      if (!config?.accountId) throw new Error(t('errors.selectAccountFirst'))
       return pushSingleCapture(client, config.accountId, input.capture, input.options)
     },
   })

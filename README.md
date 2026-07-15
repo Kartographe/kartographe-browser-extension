@@ -17,8 +17,9 @@ be attached to an existing application, service or journey, or create a new one.
   `chrome.identity.launchWebAuthFlow`, with automatic token refresh and revoke on
   logout. No client secret is embedded.
 
-> Status: milestone 1 (scaffold). Auth, capture and journeys land in the next
-> milestones — see the roadmap at the bottom.
+> Status: MVP complete — OAuth sign-in, single-page capture, attach/create
+> application·service, and multi-page journey recording all shipped. See the
+> roadmap at the bottom.
 
 ## Requirements
 
@@ -110,11 +111,24 @@ public/icons/   Extension icons
 ## Roadmap
 
 1. ✅ Scaffold (MV3 + Vite + React + TS).
-2. Typed API client from OpenAPI (`api:sync`).
-3. OAuth PKCE end-to-end (login / refresh / logout).
-4. Single-page capture (screenshot + URL → API).
-5. Attach / create application, service, journey.
-6. Multi-step journey recording.
+2. ✅ Typed API client from OpenAPI (`api:sync`).
+3. ✅ OAuth PKCE end-to-end (login / refresh / logout).
+4. ✅ Single-page capture (screenshot + URL → API).
+5. ✅ Attach / create application, service, journey.
+6. ✅ Multi-step journey recording.
+
+### How captures map to the API
+
+Screenshots can only be persisted as journey **step files**, so every capture is
+stored as a journey:
+
+- **Single page** → a one-step journey (journey → scenario → step → screenshot).
+  URL, metadata and annotation are stored in the step parameters.
+- **Journey** → one journey → one scenario → N ordered steps, each with its
+  screenshot; the recording is buffered in `chrome.storage.local` and survives
+  navigation and popup closes until you send or discard it.
+- **Attach to application/service** → the selected (or inline-created) entity id
+  is recorded on the step parameters; the screenshot stays on the journey step.
 
 ## License
 

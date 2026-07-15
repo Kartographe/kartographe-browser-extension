@@ -6,6 +6,7 @@ import {
   Flex,
   Image,
   Input,
+  Segmented,
   Space,
   Spin,
   Typography,
@@ -16,6 +17,7 @@ import { useCaptureTab, usePushCapture } from '@/features/capture/hooks'
 import type { PageCapture } from '@/features/capture/types'
 import type { CaptureLinks } from '@/features/capture/push'
 import { AttachSection } from '@/features/entities/AttachSection'
+import { JourneyView } from '@/features/journey/JourneyView'
 
 const { Title, Text, Link } = Typography
 
@@ -159,8 +161,26 @@ export function App() {
       ) : !config.data.accountId ? (
         <NotReady reason="Select the account captures should be pushed to." />
       ) : (
-        <CaptureView />
+        <Ready />
       )}
     </Flex>
+  )
+}
+
+function Ready() {
+  const [mode, setMode] = useState<'single' | 'journey'>('single')
+  return (
+    <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+      <Segmented
+        block
+        value={mode}
+        onChange={(value) => setMode(value as 'single' | 'journey')}
+        options={[
+          { label: 'Single page', value: 'single' },
+          { label: 'Journey', value: 'journey' },
+        ]}
+      />
+      {mode === 'single' ? <CaptureView /> : <JourneyView />}
+    </Space>
   )
 }
